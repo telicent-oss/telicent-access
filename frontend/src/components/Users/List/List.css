@@ -1,0 +1,19 @@
+.react-confirm-alert .react-confirm-alert-body {
+    @apply bg-black-300 text-whiteSmoke text-center font-body text-xl font-semibold shadow-lg;
+}
+
+#react-confirm-alert .react-confirm-alert-overlay {
+    @apply bg-opacity-80 bg-black;
+}
+
+.react-confirm-alert-body .react-confirm-alert-button-group {
+    @apply justify-center space-x-4;
+}
+
+.react-confirm-alert-body .react-confirm-alert-button-group button {
+    @apply w-36 mt-4 bg-black-500 text-base font-semibold;
+}
+
+.react-confirm-alert-body .react-confirm-alert-button-group button:hover {
+    @apply bg-whiteSmoke text-black-300;
+}

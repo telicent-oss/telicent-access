@@ -1,0 +1,16 @@
+name: Test feature branch
+on:
+  push:
+    branches-ignore:
+      - "main"
+    paths:
+      - frontend
+
+jobs:
+  quality:
+    name: Run unit tests
+    uses: Telicent-oss/shared-workflows/.github/workflows/javascript-feature-branch-test.yml@main
+    secrets: inherit
+    with:
+      working-directory: frontend
+

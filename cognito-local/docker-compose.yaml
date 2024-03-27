@@ -1,0 +1,15 @@
+version: "3.8"
+services: 
+  cognito-local:
+    image: jagregory/cognito-local:latest
+    restart: always
+    networks:
+      - auth
+    volumes:
+      - ./cognito:/app/.cognito
+    ports:
+      - 9229:9229
+
+networks:
+  auth:
+    name: auth

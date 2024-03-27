@@ -1,0 +1,87 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:react-hooks/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "testing-library", "jest-dom"],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
+  "rules": {
+    "indent": "off",
+    "quotes": ["warn", "double"],
+    "comma-dangle": "off",
+    "no-console": "warn",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "warn",
+    "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/prefer-exact-prop": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": ["test.js", ".jsx"] }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-relative-packages": "off",
+    "react/forbid-prop-types": "off",
+    "object-curly-newline": 0,
+    "no-restricted-exports": 1,
+    "react/prop-types": 0,
+    "no-shadow": 1,
+    "react/no-array-index-key": 1,
+    "arrow-body-style": 1,
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["both"]
+        }
+      }
+    ],
+    "import/prefer-default-export": 1,
+    "react/no-danger": "off",
+    "testing-library/no-node-access": [
+      "warn",
+      { "allowContainerFirstChild": true }
+    ],
+    "camelcase": "warn"
+  },
+  "settings": {
+    "propWrapperFunctions": [{ "property": "exact", "exact": false }],
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
