@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2024-04-03)
+
+
+### Bug Fixes
+
+* **aws:** remove for OSS ([#359](https://github.com/telicent-oss/telicent-access/issues/359)) ([9a10e6b](https://github.com/telicent-oss/telicent-access/commit/9a10e6b8d171ee33f5a6cf30fea58c80968fcd0c))
+
 ## [0.11.2](https://github.com/Telicent-io/telicent-access/compare/v0.11.1...v0.11.2) (2024-01-12)
 
 
