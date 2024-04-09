@@ -64,10 +64,14 @@ jobs:
           mkdir -p reports
           yarn install
           yarn test:ci
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./frontend/reports
+      # TODO: Re-enable uploading of test artifacts
+      # WHEN: GH Admin completes: https://github.com/Telicent-io/telicent-access/issues/361
+      # WHO: Anyone
+      # HOW: Uncomment the following step, and check if it passes
+      # - uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      #     publish_dir: ./frontend/reports
 
   # job
   publish_frontend_image_to_container_registries:
