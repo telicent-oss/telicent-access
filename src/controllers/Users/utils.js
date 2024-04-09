@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 import { attributeMapping } from "../../database/defaults";
 
 export const mapRequestToUser = (body) => {
-  const id = mongoose.Types.ObjectId();
+  const id = new Types.ObjectId();
   let { name, email, active, userGroups } = body;
   const ignoreKeys = ["name", "email", "attributes", "active", "userGroups"];
 

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { connect, connection } from "mongoose";
 
 import { createDefaultAttributes } from "./defaults";
 import models from "./models";
@@ -8,7 +8,6 @@ import { getAllAttributes } from "../controllers/attributes/read";
 import logger from "../lib/logger";
 
 export const init = async () => {
-  const { connect, connection } = mongoose;
   let health = { ok: true, message: "starting up" };
 
   const connectDb = async () => {
@@ -33,7 +32,6 @@ export const init = async () => {
       await connect(
         `mongodb://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}`,
         {
-          useNewUrlParser: true,
           retryWrites: mongoRetryRewrites,
         }
       );

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
 import { mapScimToUser, mapMongoToScim } from "../utils";
@@ -41,7 +41,7 @@ describe("SCIM Utils", () => {
   });
 
   it("should return scim user", async () => {
-    const id = new mongoose.Types.ObjectId();
+    const id = new Types.ObjectId();
     const uuid = uuidv4();
 
     const user = {
