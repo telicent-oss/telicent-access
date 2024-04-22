@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-const { model, Schema } = mongoose;
+import { model, Schema } from "mongoose";
 
 /**
  * @openapi

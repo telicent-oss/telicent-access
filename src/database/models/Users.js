@@ -1,12 +1,8 @@
-import mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
 const {
-  model,
-  Schema,
-  Schema: {
-    Types: { ObjectId },
-  },
-} = mongoose;
+  Types: { ObjectId },
+} = Schema;
 const InstantiatedLabels = {
   name: String,
   value: String,

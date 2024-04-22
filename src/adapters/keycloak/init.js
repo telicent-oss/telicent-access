@@ -1,5 +1,5 @@
 import axios from "axios";
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 import { USER_REALM_URL } from "./constants";
 import {
@@ -53,7 +53,7 @@ export const mapUserToMongo = (user = {}) => {
     name = username;
   }
 
-  const id = mongoose.Types.ObjectId();
+  const id = new Types.ObjectId();
   const mapped = {
     _id: id,
     id,

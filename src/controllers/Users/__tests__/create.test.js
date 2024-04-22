@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
+import { ObjectId } from 'bson';
 
 import { createUser } from "../create";
 import * as deleteUser from "../delete";
@@ -33,14 +34,14 @@ describe("User - CREATE", () => {
   });
 
   it("should successfully create a user", async () => {
+    const id = "507f191e810c19729de860ea";
     mockingoose(usersModel).toReturn({}, "save").toReturn(null, "validateSync");
-    mongoose.Types.ObjectId = jest.fn(() => "507f191e810c19729de860ea");
+    Types.ObjectId = jest.fn(() => new ObjectId(id));
     adapters.createAuthUser = jest.fn(() => "abc-123");
 
     const mockRequest = {
       body: frontendInput,
     };
-
     const mockResponse = new TestResponse();
     await createUser(false)(mockRequest, mockResponse);
 
@@ -48,8 +49,8 @@ describe("User - CREATE", () => {
     expect(adapters.createAuthUser).toHaveBeenCalledTimes(1);
     expect(statusCode).toBe(201);
     expect(data).toEqual({
-      id: "507f191e810c19729de860ea",
-    }); // uuid attained from mock handler response
+      id: new ObjectId(id), // ID obtained from mock handler response.
+    });
     mockingoose(usersModel).reset();
   });
 

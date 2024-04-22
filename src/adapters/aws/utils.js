@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 import aws from "aws-sdk";
 
 import config from "../../config";
@@ -34,7 +34,7 @@ export const setFilterArgument =
     );
 
 export const mapAwsToScim = (user) => {
-  const id = mongoose.Types.ObjectId();
+  const id = new Types.ObjectId();
   const { Attributes, Username } = user;
   const scimUser = {
     _id: id,
