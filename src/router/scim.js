@@ -23,6 +23,7 @@ router.get("/v2/ping", async (req, res) => {
  *         id:
  *           type: string
  *           required: true
+ *           description: Access identifier for user
  *           example: 6540c57326bc7a0bd6658493
  *         externalId:
  *           description: Identifier for the User from the IdP
@@ -31,21 +32,15 @@ router.get("/v2/ping", async (req, res) => {
  *         userName:
  *           type: string
  *           example: User
+ *         emails:
+ *           type: array
+ *           example: [{ value: user@telicent.io }]
  *         schemas:
  *           type: array
  *           example: ["urn:ietf:params:scim:schemas:core:2.0:User"]
  *         groups:
  *           type: array
  *           example: ["urn:telicent:groups:developers", "urn:telicent:groups:group2"]
- *     StoredSCIMUser:
- *       allOf:
- *         - $ref: '#/components/schemas/SCIMUser'
- *         - type: object
- *           properties:
- *             id:
- *               type: string
- *               description: Access identifier for user
- *               example: 64dd02xxxxxxxxxxxcecbe13c
  *     SCIMUsersListResponse:
  *       type: object
  *       properties:
@@ -62,7 +57,7 @@ router.get("/v2/ping", async (req, res) => {
  *         Resources:
  *           type: array
  *           items:
- *             $ref: '#/components/schemas/StoredSCIMUser'
+ *             $ref: '#/components/schemas/SCIMUser'
  *     CreateSCIMUser:
  *       type: object
  *       required:
@@ -74,15 +69,9 @@ router.get("/v2/ping", async (req, res) => {
  *         userName:
  *           type: string
  *           example: User
- *         emails:
- *           type: array
- *           example: [{ value: user@telicent.io }]
  *         schemas:
  *           type: array
  *           example: ["urn:ietf:params:scim:schemas:core:2.0:User"]
- *         groups:
- *           type: array
- *           example: ["urn:telicent:groups:developers", "urn:telicent:groups:group2"]
  *     DeleteSCIMUserSuccess:
  *       type: object
  *       properties:
@@ -316,7 +305,7 @@ router.get("/v2/ping", async (req, res) => {
  *               example: false
  *         schemas:
  *           type: array
- *           example: ["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
+ *           example: ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"]
  *         etag:
  *           type: object
  *           properties:
@@ -394,7 +383,7 @@ router.get("/v2/Users", getAll(isScimEnabled));
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/StoredSCIMUser'
+ *               $ref: '#/components/schemas/SCIMUser'
  *       404:
  *         description: User not found
  *         content:
@@ -438,7 +427,7 @@ router.get("/v2/Users/:userId", getUserAttributes(isScimEnabled));
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/StoredSCIMUser'
+ *               $ref: '#/components/schemas/SCIMUser'
  *       405:
  *         description: SCIM is not enabled, method not allowed
  *         content:

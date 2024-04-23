@@ -13,8 +13,9 @@ export const mapScimToUser = (user) => {
     schemas: ["urn:ietf:params:scim:schemas:core:2.0:User"],
   };
 
-  const { value } = emails?.find((email) => email.primary);
-  const email = value || (emails?.length ? emails[0].value : null);
+  const email =
+    emails?.find((email) => email.primary)?.value ||
+    (emails?.length ? emails[0].value : null);
   if (email) {
     create.email = email;
   }
