@@ -108,10 +108,6 @@
       ]
     },
     {
-      "duration": 2,
-      "step_type": "pause"
-    },
-    {
       "url": "{{url}}/Users/{{userId}}",
       "method": "GET",
       "step_type": "request",
@@ -267,9 +263,9 @@
         },
         {
           "comparison": "equal",
-          "property": "data.ok",
+          "property": "ok",
           "value": "true",
-          "source": "response_status"
+          "source": "response_json"
         }
       ]
     },
@@ -451,53 +447,32 @@
           "source": "response_status"
         },
         {
-          "comparison": "is_a_number",
-          "property": "totalResults",
-          "source": "response_json"
-        },
-        {
-          "comparison": "is_a_number",
-          "property": "itemsPerPage",
-          "source": "response_json"
-        },
-        {
-          "comparison": "is_a_number",
-          "property": "startIndex",
-          "source": "response_json"
-        },
-        {
           "comparison": "equal",
-          "property": "schemas[0]",
-          "value": "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-          "source": "response_json"
-        },
-        {
-          "comparison": "equal",
-          "property": "Resources[0].id",
+          "property": "id",
           "value": "{{resourceTypeId}}",
           "source": "response_json"
         },
         {
           "comparison": "equal",
-          "property": "Resources[0].name",
+          "property": "name",
           "value": "{{resourceTypeId}}",
           "source": "response_json"
         },
         {
           "comparison": "equal",
-          "property": "Resources[0].endpoint",
-          "value": "/{{resourceTypeId}}",
+          "property": "endpoint",
+          "value": "/Users",
           "source": "response_json"
         },
         {
           "comparison": "equal",
-          "property": "Resources[0].schema",
+          "property": "schema",
           "value": "urn:ietf:params:scim:schemas:core:2.0:{{resourceTypeId}}",
           "source": "response_json"
         },
         {
           "comparison": "has_value",
-          "property": "Resources[0].schemas",
+          "property": "schemas",
           "value": "urn:ietf:params:scim:schemas:core:2.0:ResourceType",
           "source": "response_json"
         },
@@ -596,7 +571,47 @@
         },
         {
           "comparison": "not_empty",
-          "property": "Resources[0].attributes.subAttributes",
+          "property": "Resources[0].attributes[0].name",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].type",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].multiValued",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].required",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].caseExact",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].mutability",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].returned",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].uniqueness",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes[0].description",
           "source": "response_json"
         },
         {
@@ -607,13 +622,13 @@
         {
           "comparison": "equal",
           "property": "Resources[0].meta.location",
-          "value": "{{url}}/ResourceTypes/User",
+          "value": "{{url}}/Schemas/urn:ietf:params:scim:schemas:core:2.0:User",
           "source": "response_json"
         },
         {
           "comparison": "equal",
           "property": "Resources[0].meta.resourceType",
-          "value": "ResourceType",
+          "value": "Schema",
           "source": "response_json"
         }
       ]
@@ -666,7 +681,47 @@
         },
         {
           "comparison": "not_empty",
-          "property": "attributes.subAttributes",
+          "property": "attributes[0].name",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].type",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].multiValued",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].required",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].caseExact",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].mutability",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].returned",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].uniqueness",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes[0].description",
           "source": "response_json"
         },
         {
@@ -677,13 +732,13 @@
         {
           "comparison": "equal",
           "property": "meta.location",
-          "value": "{{url}}/ResourceTypes/User",
+          "value": "{{url}}/Schemas/{{schemaId}}",
           "source": "response_json"
         },
         {
           "comparison": "equal",
           "property": "meta.resourceType",
-          "value": "ResourceType",
+          "value": "Schema",
           "source": "response_json"
         }
       ]

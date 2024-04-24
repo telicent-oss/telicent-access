@@ -74,13 +74,10 @@ router.get("/v2/ping", async (req, res) => {
  *           example: ["urn:ietf:params:scim:schemas:core:2.0:User"]
  *     DeleteSCIMUserSuccess:
  *       type: object
- *       properties:
- *         data:
- *           type: object
- *           properties:
- *             ok:
- *               type: boolean
- *               example: true
+ *         properties:
+ *           ok:
+ *             type: boolean
+ *             example: true
  *     SCIMUserNotFound:
  *       type: object
  *       properties:
