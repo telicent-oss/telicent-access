@@ -114,7 +114,6 @@
     {
       "url": "{{url}}/Users/{{userId}}",
       "method": "GET",
-      "variables": [],
       "step_type": "request",
       "headers": {
         "Accept-Charset": ["utf-8"],
@@ -336,6 +335,355 @@
         {
           "comparison": "not_empty",
           "property": "authenticationSchemes",
+          "source": "response_json"
+        }
+      ]
+    },
+    {
+      "url": "{{url}}/ResourceTypes",
+      "method": "GET",
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "Resources[0].id",
+          "name": "resourceTypeId"
+        }
+      ],
+      "step_type": "request",
+      "headers": {
+        "Accept-Charset": ["utf-8"],
+        "Content-Type": ["application/scim+json; charset=utf-8"],
+        "Authorization": ["{{auth}}"],
+        "Accept": ["application/scim+json"],
+        "User-Agent": ["SCIM Integration"]
+      },
+      "assertions": [
+        {
+          "comparison": "equal_number",
+          "value": "200",
+          "source": "response_status"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "totalResults",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "itemsPerPage",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "startIndex",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "schemas[0]",
+          "value": "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].id",
+          "value": "User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].name",
+          "value": "User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].endpoint",
+          "value": "/Users",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].schema",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "has_value",
+          "property": "Resources[0].schemas",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:ResourceType",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].meta",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].meta.location",
+          "value": "{{url}}/ResourceTypes/User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].meta.resourceType",
+          "value": "ResourceType",
+          "source": "response_json"
+        }
+      ]
+    },
+    {
+      "url": "{{url}}/ResourceTypes/{{resourceTypeId}}",
+      "method": "GET",
+      "step_type": "request",
+      "headers": {
+        "Accept-Charset": ["utf-8"],
+        "Content-Type": ["application/scim+json; charset=utf-8"],
+        "Authorization": ["{{auth}}"],
+        "Accept": ["application/scim+json"],
+        "User-Agent": ["SCIM Integration"]
+      },
+      "assertions": [
+        {
+          "comparison": "equal_number",
+          "value": "200",
+          "source": "response_status"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "totalResults",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "itemsPerPage",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "startIndex",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "schemas[0]",
+          "value": "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].id",
+          "value": "{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].name",
+          "value": "{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].endpoint",
+          "value": "/{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].schema",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "has_value",
+          "property": "Resources[0].schemas",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:ResourceType",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "meta",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "meta.location",
+          "value": "{{url}}/ResourceTypes/{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "meta.resourceType",
+          "value": "ResourceType",
+          "source": "response_json"
+        }
+      ]
+    },
+    {
+      "url": "{{url}}/Schemas",
+      "method": "GET",
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "Resources[0].id",
+          "name": "schemaId"
+        }
+      ],
+      "step_type": "request",
+      "headers": {
+        "Accept-Charset": ["utf-8"],
+        "Content-Type": ["application/scim+json; charset=utf-8"],
+        "Authorization": ["{{auth}}"],
+        "Accept": ["application/scim+json"],
+        "User-Agent": ["SCIM Integration"]
+      },
+      "assertions": [
+        {
+          "comparison": "equal_number",
+          "value": "200",
+          "source": "response_status"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "totalResults",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "itemsPerPage",
+          "source": "response_json"
+        },
+        {
+          "comparison": "is_a_number",
+          "property": "startIndex",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "schemas[0]",
+          "value": "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].id",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].name",
+          "value": "{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "has_value",
+          "property": "Resources[0].schemas",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:Schema",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].description",
+          "value": "{{resourceTypeId}} Schema",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].attributes.subAttributes",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "Resources[0].meta",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].meta.location",
+          "value": "{{url}}/ResourceTypes/User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "Resources[0].meta.resourceType",
+          "value": "ResourceType",
+          "source": "response_json"
+        }
+      ]
+    },
+    {
+      "url": "{{url}}/Schemas/{{schemaId}}",
+      "method": "GET",
+      "step_type": "request",
+      "headers": {
+        "Accept-Charset": ["utf-8"],
+        "Content-Type": ["application/scim+json; charset=utf-8"],
+        "Authorization": ["{{auth}}"],
+        "Accept": ["application/scim+json"],
+        "User-Agent": ["SCIM Integration"]
+      },
+      "assertions": [
+        {
+          "comparison": "equal_number",
+          "value": "200",
+          "source": "response_status"
+        },
+        {
+          "comparison": "equal",
+          "property": "id",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "name",
+          "value": "{{resourceTypeId}}",
+          "source": "response_json"
+        },
+        {
+          "comparison": "has_value",
+          "property": "schemas",
+          "value": "urn:ietf:params:scim:schemas:core:2.0:Schema",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "description",
+          "value": "{{resourceTypeId}} Schema",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "attributes.subAttributes",
+          "source": "response_json"
+        },
+        {
+          "comparison": "not_empty",
+          "property": "meta",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "meta.location",
+          "value": "{{url}}/ResourceTypes/User",
+          "source": "response_json"
+        },
+        {
+          "comparison": "equal",
+          "property": "meta.resourceType",
+          "value": "ResourceType",
           "source": "response_json"
         }
       ]

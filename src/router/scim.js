@@ -140,7 +140,7 @@ router.get("/v2/ping", async (req, res) => {
  *           example: /Users
  *         schemas:
  *           type: array
- *           example: ["urn:ietf:params:scim:schemas:core:2.0:User"]
+ *           example: ["urn:ietf:params:scim:schemas:core:2.0:ResourceType"]
  *         schema:
  *           type: string
  *           example: "urn:ietf:params:scim:schemas:core:2.0:User"
@@ -222,7 +222,7 @@ router.get("/v2/ping", async (req, res) => {
  *           example: User
  *         schemas:
  *           type: string
- *           example: [urn:ietf:params:scim:schemas:core:2.0:User]
+ *           example: [urn:ietf:params:scim:schemas:core:2.0:Schema]
  *         description:
  *           type: string
  *           example: User Schema
