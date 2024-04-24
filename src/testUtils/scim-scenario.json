@@ -1,5 +1,5 @@
 {
-  "name": "SCIM 2.0 SPEC Test",
+  "name": "SCIM 2.0 specification test",
   "version": "1.0",
   "steps": [
     {
@@ -30,13 +30,6 @@
     {
       "url": "{{url}}/Users",
       "method": "GET",
-      "variables": [
-        {
-          "source": "response_json",
-          "property": "Resources[0].externalId",
-          "name": "userId"
-        }
-      ],
       "step_type": "request",
       "headers": {
         "Accept-Charset": ["utf-8"],
@@ -45,6 +38,13 @@
         "Accept": ["application/scim+json"],
         "User-Agent": ["SCIM Integration"]
       },
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "Resources[0].externalId",
+          "name": "userId"
+        }
+      ],
       "assertions": [
         {
           "comparison": "equal_number",
@@ -162,24 +162,19 @@
       "url": "{{url}}/Users",
       "method": "POST",
       "body": "{\"schemas\":[\"urn:ietf:params:scim:schemas:core:2.0:User\"],\"userName\":\"{{random_string(8)}}\",\"emails\":[{\"value\":\"user@telicent.io\"}],\"schemas\":\"urn:ietf:params:scim:schemas:core:2.0:User\",\"groups\":[\"urn:telicent:groups:developers\",\"urn:telicent:groups:group2\"]}",
-      "variables": [
-        {
-          "source": "response_json",
-          "property": "id",
-          "name": "createdUserId"
-        },
-        {
-          "source": "response_json",
-          "property": "userName",
-          "name": "userName"
-        }
-      ],
       "step_type": "request",
       "headers": {
         "Content-Type": ["application/json"],
         "Accept": ["application/scim+json; charset=utf-8"],
         "Authorization": ["{{auth}}"]
       },
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "id",
+          "name": "createdUserId"
+        }
+      ],
       "assertions": [
         {
           "comparison": "equal_number",
@@ -205,6 +200,10 @@
       ]
     },
     {
+      "duration": 1, 
+      "step_type": "pause"
+    }, 
+    {
       "url": "{{url}}/Users/{{createdUserId}}",
       "method": "PATCH",
       "body": "{\"Operations\": [{\"op\": \"replace\",\"value\": true}]}",
@@ -225,6 +224,10 @@
       ]
     },
     {
+      "duration": 1, 
+      "step_type": "pause"
+    }, 
+    {
       "url": "{{url}}/Users/{{createdUserId}}",
       "method": "PUT",
       "body": "{\"Operations\": [{\"op\": \"replace\",\"value\": true}]}",
@@ -244,6 +247,10 @@
         }
       ]
     },
+    {
+      "duration": 1, 
+      "step_type": "pause"
+    }, 
     {
       "url": "{{url}}/Users/{{createdUserId}}",
       "method": "DELETE",
@@ -338,13 +345,6 @@
     {
       "url": "{{url}}/ResourceTypes",
       "method": "GET",
-      "variables": [
-        {
-          "source": "response_json",
-          "property": "Resources[0].id",
-          "name": "resourceTypeId"
-        }
-      ],
       "step_type": "request",
       "headers": {
         "Accept-Charset": ["utf-8"],
@@ -353,6 +353,13 @@
         "Accept": ["application/scim+json"],
         "User-Agent": ["SCIM Integration"]
       },
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "Resources[0].id",
+          "name": "resourceTypeId"
+        }
+      ],
       "assertions": [
         {
           "comparison": "equal_number",
@@ -498,13 +505,6 @@
     {
       "url": "{{url}}/Schemas",
       "method": "GET",
-      "variables": [
-        {
-          "source": "response_json",
-          "property": "Resources[0].id",
-          "name": "schemaId"
-        }
-      ],
       "step_type": "request",
       "headers": {
         "Accept-Charset": ["utf-8"],
@@ -513,6 +513,13 @@
         "Accept": ["application/scim+json"],
         "User-Agent": ["SCIM Integration"]
       },
+      "variables": [
+        {
+          "source": "response_json",
+          "property": "Resources[0].id",
+          "name": "schemaId"
+        }
+      ],
       "assertions": [
         {
           "comparison": "equal_number",
