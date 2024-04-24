@@ -69,15 +69,18 @@ router.get("/v2/ping", async (req, res) => {
  *         userName:
  *           type: string
  *           example: User
+ *         emails:
+ *           type: array
+ *           example: [{ value: user@telicent.io }]
  *         schemas:
  *           type: array
  *           example: ["urn:ietf:params:scim:schemas:core:2.0:User"]
  *     DeleteSCIMUserSuccess:
  *       type: object
- *         properties:
- *           ok:
- *             type: boolean
- *             example: true
+ *       properties:
+ *         ok:
+ *           type: boolean
+ *           example: true
  *     SCIMUserNotFound:
  *       type: object
  *       properties:
