@@ -98,10 +98,10 @@ const List = ({ groups }) => {
       )}
       <ul className="px-6">
         {filteredGroups.map(
-          ({ _id, groupId, label, description, active, userCount }) => (
+          ({ _id, group_id, label, description, active, userCount }) => (
             <Item
               key={_id}
-              id={groupId}
+              id={group_id}
               name={label}
               description={description}
               active={active}

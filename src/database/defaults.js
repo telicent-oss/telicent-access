@@ -9,9 +9,9 @@ export const DEFAULT_ATTRIBUTES = [
       type: "hierarchy",
       values: ["O", "OS", "S", "TS"],
     },
-    isIhm: true,
+    ihm: true,
     readonly: true,
-    isUserRequired: true,
+    user_required: true,
   },
   {
     user_attribute_name: "nationality",
@@ -20,9 +20,9 @@ export const DEFAULT_ATTRIBUTES = [
       type: "enum",
       values: ccData.map((cc) => cc.Alpha3.trim()),
     },
-    isIhm: true,
+    ihm: true,
     readonly: true,
-    isUserRequired: true,
+    user_required: true,
   },
   {
     user_attribute_name: "deployed_organisation",
@@ -31,9 +31,9 @@ export const DEFAULT_ATTRIBUTES = [
       type: "string",
       values: null,
     },
-    isIhm: true,
+    ihm: true,
     readonly: true,
-    isUserRequired: true,
+    user_required: true,
   },
   {
     user_attribute_name: "personnel_type",
@@ -42,9 +42,9 @@ export const DEFAULT_ATTRIBUTES = [
       type: "enum",
       values: ["GOV", "NON-GOV"],
     },
-    isIhm: true,
+    ihm: true,
     readonly: true,
-    isUserRequired: true,
+    user_required: true,
   },
 ];
 

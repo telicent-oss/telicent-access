@@ -25,7 +25,7 @@ import { model, Schema } from "mongoose";
  *             values:
  *               type: array
  *               example: ["GOV", "NON-GOV"]
- *         isIhm:
+ *         ihm:
  *           type: boolean
  *           example: false
  *         readonly:
@@ -86,7 +86,7 @@ const attributeSchema = new Schema({
     },
     values: { type: [String], default: null },
   },
-  isIhm: { type: Boolean, default: false },
+  ihm: { type: Boolean, default: false },
   readonly: { type: Boolean, default: false },
 });
 

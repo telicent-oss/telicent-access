@@ -16,7 +16,7 @@ const config = {
   ],
   groupProperties: [
     { value: "label", label: "Name" },
-    { value: "groupId", label: "ID" },
+    { value: "group_id", label: "ID" },
     { value: "description", label: "Description" },
     { value: "userCount", label: "User count" },
     { value: "active", label: "Active" },

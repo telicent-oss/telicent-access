@@ -71,8 +71,8 @@ const Form = forwardRef(({ basis, children }, ref) => {
           sort(
             data
               .filter(({ active }) => active)
-              .map(({ groupId, label, description }) => ({
-                value: groupId,
+              .map(({ group_id, label, description }) => ({
+                value: group_id,
                 label,
                 description,
               })),

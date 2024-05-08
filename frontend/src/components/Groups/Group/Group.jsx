@@ -51,7 +51,7 @@ const Group = () => {
         <>
           <div className="mt-4 ml-6">
             <div>
-              <span className="font-bold">ID:</span> {group.groupId}
+              <span className="font-bold">ID:</span> {group.group_id}
             </div>
             <div>
               <span className="font-bold">Description:</span>{" "}

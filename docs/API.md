@@ -170,12 +170,12 @@ Returns the following responses:
 - _404_ - Groups not found.
 - _500_ - Server error.
 
-#### `GET /groups/{groupId}`
+#### `GET /groups/{group_id}`
 
 Retrieves a specific group matching the provided group ID.
 
 Accepts the following parameter:
-- `groupId` _required_ - Unique identifier for the group.
+- `group_id` _required_ - Unique identifier for the group.
 
 Returns the following responses:
 - _200_ - Group retrieved successfully.
@@ -194,12 +194,12 @@ Returns the following responses:
 - _409_ - Group already exists.
 - _500_ - Server error.
 
-#### `DELETE /groups/{groupId}`
+#### `DELETE /groups/{group_id}`
 
 Deletes a specific group matching the provided group ID.
 
 Accepts the following parameter:
-- `groupId` _required_ - Unique identifier for the group.
+- `group_id` _required_ - Unique identifier for the group.
 
 Returns the following responses:
 - _200_ - Group soft-deleted successfully.

@@ -5,13 +5,13 @@ import { sendErrorResponse, setupSuccessResponseAction } from "../utils";
 const sendDeleteSuccess = setupSuccessResponseAction("deleted");
 
 export const deleteGroup = async (req, res) => {
-  const { groupId } = req.params;
+  const { group_id } = req.params;
   try {
-    const group = await groupsModel.findOne({ groupId }, { __v: 0 });
+    const group = await groupsModel.findOne({ group_id }, { __v: 0 });
     if (!group) return sendNotFound(res);
 
     const { err } = await groupsModel.updateOne(
-      { groupId: { $eq: groupId } },
+      { group_id: { $eq: group_id } },
       { active: false }
     );
     if (err) return sendErrorResponse(res, err);

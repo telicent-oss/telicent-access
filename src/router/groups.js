@@ -43,15 +43,15 @@ router.get("/", getAll);
 
 /**
  * @openapi
- * /groups/{groupId}:
+ * /groups/{group_id}:
  *   get:
- *     summary: Get specific group by groupId
+ *     summary: Get specific group by group_id
  *     tags:
  *       - Groups
  *     description: Get specific group by its ID
  *     parameters:
  *       - in: path
- *         name: groupId
+ *         name: group_id
  *         description: unique identifier for groups
  *     produces:
  *       - application/json
@@ -81,7 +81,7 @@ router.get("/", getAll);
  *             schema:
  *               $ref: '#/components/schemas/ServerError'
  */
-router.get("/:groupId", getGroup);
+router.get("/:group_id", getGroup);
 
 /**
  * @openapi
@@ -129,15 +129,15 @@ router.post("/", createGroup);
 
 /**
  * @openapi
- * /groups/{groupId}:
+ * /groups/{group_id}:
  *   delete:
- *     summary: Delete specific group by groupId
+ *     summary: Delete specific group by group_id
  *     tags:
  *       - Groups
  *     description: Delete group from access - soft delete which removes the group from use by updating it to be inactive
  *     parameters:
  *       - in: path
- *         name: groupId
+ *         name: group_id
  *         description: unique identifier for groups
  *     produces:
  *       - application/json
@@ -155,6 +155,6 @@ router.post("/", createGroup);
  *             schema:
  *               $ref: '#/components/schemas/GroupsNotFound'
  */
-router.delete("/:groupId", deleteGroup);
+router.delete("/:group_id", deleteGroup);
 
 module.exports = router;

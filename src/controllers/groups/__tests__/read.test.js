@@ -6,7 +6,7 @@ const MOCK_GROUPS = [
   {
     _id: "64d27846c248737ae094c4ea",
     label: "manager",
-    groupId: "urn:telicent:groups:manager",
+    group_id: "urn:telicent:groups:manager",
     description: "Group for all managers",
     active: false,
     userCount: 0,
@@ -16,7 +16,7 @@ const MOCK_GROUPS = [
   {
     _id: "64d27aae0e121de092c20621",
     label: "developers",
-    groupId: "urn:telicent:groups:developers",
+    group_id: "urn:telicent:groups:developers",
     description: "Group for all developers",
     active: true,
     userCount: 1,
@@ -121,13 +121,13 @@ describe("Groups - READ", () => {
   it("should GET group", async () => {
     groupsModel.aggregate = jest.fn((query) => {
       return MOCK_GROUPS.filter(
-        (group) => group.groupId === query[0]["$match"].groupId
+        (group) => group.group_id === query[0]["$match"].group_id
       ).map((group) => ({ ...group, userCount: 0 }));
     });
     const testId = "urn:telicent:groups:manager";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group_id: testId,
       },
     };
     const mockResponse = new TestResponse();
@@ -136,7 +136,7 @@ describe("Groups - READ", () => {
     const { statusCode, data } = mockResponse;
     expect(statusCode).toBe(200);
     expect(data).toStrictEqual(
-      expectedGroups.find((group) => group.groupId === testId)
+      expectedGroups.find((group) => group.group_id === testId)
     );
   });
 
@@ -147,7 +147,7 @@ describe("Groups - READ", () => {
     const testId = "urn:telicent:groups:manager";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group_id: testId,
       },
     };
     const mockResponse = new TestResponse();
@@ -168,7 +168,7 @@ describe("Groups - READ", () => {
     const testId = "urn:telicent:groups:manager";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group_id: testId,
       },
     };
     const mockResponse = new TestResponse();

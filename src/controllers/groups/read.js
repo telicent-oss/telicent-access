@@ -11,7 +11,7 @@ export const getAllGroups = async (label) => {
       {
         $lookup: {
           from: "users",
-          localField: "groupId",
+          localField: "group_id",
           foreignField: "userGroups",
           as: "users",
         },
@@ -39,15 +39,15 @@ export const getAll = async (req, res) => {
 };
 
 export const getGroup = async (req, res) => {
-  const { groupId } = req.params;
+  const { group_id } = req.params;
   try {
     const groups = await groupsModel.aggregate([
-      { $match: { groupId } },
+      { $match: { group_id } },
       { $project: { __v: 0 } },
       {
         $lookup: {
           from: "users",
-          localField: "groupId",
+          localField: "group_id",
           foreignField: "userGroups",
           pipeline: [
             {

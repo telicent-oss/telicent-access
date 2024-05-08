@@ -12,14 +12,14 @@ describe("Groups - DELETE", () => {
     });
     const testId = "urn:telicent:groups:developers";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group_id: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);
 
     const { statusCode, data } = mockResponse;
     expect(groupsModel.updateOne).toBeCalledWith(
-      { groupId: { $eq: testId } },
+      { group_id: { $eq: testId } },
       { active: false }
     );
     expect(statusCode).toBe(200);
@@ -39,7 +39,7 @@ describe("Groups - DELETE", () => {
     });
     const testId = "urn:telicent:groups:developers";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group_id: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);
@@ -61,7 +61,7 @@ describe("Groups - DELETE", () => {
     });
     const testId = "urn:telicent:groups:developers";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group_id: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);

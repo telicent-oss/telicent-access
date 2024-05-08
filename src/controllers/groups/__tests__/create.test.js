@@ -110,7 +110,7 @@ class DuplicateError extends Error {
   constructor() {
     super("Duplicate");
     this.code = 11000;
-    this.keyPattern = { groupId: 0 };
+    this.keyPattern = { group_id: 0 };
   }
 }
 

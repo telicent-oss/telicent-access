@@ -32,16 +32,16 @@ router.get("/", getAll);
 
 /**
  * @openapi
- * /attributes/{uuid}:
+ * /attributes/{_id}:
  *   get:
- *     summary: Get specific attribute by UUID
+ *     summary: Get specific attribute by ID
  *     tags:
  *       - Attributes
  *     parameters:
  *       - in: path
- *         name: uuid
+ *         name: _id
  *         description: unique identifier for attribute
- *     description: Get specific attribute by UUID
+ *     description: Get specific attribute by ID
  *     produces:
  *       - application/json
  *     responses:
