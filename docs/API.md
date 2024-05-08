@@ -135,12 +135,12 @@ Returns the following responses:
 - _200_ - All attributes retrieved successfully.
 - _404_ - Attributes not found.
 
-#### `GET /attributes/{uuid}`
+#### `GET /attributes/{_id}`
 
-Retrieves a specific attribute matching the provided UUID.
+Retrieves a specific attribute matching the provided ID.
 
 Accepts the following parameter:
-- `uuid` _required_ - Unique identifier for the attribute.
+- `_id` _required_ - Unique identifier for the attribute.
 
 Returns the following responses:
 - _200_ - Attribute retrieved successfully.
