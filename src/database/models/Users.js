@@ -43,7 +43,7 @@ const InstantiatedLabels = {
  *                   "name": "nationality",
  *                   "value": "GBR",
  *                   "toString": "nationality=\"GBR\"",
- *                   "toDataLabelString": "permittedNationalities='GBR'",
+ *                   "toDataLabelString": "permitted_nationalities='GBR'",
  *                   "_id": "6540c57326bc7a0bd6658494"
  *                 },
  *                 {
@@ -54,17 +54,17 @@ const InstantiatedLabels = {
  *                   "_id": "6540c57326bc7a0bd6658495"
  *                 },
  *                 {
- *                   "name": "personnelType",
+ *                   "name": "personnel_type",
  *                   "value": "GOV",
- *                   "toString": "personnelType=\"GOV\"",
+ *                   "toString": "personnel_type=\"GOV\"",
  *                   "toDataLabelString": null,
  *                   "_id": "6540c57326bc7a0bd6658496"
  *                 },
  *                 {
- *                   "name": "deployedOrganisation",
+ *                   "name": "deployed_organisation",
  *                   "value": "Org1",
- *                   "toString": "deployedOrganisation=\"Org1\"",
- *                   "toDataLabelString": "permittedOrganisations='Org1'",
+ *                   "toString": "deployed_organisation=\"Org1\"",
+ *                   "toDataLabelString": "permitted_organisations='Org1'",
  *                   "_id": "6540c57326bc7a0bd6658497"
  *                 }
  *               ]
@@ -93,13 +93,13 @@ const InstantiatedLabels = {
  *         clearance:
  *           type: string
  *           enum: ["O", "OS", "S", "TS"]
- *         deployedOrganisation:
+ *         deployed_organisation:
  *           type: string
  *           example: Organisation name
  *         nationality:
  *           type: string
  *           example: GBR
- *         personnelType:
+ *         personnel_type:
  *           type: string
  *           enum: ["GOV", "NON-GOV"]
  *         active:

@@ -5,11 +5,11 @@ import { createHeadersWithToken, retrieveAdminToken } from "./utils";
 import logger from "../../lib/logger";
 
 const updateUserInKeyCloak = async ({ uuid, payload }, token) => {
-  const { email, name, deployedOrganisation } = payload;
+  const { email, name, deployed_organisation } = payload;
   const userDetails = {
     username: email,
     firstName: name,
-    lastName: deployedOrganisation,
+    lastName: deployed_organisation,
     email,
   };
   logger.debug(`update user: ${payload}, ${userDetails}`);

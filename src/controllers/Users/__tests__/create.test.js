@@ -14,11 +14,11 @@ const frontendInput = {
   name: "name",
   clearance: "O",
   email: "email",
-  deployedOrganisation: "Telicent",
+  deployed_organisation: "Telicent",
   nationality: "GBR",
   type: "NON-GOV",
   userGroups: [],
-  personnelType: "NON-GOV",
+  personnel_type: "NON-GOV",
   active: true,
 };
 

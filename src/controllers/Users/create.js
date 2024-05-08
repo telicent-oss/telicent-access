@@ -55,8 +55,8 @@ const REQUIRED_FIELDS = [
   "name",
   "email",
   "nationality",
-  "deployedOrganisation",
-  "personnelType",
+  "deployed_organisation",
+  "personnel_type",
   "clearance",
 ];
 const validateBody = (input) => {

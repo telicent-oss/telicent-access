@@ -15,7 +15,7 @@ export const DEFAULT_ATTRIBUTES = [
   },
   {
     userAttributeName: "nationality",
-    dataAttributeName: "permittedNationalities",
+    dataAttributeName: "permitted_nationalities",
     value: {
       type: "enum",
       values: ccData.map((cc) => cc.Alpha3.trim()),
@@ -25,8 +25,8 @@ export const DEFAULT_ATTRIBUTES = [
     isUserRequired: true,
   },
   {
-    userAttributeName: "deployedOrganisation",
-    dataAttributeName: "permittedOrganisations",
+    userAttributeName: "deployed_organisation",
+    dataAttributeName: "permitted_organisations",
     value: {
       type: "string",
       values: null,
@@ -36,7 +36,7 @@ export const DEFAULT_ATTRIBUTES = [
     isUserRequired: true,
   },
   {
-    userAttributeName: "personnelType",
+    userAttributeName: "personnel_type",
     dataAttributeName: null,
     value: {
       type: "enum",

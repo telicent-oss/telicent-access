@@ -14,7 +14,7 @@ describe("create user", () => {
       name: "name",
       email: "email",
       attributes: [],
-      deployedOrganisation: "deployedOrganisation",
+      deployed_organisation: "deployed_organisation",
       temporaryPassword: "abcdef",
     });
 

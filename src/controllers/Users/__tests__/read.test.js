@@ -21,7 +21,7 @@ const mockUsers = [
         name: "nationality",
         value: "GBR",
         toString: "nationality='GBR'",
-        toDataLabelString: "permittedNationalities='GBR'",
+        toDataLabelString: "permitted_nationalities='GBR'",
         _id: "66042eba7b888050ea0a1476",
       },
       {
@@ -32,17 +32,17 @@ const mockUsers = [
         _id: "66042f2abd3f44e4107d22b9",
       },
       {
-        name: "personnelType",
+        name: "personnel_type",
         value: "NON-GOV",
-        toString: "personnelType='NON-GOV'",
+        toString: "personnel_type='NON-GOV'",
         toDataLabelString: null,
         _id: "64dd1faaaaaaaaaaaaa0e9d0",
       },
       {
-        name: "deployedOrganisation",
+        name: "deployed_organisation",
         value: "Telicent",
-        toString: "deployedOrganisation='Telicent'",
-        toDataLabelString: "permittedOrganisations='Telicent'",
+        toString: "deployed_organisation='Telicent'",
+        toDataLabelString: "permitted_organisations='Telicent'",
         _id: "64dd1bbbbbbbbbbbbbbbe9d1",
       },
     ],
@@ -121,9 +121,9 @@ describe("Users - GET", () => {
   it("should successfully get user attributes by name", async () => {
     const expected = {
       attributes: [
-        "permittedNationalities='GBR'",
+        "permitted_nationalities='GBR'",
         "classification='O'",
-        "permittedOrganisations='Telicent'",
+        "permitted_organisations='Telicent'",
         "urn:telicent:groups:developers:and",
         "urn:telicent:groups:csuite:and",
         "urn:telicent:groups:developers:or",

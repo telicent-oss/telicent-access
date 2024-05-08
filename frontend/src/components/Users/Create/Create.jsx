@@ -130,7 +130,7 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
     const {
       userGroups,
       values,
-      values: { name, email, deployedOrganisation, temporaryPassword },
+      values: { name, email, deployed_organisation, temporaryPassword },
     } = current.getValues();
     const userToSubmit = {
       ...values,
@@ -141,9 +141,9 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
       authType === "keycloak" && !update
         ? name &&
           validateEmail(email) &&
-          deployedOrganisation &&
+          deployed_organisation &&
           temporaryPassword
-        : name && validateEmail(email) && deployedOrganisation;
+        : name && validateEmail(email) && deployed_organisation;
 
     current?.submitAttempted();
     setIsErrorVisible(isAttemptValid);

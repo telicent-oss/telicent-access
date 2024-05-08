@@ -5,7 +5,7 @@ import { createHeadersWithToken, retrieveAdminToken } from "./utils";
 import logger from "../../lib/logger";
 
 const createUserInKeyCloak = async (payload, token) => {
-  const { name, email, deployedOrganisation, temporaryPassword } = payload;
+  const { name, email, deployed_organisation, temporaryPassword } = payload;
   const options = createHeadersWithToken(token);
 
   const newUser = {
@@ -15,7 +15,7 @@ const createUserInKeyCloak = async (payload, token) => {
     enabled: true,
     groups: [],
     firstName: name,
-    lastName: deployedOrganisation,
+    lastName: deployed_organisation,
     credentials: [
       {
         type: "password",

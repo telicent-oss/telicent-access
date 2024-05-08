@@ -12,10 +12,10 @@ import { model, Schema } from "mongoose";
  *           example: 653f71ef35fe27f9f7ff1627
  *         userAttributeName:
  *           type: string
- *           example: personnelType
+ *           example: personnel_type
  *         dataAttributeName:
  *           type: string
- *           example: personnelType
+ *           example: personnel_type
  *         value:
  *           type: object
  *           properties:
@@ -34,9 +34,9 @@ import { model, Schema } from "mongoose";
  *     AttributesToStrings:
  *       type: array
  *       example: [
- *         "permittedNationalities='GBR'",
+ *         "permitted_nationalities='GBR'",
  *         "classification='OS'",
- *         "permittedOrganisations='Org1'",
+ *         "permitted_organisations='Org1'",
  *         "urn:telicent:groups:G1:and",
  *         "urn:telicent:groups:G2:and",
  *         "urn:telicent:groups:G3:or",

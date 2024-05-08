@@ -1392,11 +1392,11 @@
           },
           "userAttributeName": {
             "type": "string",
-            "example": "personnelType"
+            "example": "personnel_type"
           },
           "dataAttributeName": {
             "type": "string",
-            "example": "personnelType"
+            "example": "personnel_type"
           },
           "value": {
             "type": "object",
@@ -1427,9 +1427,9 @@
       "AttributesToStrings": {
         "type": "array",
         "example": [
-          "permittedNationalities='GBR'",
+          "permitted_nationalities='GBR'",
           "classification='OS'",
-          "permittedOrganisations='Org1'",
+          "permitted_organisations='Org1'",
           "urn:telicent:groups:G1:and",
           "urn:telicent:groups:G2:and",
           "urn:telicent:groups:G3:or",
@@ -1770,7 +1770,7 @@
                     "name": "nationality",
                     "value": "GBR",
                     "toString": "nationality=\"GBR\"",
-                    "toDataLabelString": "permittedNationalities='GBR'",
+                    "toDataLabelString": "permitted_nationalities='GBR'",
                     "_id": "6540c57326bc7a0bd6658494"
                   },
                   {
@@ -1781,17 +1781,17 @@
                     "_id": "6540c57326bc7a0bd6658495"
                   },
                   {
-                    "name": "personnelType",
+                    "name": "personnel_type",
                     "value": "GOV",
-                    "toString": "personnelType=\"GOV\"",
+                    "toString": "personnel_type=\"GOV\"",
                     "toDataLabelString": null,
                     "_id": "6540c57326bc7a0bd6658496"
                   },
                   {
-                    "name": "deployedOrganisation",
+                    "name": "deployed_organisation",
                     "value": "Org1",
-                    "toString": "deployedOrganisation=\"Org1\"",
-                    "toDataLabelString": "permittedOrganisations='Org1'",
+                    "toString": "deployed_organisation=\"Org1\"",
+                    "toDataLabelString": "permitted_organisations='Org1'",
                     "_id": "6540c57326bc7a0bd6658497"
                   }
                 ]
@@ -1843,7 +1843,7 @@
               "TS"
             ]
           },
-          "deployedOrganisation": {
+          "deployed_organisation": {
             "type": "string",
             "example": "Organisation name"
           },
@@ -1851,7 +1851,7 @@
             "type": "string",
             "example": "GBR"
           },
-          "personnelType": {
+          "personnel_type": {
             "type": "string",
             "enum": [
               "GOV",

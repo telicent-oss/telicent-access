@@ -40,7 +40,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     const defaults = {
       nationality: "GBR",
       clearance: "O",
-      personnelType: "NON-GOV",
+      personnel_type: "NON-GOV",
     };
 
     if (basis) {
@@ -188,7 +188,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     return null;
   };
 
-  const { name, email, deployedOrganisation, active, temporaryPassword } =
+  const { name, email, deployed_organisation, active, temporaryPassword } =
     values;
   const [isValidationActive, setIsValidationActive] = useState(false);
 
@@ -198,7 +198,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
       nameRef.current?.setFocus(!name);
       emailRef.current?.setFocus(name && !validateEmail(email));
       orgRef.current?.setFocus(
-        name && validateEmail(email) && !deployedOrganisation
+        name && validateEmail(email) && !deployed_organisation
       );
     },
     getValues() {

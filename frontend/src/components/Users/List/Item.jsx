@@ -23,7 +23,7 @@ const Item = ({
 }) => {
   const navigate = useNavigate();
   const { countries } = useContext(LookupContext);
-  const { nationality, deployedOrganisation, personnelType, clearance } =
+  const { nationality, deployed_organisation, personnel_type, clearance } =
     labels.reduce(
       (acc, { name: labelName, value }) => ({ ...acc, [labelName]: value }),
       {}
@@ -124,17 +124,17 @@ const Item = ({
         <div className="w-full">
           <div
             aria-label="text-organisation"
-            title={`Organisation: ${deployedOrganisation}`}
+            title={`Organisation: ${deployed_organisation}`}
             className="truncate font-bold"
           >
-            {deployedOrganisation}
+            {deployed_organisation}
           </div>
           <div
             aria-label="text-personnel-type"
-            title={`Personnel type: ${personnelType}`}
+            title={`Personnel type: ${personnel_type}`}
             className="truncate"
           >
-            {personnelType}
+            {personnel_type}
           </div>
         </div>
       </div>

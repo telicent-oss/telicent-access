@@ -34,7 +34,7 @@ const withLookupProvider = (children) => (
 describe("Create component", () => {
   const { name, email } = exampleUser;
   const labels = getLabels(exampleUser);
-  const { nationality, deployedOrganisation, personnelType, clearance } =
+  const { nationality, deployed_organisation, personnel_type, clearance } =
     labels;
 
   beforeEach(() => {
@@ -92,7 +92,7 @@ describe("Create component", () => {
 
     await waitFor(() => {
       user.type(screen.getByRole("textbox", { name: "email *" }), email);
-      user.type(screen.getByTestId("org-test-id"), deployedOrganisation);
+      user.type(screen.getByTestId("org-test-id"), deployed_organisation);
 
       user.selectOptions(screen.getByTestId("clearance-test-id"), clearance);
       user.selectOptions(
@@ -101,7 +101,7 @@ describe("Create component", () => {
       );
       user.selectOptions(
         screen.getByTestId("personnel-type-test-id"),
-        personnelType
+        personnel_type
       );
       user.click(screen.getByRole("button", { name: "Create" }));
 
@@ -116,7 +116,7 @@ describe("Create component", () => {
 
     await waitFor(() => {
       user.type(screen.getByRole("textbox", { name: "name *" }), name);
-      user.type(screen.getByTestId("org-test-id"), deployedOrganisation);
+      user.type(screen.getByTestId("org-test-id"), deployed_organisation);
       user.selectOptions(screen.getByTestId("clearance-test-id"), clearance);
       user.selectOptions(
         screen.getByTestId("nationality-test-id"),
@@ -124,7 +124,7 @@ describe("Create component", () => {
       );
       user.selectOptions(
         screen.getByTestId("personnel-type-test-id"),
-        personnelType
+        personnel_type
       );
       user.click(screen.getByRole("button", { name: "Create" }));
 
@@ -148,7 +148,7 @@ describe("Create component", () => {
       );
       user.selectOptions(
         screen.getByTestId("personnel-type-test-id"),
-        personnelType
+        personnel_type
       );
       user.click(screen.getByRole("button", { name: "Create" }));
 
