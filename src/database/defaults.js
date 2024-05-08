@@ -3,54 +3,54 @@ import ccData from "../data/country-code";
 
 export const DEFAULT_ATTRIBUTES = [
   {
-    userAttributeName: "clearance",
-    dataAttributeName: "classification",
+    user_attribute_name: "clearance",
+    data_attribute_name: "classification",
     value: {
       type: "hierarchy",
       values: ["O", "OS", "S", "TS"],
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
-    userAttributeName: "nationality",
-    dataAttributeName: "permitted_nationalities",
+    user_attribute_name: "nationality",
+    data_attribute_name: "permitted_nationalities",
     value: {
       type: "enum",
       values: ccData.map((cc) => cc.Alpha3.trim()),
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
-    userAttributeName: "deployed_organisation",
-    dataAttributeName: "permitted_organisations",
+    user_attribute_name: "deployed_organisation",
+    data_attribute_name: "permitted_organisations",
     value: {
       type: "string",
       values: null,
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
-    userAttributeName: "personnel_type",
-    dataAttributeName: null,
+    user_attribute_name: "personnel_type",
+    data_attribute_name: null,
     value: {
       type: "enum",
       values: ["GOV", "NON-GOV"],
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
 ];
 
 export const attributeMapping = DEFAULT_ATTRIBUTES.reduce(
-  (acc, { userAttributeName, dataAttributeName }) => {
-    acc[userAttributeName] = dataAttributeName;
+  (acc, { user_attribute_name, data_attribute_name }) => {
+    acc[user_attribute_name] = data_attribute_name;
     return acc;
   },
   {}

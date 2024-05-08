@@ -111,7 +111,7 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
     active: false,
   };
   if (!update && authType === "keycloak") {
-    basis.temporaryPassword = "";
+    basis.temporary_password = "";
   }
   if (update && user) {
     Object.entries(user).forEach(([k, v]) => {
@@ -130,7 +130,7 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
     const {
       userGroups,
       values,
-      values: { name, email, deployed_organisation, temporaryPassword },
+      values: { name, email, deployed_organisation, temporary_password },
     } = current.getValues();
     const userToSubmit = {
       ...values,
@@ -142,7 +142,7 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
         ? name &&
           validateEmail(email) &&
           deployed_organisation &&
-          temporaryPassword
+          temporary_password
         : name && validateEmail(email) && deployed_organisation;
 
     current?.submitAttempted();

@@ -15,7 +15,7 @@ describe("create user", () => {
       email: "email",
       attributes: [],
       deployed_organisation: "deployed_organisation",
-      temporaryPassword: "abcdef",
+      temporary_password: "abcdef",
     });
 
     expect(res).toBe("uuid");

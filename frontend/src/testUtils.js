@@ -118,7 +118,7 @@ export const exampleLabels = [
       values: ["O", "OS", "S", "TS"],
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
@@ -130,7 +130,7 @@ export const exampleLabels = [
       values: countries.map(({ alpha3 }) => alpha3.trim()),
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
@@ -142,7 +142,7 @@ export const exampleLabels = [
       values: null,
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
   {
@@ -154,7 +154,7 @@ export const exampleLabels = [
       values: ["GOV", "NON-GOV"],
     },
     isIhm: true,
-    readOnly: true,
+    readonly: true,
     isUserRequired: true,
   },
 ];
@@ -163,10 +163,10 @@ export const exampleAttrs = [
   {
     value: { type: "hierarchy", values: ["O", "OS", "S", "TS"] },
     _id: "clearance-test-id",
-    userAttributeName: "clearance",
-    dataAttributeName: "classification",
+    user_attribute_name: "clearance",
+    data_attribute_name: "classification",
     isIhm: true,
-    readOnly: true,
+    readonly: true,
   },
   {
     value: {
@@ -174,26 +174,26 @@ export const exampleAttrs = [
       values: ["AFG", "ALB", "DZA", "GBR"],
     },
     _id: "nationality-test-id",
-    userAttributeName: "nationality",
-    dataAttributeName: "permitted_nationalities",
+    user_attribute_name: "nationality",
+    data_attribute_name: "permitted_nationalities",
     isIhm: true,
-    readOnly: true,
+    readonly: true,
   },
   {
     value: { type: "string", values: null },
     _id: "org-test-id",
-    userAttributeName: "deployed_organisation",
-    dataAttributeName: "permitted_organisations",
+    user_attribute_name: "deployed_organisation",
+    data_attribute_name: "permitted_organisations",
     isIhm: true,
-    readOnly: true,
+    readonly: true,
   },
   {
     value: { type: "enum", values: ["GOV", "NON-GOV"] },
     _id: "personnel-type-test-id",
-    userAttributeName: "personnel_type",
-    dataAttributeName: null,
+    user_attribute_name: "personnel_type",
+    data_attribute_name: null,
     isIhm: true,
-    readOnly: true,
+    readonly: true,
   },
 ];
 
@@ -232,5 +232,5 @@ export const exampleHierarchy = {
   uuid: "31127653-a234-48bc-b940-34c866bfe384",
   name: "clearance",
   tiers: ["O", "S", "TS"],
-  readOnly: true,
+  readonly: true,
 };

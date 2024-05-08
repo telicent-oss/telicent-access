@@ -418,7 +418,7 @@
         "tags": [
           "Hierarchies"
         ],
-        "description": "Looks up hierarchy by name, using the dataAttributeName or userAttributeName property of the hierarchy attribute",
+        "description": "Looks up hierarchy by name, using the data_attribute_name or user_attribute_name property of the hierarchy attribute",
         "parameters": [
           {
             "in": "path",
@@ -432,7 +432,7 @@
               "type": "boolean",
               "required": false,
               "default": false,
-              "description": "isUserAttribute being set to true tells ACCESS to look up the hierarchy using the userAttributeName property rather than dataAttributeName"
+              "description": "isUserAttribute being set to true tells ACCESS to look up the hierarchy using the user_attribute_name property rather than data_attribute_name"
             }
           }
         ],
@@ -1390,11 +1390,11 @@
             "type": "string",
             "example": "653f71ef35fe27f9f7ff1627"
           },
-          "userAttributeName": {
+          "user_attribute_name": {
             "type": "string",
             "example": "personnel_type"
           },
-          "dataAttributeName": {
+          "data_attribute_name": {
             "type": "string",
             "example": "personnel_type"
           },
@@ -1418,7 +1418,7 @@
             "type": "boolean",
             "example": false
           },
-          "readOnly": {
+          "readonly": {
             "type": "boolean",
             "example": false
           }
@@ -1469,7 +1469,7 @@
               "TS"
             ]
           },
-          "readOnly": {
+          "readonly": {
             "type": "boolean"
           }
         }

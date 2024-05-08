@@ -230,13 +230,13 @@ Returns the following responses:
 
 #### `GET /hierarchies/lookup/{name}`
 
-Retrieves a specific hierarchy by name, using the `dataAttributeName` or
-`userAttributeName` property of the hierarchy attribute.
+Retrieves a specific hierarchy by name, using the `data_attribute_name` or
+`user_attribute_name` property of the hierarchy attribute.
 
 Accepts the following parameters:
 - `name` _required_ - Hierarchy name.
 - `isUserAttribute` _default_: `false` - _Boolean_ specifying to search in
-  `userAttributeName` if `true`, otherwise `dataAttributeName`.
+  `user_attribute_name` if `true`, otherwise `data_attribute_name`.
 
 Returns the following responses:
 - _200_ - Hierarchy looked up successfully.

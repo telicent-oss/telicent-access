@@ -8,7 +8,7 @@ const create = async (user) => {
   try {
     // Need to create auth user to obtain its UUID.
     user.externalId = await createAuthUser(user);
-    delete user.temporaryPassword;
+    delete user.temporary_password;
     const obj = new usersModel(user);
     const userObjectNotValid = obj.validateSync();
 
@@ -41,8 +41,8 @@ export const createUser = (isScimEnabled) => async (req, res) => {
     });
   }
   const mapped = mapRequestToUser(body);
-  if (body.temporaryPassword) {
-    mapped.temporaryPassword = body.temporaryPassword;
+  if (body.temporary_password) {
+    mapped.temporary_password = body.temporary_password;
   }
   const { data, error } = await create(mapped);
   if (error) {

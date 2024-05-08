@@ -5,7 +5,7 @@ import { createHeadersWithToken, retrieveAdminToken } from "./utils";
 import logger from "../../lib/logger";
 
 const createUserInKeyCloak = async (payload, token) => {
-  const { name, email, deployed_organisation, temporaryPassword } = payload;
+  const { name, email, deployed_organisation, temporary_password } = payload;
   const options = createHeadersWithToken(token);
 
   const newUser = {
@@ -19,7 +19,7 @@ const createUserInKeyCloak = async (payload, token) => {
     credentials: [
       {
         type: "password",
-        value: temporaryPassword,
+        value: temporary_password,
         temporary: true, // Bug in Keycloak dummy property; does nothing.
       },
     ],

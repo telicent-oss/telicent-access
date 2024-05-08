@@ -188,7 +188,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     return null;
   };
 
-  const { name, email, deployed_organisation, active, temporaryPassword } =
+  const { name, email, deployed_organisation, active, temporary_password } =
     values;
   const [isValidationActive, setIsValidationActive] = useState(false);
 
@@ -234,26 +234,26 @@ const Form = forwardRef(({ basis, children }, ref) => {
             />
             {(!Object.keys(values).length || !labels) && <p>Loading...</p>}
             {values &&
-              labels?.map(({ _id, userAttributeName, value }) =>
+              labels?.map(({ _id, user_attribute_name, value }) =>
                 mapLabelToInput({
                   id: _id,
                   type: value.type,
-                  label: userAttributeName,
+                  label: user_attribute_name,
                   values,
                   options: value.values,
                   onChange: onValueChange,
                   isValidationActive,
                 })
               )}
-            {Object.keys(values).includes("temporaryPassword") && (
+            {Object.keys(values).includes("temporary_password") && (
               <FormInput
                 id="temp-password"
                 label="temporary password"
                 placeholder={
                   isValidationActive ? "Required" : "Enter temporary password"
                 }
-                value={temporaryPassword}
-                onChange={onValueChange("temporaryPassword")}
+                value={temporary_password}
+                onChange={onValueChange("temporary_password")}
                 isValidationActive={isValidationActive}
               />
             )}

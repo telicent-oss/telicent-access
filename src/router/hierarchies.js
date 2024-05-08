@@ -71,7 +71,7 @@ router.get("/:hierarchyId", getHierarchy);
  *     summary: Look up hierarchy by name
  *     tags:
  *       - Hierarchies
- *     description: Looks up hierarchy by name, using the dataAttributeName or userAttributeName property of the hierarchy attribute
+ *     description: Looks up hierarchy by name, using the data_attribute_name or user_attribute_name property of the hierarchy attribute
  *     parameters:
  *       - in: path
  *         name: name
@@ -82,7 +82,7 @@ router.get("/:hierarchyId", getHierarchy);
  *           type: boolean
  *           required: false
  *           default: false
- *           description: isUserAttribute being set to true tells ACCESS to look up the hierarchy using the userAttributeName property rather than dataAttributeName
+ *           description: isUserAttribute being set to true tells ACCESS to look up the hierarchy using the user_attribute_name property rather than data_attribute_name
  *     produces:
  *       - application/json
  *     responses:
