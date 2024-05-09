@@ -1,6 +1,7 @@
 import labelModel from "./models/Attributes";
 import ccData from "../data/country-code";
 
+// Warning: do no modify these values as they are consumed downstream.
 export const DEFAULT_ATTRIBUTES = [
   {
     user_attribute_name: "clearance",
