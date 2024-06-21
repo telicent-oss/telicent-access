@@ -47,6 +47,7 @@ describe("testing decode fn", () => {
     const req = {
       headers: {
         authorization:
+          // Mock jwt
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQHRlbGljZW50LmlvIiwidXNlcm5hbWUiOiI4ZWRhZTVhMC0xZjVhLTQ2NmYtYjU4ZS02NGM2MTFmMzE3MjMiLCJzdWIiOiI4ZWRhZTVhMC0xZjVhLTQ2NmYtYjU4ZS02NGM2MTFmMzE3MjMiLCJncm91cHMiOlsidGNfYWRtaW4iLCJ0Y19yZWFkIl19.pmj7NNvwgWXRXV13x9vXYhIfnqsE2ny52ADGL3l_934",
       },
     };

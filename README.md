@@ -1,22 +1,3 @@
-# ⚠️ Deprecated for [open source version of telicent-access](https://github.com/telicent-oss/telicent-access)
-
-The shared "root", i.e the commit they share can be found here:
-
-- https://github.com/telicent-oss/telicent-access/releases/tag/v0.11.3-telicent-oss-root
-
-If useful, the open-source branch is here:
-
-- https://github.com/telicent-oss/telicent-access/tree/telicent-oss-root
-
-The PR to prep of open source has **not** been merged back into main.
-
-**Rationale**: It might be useful to keep the internal-infra workflows on `main`
-
-- https://github.com/telicent-oss/telicent-access/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc
-
-<details>
-  <summary>See old readme</summary>
-
 # telicent-access
 
 ❗️ **The purpose of the ACCESS application is to allow testing and demonstration of
