@@ -81,7 +81,7 @@ jobs:
       - integrated_tests
       - get_version
       - vuln_scan_frontend
-    uses: telicent-oss/shared-workflows/.github/workflows/push-to-registries.yml@update/for-frontend-trivy
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update/for-frontend-trivy
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
@@ -95,7 +95,7 @@ jobs:
       - integrated_tests
       - get_version
       - vuln_scan_api
-    uses: telicent-oss/shared-workflows/.github/workflows/push-to-registries.yml@update/for-frontend-trivy
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update/for-frontend-trivy
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
