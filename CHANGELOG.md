@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1](https://github.com/telicent-oss/telicent-access/compare/v1.0.0...v1.0.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* **open-source:** tweaks ([0fb89e9](https://github.com/telicent-oss/telicent-access/commit/0fb89e920a32a99f828bf93b82846baa45d0a6f5))
+* **publish.yml:** docker-push-to-repositories ([416cdb9](https://github.com/telicent-oss/telicent-access/commit/416cdb9e7dd0ba7bffc2decc63d4e7a9a128cdc2))
+* remove unused ([5611ca8](https://github.com/telicent-oss/telicent-access/commit/5611ca84fe345a108e3fba266018af35e1f8f092))
+* **various:** requested changes ([398f552](https://github.com/telicent-oss/telicent-access/commit/398f552a0fd6d3ea40affc6b8d64b28b1966da06))
+
 ## [1.0.2](https://github.com/Telicent-io/telicent-access/compare/v1.0.1...v1.0.2) (2024-06-19)
 
 
