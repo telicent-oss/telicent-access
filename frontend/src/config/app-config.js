@@ -1,9 +1,8 @@
-const { ACCESS_API_URL, AUTH_TYPE, BETA } = window._env_;
+const { ACCESS_API_URL,  BETA } = window;
 
 const config = {
-  beta: BETA,
-  authType: AUTH_TYPE,
-  url: ACCESS_API_URL,
+  beta: BETA || false,
+  url: ACCESS_API_URL || "http://localhost:8091",
   classifications: [
     { value: "O", label: "Official" },
     { value: "OS", label: "Official Sensitive" },
@@ -16,7 +15,7 @@ const config = {
   ],
   groupProperties: [
     { value: "label", label: "Name" },
-    { value: "groupId", label: "ID" },
+    { value: "group_id", label: "ID" },
     { value: "description", label: "Description" },
     { value: "userCount", label: "User count" },
     { value: "active", label: "Active" },
@@ -25,8 +24,8 @@ const config = {
     { value: "name", label: "Name" },
     { value: "email", label: "Email" },
     { value: "nationality", label: "Nationality" },
-    { value: "deployedOrganisation", label: "Deployed organisation" },
-    { value: "personnelType", label: "Personnel type" },
+    { value: "deployed_organisation", label: "Deployed organisation" },
+    { value: "personnel_type", label: "Personnel type" },
     { value: "clearance", label: "Classification" },
     { value: "active", label: "Active" },
   ],

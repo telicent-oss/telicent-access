@@ -1,12 +1,15 @@
+import mongoose from "mongoose";
 import groupsModel from "../../../database/models/Groups";
 import TestResponse from "../../../testUtils";
 import { getAll, getGroup } from "../read";
 
 const MOCK_GROUPS = [
   {
-    _id: "64d27846c248737ae094c4ea",
+    _id: mongoose.Types.ObjectId.createFromHexString(
+      "64d27846c248737ae094c4ea"
+    ),
     label: "manager",
-    groupId: "urn:telicent:groups:manager",
+    group_id: "urn:telicent:groups:manager",
     description: "Group for all managers",
     active: false,
     userCount: 0,
@@ -14,9 +17,11 @@ const MOCK_GROUPS = [
     __v: 0,
   },
   {
-    _id: "64d27aae0e121de092c20621",
+    _id: mongoose.Types.ObjectId.createFromHexString(
+      "64d27aae0e121de092c20621"
+    ),
     label: "developers",
-    groupId: "urn:telicent:groups:developers",
+    group_id: "urn:telicent:groups:developers",
     description: "Group for all developers",
     active: true,
     userCount: 1,
@@ -96,6 +101,7 @@ describe("Groups - READ", () => {
     expect(statusCode).toBe(404);
     expect(data).toStrictEqual({
       code: 404,
+      detail: undefined,
       message: "Group(s) not found",
     });
   });
@@ -112,6 +118,7 @@ describe("Groups - READ", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });
@@ -121,13 +128,13 @@ describe("Groups - READ", () => {
   it("should GET group", async () => {
     groupsModel.aggregate = jest.fn((query) => {
       return MOCK_GROUPS.filter(
-        (group) => group.groupId === query[0]["$match"].groupId
+        (group) => group._id.toString() === query[0]["$match"]._id.toString()
       ).map((group) => ({ ...group, userCount: 0 }));
     });
-    const testId = "urn:telicent:groups:manager";
+    const testId = "64d27846c248737ae094c4ea";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group: testId,
       },
     };
     const mockResponse = new TestResponse();
@@ -136,7 +143,7 @@ describe("Groups - READ", () => {
     const { statusCode, data } = mockResponse;
     expect(statusCode).toBe(200);
     expect(data).toStrictEqual(
-      expectedGroups.find((group) => group.groupId === testId)
+      expectedGroups.find((group) => group._id.toString() === testId)
     );
   });
 
@@ -144,10 +151,10 @@ describe("Groups - READ", () => {
     groupsModel.aggregate = jest.fn(() => {
       return null;
     });
-    const testId = "urn:telicent:groups:manager";
+    const testId = "64f749485fce985092884376";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group: testId,
       },
     };
     const mockResponse = new TestResponse();
@@ -157,6 +164,7 @@ describe("Groups - READ", () => {
     expect(statusCode).toBe(404);
     expect(data).toStrictEqual({
       code: 404,
+      detail: undefined,
       message: "Group(s) not found",
     });
   });
@@ -165,10 +173,10 @@ describe("Groups - READ", () => {
     groupsModel.aggregate = jest.fn(() => {
       throw new DatabaseError();
     });
-    const testId = "urn:telicent:groups:manager";
+    const testId = "64f749485fce985092884376";
     const mockRequest = {
       params: {
-        groupId: testId,
+        group: testId,
       },
     };
     const mockResponse = new TestResponse();
@@ -178,6 +186,7 @@ describe("Groups - READ", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });

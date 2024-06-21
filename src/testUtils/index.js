@@ -1,4 +1,4 @@
-export default class TestResponse {
+export class TestResponse {
   statusCode = 0;
   status(code) {
     this.statusCode = code;
@@ -11,6 +11,10 @@ export default class TestResponse {
   send(data) {
     this.data = data;
   }
+}
+
+export class TestRequest {
+  
 }
 
 export const stringifyMongoId = (item) => {
@@ -30,3 +34,5 @@ export const stringifyMongoId = (item) => {
 
   return clone;
 };
+
+export default TestResponse

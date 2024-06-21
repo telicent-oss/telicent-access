@@ -1,12 +1,7 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useCallback, useState } from "react";
 import axios from "axios";
-import { TeliButton } from "@telicent-oss/ds";
-
-import Topbar from "../lib/Topbar";
 import List from "../components/Users/List/List";
 import config from "../config/app-config";
-import { LookupContext } from "../context/LookupContext";
 import { buildError } from "../utils/utils";
 import RenderError from "../utils/RenderError";
 
@@ -45,7 +40,6 @@ const Users = () => {
 
   return (
     <div className="pb-2">
-      <Topbar action={<CreateButton setError={setError} />} header="Users" />
       {(loading || error) && (
         <p className="ml-6">
           {loading && "Loading..."}
@@ -54,28 +48,6 @@ const Users = () => {
       )}
       {userData && !error && <List users={userData} refetch={refetch} />}
     </div>
-  );
-};
-
-const CreateButton = ({ setError }) => {
-  const navigate = useNavigate();
-  const {
-    isScimEnabled: { error, data },
-  } = useContext(LookupContext);
-  const onCreate = () => {
-    navigate("/users/create", { replace: true });
-  };
-
-  if (error) {
-    setError(error);
-  }
-  if (data) {
-    return null;
-  }
-  return (
-    <TeliButton id="create-group" variant="secondary" onClick={onCreate}>
-      Create
-    </TeliButton>
   );
 };
 

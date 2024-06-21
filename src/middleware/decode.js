@@ -1,85 +1,122 @@
-import jws from "jws";
 import axios from "axios";
 
-import config from "../config";
-
-const { debug, jwtHeader } = config;
-
-export default (url) => {
-  let keyUrl = url;
-  let provider;
-  if (url === "development") {
-    console.log("ACCESS started in development mode, no tokens required.");
-  } else if (url?.startsWith("aws:")) {
-    const [_, region] = url.split(":");
-    keyUrl = `https://public-keys.auth.elb.${region}.amazonaws.com`;
-    provider = "aws";
-    console.log(`AWS Public Keys configured in region: ${region}`);
-  }
-  return decodeFn(keyUrl, provider);
-};
-
-const decodeFn = (url, provider) => async (req, res, next) => {
-  if (url === "development") {
-    req.token = {
-      email: "test@telicent.io",
-      username: "8edae5a0-1f5a-466f-b58e-64c611f31722",
-      sub: "8edae5a0-1f5a-466f-b58e-64c611f31722",
-    };
-    return next();
-  } else if (!url || !req?.headers[jwtHeader]) {
-    return res.status(401).send();
-  }
-
-  let token = req.headers[jwtHeader];
-  if (jwtHeader === "Authorization") {
-    token = token.split("Bearer ")[1];
-  }
-  if (provider === "aws") {
-    const [payload, err] = await verifyToken(url, token);
-    if (debug) {
-      console.log("Token, URL", token, url);
+const ADMIN_GROUP = "tc_admin";
+const USER_GROUP = "tc_read";
+const DEV_TOKEN_HEADER = "authorization";
+class DecodeJWT {
+  constructor(url, header, groupKey) {
+    if (!url) {
+      throw new Error("OpenID provider is undefined and is required.");
     }
+
+    this.development = url === "development";
+    this.url = url;
+    this.groupKey = groupKey;
+    this.header = header;
+  }
+
+  initialize = async () => {
+    if (this.development) {
+      this.openid_configuration = null;
+      return null;
+    }
+    try {
+      const { data } = await axios.get(
+        `${this.url}/.well-known/openid-configuration`
+      );
+      this.openid_configuration = data;
+      return null;
+    } catch (error) {
+      throw new OpenIDConfigError(error.code, error.message);
+    }
+  };
+
+  middleware = async (req, res, next) => {
+    if (this.development) {
+      this.devMiddleware(req, res);
+      return next();
+    }
+    let token = req.header(this.header);
+    if (token.toLowerCase().startsWith("bearer ")) {
+      const parts = token.split(" ");
+      if (parts.length !== 2) {
+        return res.status(401).send();
+      }
+      token = parts[1];
+    }
+
+    const [payload, err] = await this.verifyToken(token);
     if (err) {
-      console.log(err.message);
       return res.status(403).send();
     }
     req.token = payload;
-  } else {
-    console.log("Auth provider not supported.");
-    return res.status(401).send();
-  }
+    req.isAdmin = req.token[this.groupKey].includes(ADMIN_GROUP);
+    req.isUser = req.token[this.groupKey].includes(USER_GROUP);
 
-  next();
-};
+    return next();
+  };
 
-const verifyToken = async (url, token) => {
-  const [header, pload] = token.split(".");
-  const { kid, alg } = JSON.parse(
-    Buffer.from(header, "base64").toString("utf-8")
-  );
-  const payload = JSON.parse(Buffer.from(pload, "base64").toString("utf-8"));
+  verifyToken = async (token) => {
+    var jwt = require("jsonwebtoken");
+    var jwkToPem = require("jwk-to-pem");
+    const [h] = token.split(".");
+    const { kid, alg } = JSON.parse(Buffer.from(h, "base64").toString("utf-8"));
 
-  const [publicKey, err] = await fetchKey(url, kid);
-  if (err) {
-    return [null, err];
-  }
-  const isVerified = jws.verify(token, alg, publicKey);
-  if (debug) {
-    console.log("PK, ALG, isVerified: ", publicKey, alg, isVerified);
-  }
-  if (isVerified) {
-    return [payload];
-  } else {
-    return [null, new Error("token not verified")];
-  }
-};
+    try {
+      const [data, error] = await this.fetchKeys(
+        this.openid_configuration.jwks_uri
+      );
+      if (error) {
+        return [null, error];
+      }
+      var pem = jwkToPem(data.keys.find((key) => key.kid === kid));
+      let decodedToken = jwt.verify(token, pem, { algorithms: alg });
+      return [decodedToken, null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+  fetchKeys = async (url) => {
+    try {
+      const { data } = await axios.get(`${url}`);
+      return [data];
+    } catch (error) {
+      return [null, error];
+    }
+  };
 
-const fetchKey = async (url, kid) => {
-  try {
-    const { data } = await axios.get(`${url}/${kid}`);
-    return [data];
-  } catch (error) {
-    return [null, error];
+  devMiddleware = async (req, res) => {
+    if (req.header(DEV_TOKEN_HEADER)) {
+      // dev header must be a bearer token
+      const parts = req.header(DEV_TOKEN_HEADER).split(" ");
+      if (parts.length !== 2) {
+        return res.status(401).send();
+      }
+      const token = parts[1];
+      const [_, pload] = token.split(".");
+      const payload = JSON.parse(
+        Buffer.from(pload, "base64").toString("utf-8")
+      );
+      req.token = payload;
+    } else {
+      req.token = {
+        email: "test+dev@telicent.io",
+        username: "8edae5a0-1f5a-466f-b58e-64c611f31722",
+        sub: "8edae5a0-1f5a-466f-b58e-64c611f31722",
+        [this.groupKey]: [ADMIN_GROUP, USER_GROUP],
+      };
+    }
+    req.isAdmin = req.token[this.groupKey].includes(ADMIN_GROUP);
+    req.isUser = req.token[this.groupKey].includes(USER_GROUP);
+    return;
+  };
+}
+class OpenIDConfigError extends Error {
+  constructor(code, details) {
+    super("Unable to retrieve openid-configuration");
+    this.code = code;
+    this.details = details;
   }
-};
+}
+
+export default DecodeJWT;

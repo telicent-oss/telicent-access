@@ -1,32 +1,29 @@
 import groupsModel from "../../../database/models/Groups";
 import TestResponse from "../../../testUtils";
 import { deleteGroup } from "../delete";
-
+import mongoose from "mongoose";
 describe("Groups - DELETE", () => {
   it("should delete group", async () => {
     groupsModel.findOne = jest.fn(() => {
+      return { active: false };
+    });
+    groupsModel.deleteOne = jest.fn(() => {
       return {};
     });
-    groupsModel.updateOne = jest.fn(() => {
-      return {};
-    });
-    const testId = "urn:telicent:groups:developers";
+    const testId = "64f749485fce985092884376";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);
 
     const { statusCode, data } = mockResponse;
-    expect(groupsModel.updateOne).toBeCalledWith(
-      { groupId: { $eq: testId } },
-      { active: false }
-    );
+    expect(groupsModel.deleteOne).toBeCalledWith({
+      _id: mongoose.Types.ObjectId.createFromHexString(testId),
+    });
     expect(statusCode).toBe(200);
     expect(data).toStrictEqual({
-      data: {
-        deleted: true,
-      },
+      deleted: true,
     });
   });
 
@@ -34,12 +31,12 @@ describe("Groups - DELETE", () => {
     groupsModel.findOne = jest.fn(() => {
       return {};
     });
-    groupsModel.updateOne = jest.fn(() => {
+    groupsModel.deleteOne = jest.fn(() => {
       throw new BasicDatabaseError();
     });
-    const testId = "urn:telicent:groups:developers";
+    const testId = "64f749485fce985092884376";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);
@@ -49,6 +46,7 @@ describe("Groups - DELETE", () => {
     expect(data).toStrictEqual({
       code: 422,
       message: "database error",
+      detail: undefined,
     });
   });
 
@@ -56,12 +54,12 @@ describe("Groups - DELETE", () => {
     groupsModel.findOne = jest.fn(() => {
       return {};
     });
-    groupsModel.updateOne = jest.fn(() => {
+    groupsModel.deleteOne = jest.fn(() => {
       return { err: new BasicDatabaseError() };
     });
-    const testId = "urn:telicent:groups:developers";
+    const testId = "64f749485fce985092884376";
     const mockRequest = {
-      params: { groupId: testId },
+      params: { group: testId },
     };
     const mockResponse = new TestResponse();
     await deleteGroup(mockRequest, mockResponse);
@@ -71,6 +69,7 @@ describe("Groups - DELETE", () => {
     expect(data).toStrictEqual({
       code: 422,
       message: "database error",
+      detail: undefined,
     });
   });
 });

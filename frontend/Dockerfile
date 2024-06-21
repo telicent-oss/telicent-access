@@ -1,34 +1,38 @@
+# Stage 1 Install
 FROM node:20-alpine as installation
 ARG NPM_TOKEN
 ENV PATH /node_modules/.bin:$PATH
 WORKDIR /app
 COPY yarn.lock yarn.lock 
 COPY package.json package.json 
-RUN npm config set @telicent-io:registry=https://npm.pkg.github.com/
-RUN npm config set //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 RUN yarn install --frozen-lockfile
 
+# Stage 2: Build
 FROM installation as build 
-
-ADD src src
-ADD public public
+COPY src src
+COPY public public
 COPY tailwind.config.js tailwind.config.js 
-
 RUN yarn build:tailwind
 RUN yarn build 
 WORKDIR /app/build
-COPY ./env.sh .
-COPY .env.default .env
 
-FROM nginx:stable-alpine
+# Stage 3: Permissions
+# FROM nginx:stable-alpine as intermediate
+# WORKDIR /usr/share/nginx/html/access
+# COPY --from=build  /app/build .
+# COPY  nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# RUN chmod 644 /etc/nginx/conf.d/default.conf && \
+#     chown -R nginx:nginx /etc/nginx/conf.d/default.conf
 
-COPY --from=build /app/build /usr/share/nginx/html/access
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# Stage 4: Use nginx-unprivileged image
+FROM nginxinc/nginx-unprivileged:stable-alpine
 WORKDIR /usr/share/nginx/html/access
-COPY set-env.sh .
-RUN apk add --no-cache bash
-RUN chmod +x set-env.sh
-EXPOSE 80
+COPY ./accessfrontend.sbom.json /opt/telicent/sbom/sbom.json
+COPY --from=build  /app/build .
+COPY nginx/nginx.conf /etc/nginx/conf.d/app.conf
+# COPY --from=intermediate /usr/share/nginx/html/access .
+# COPY --from=intermediate /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT [ "./set-env.sh" ]
+# run
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]

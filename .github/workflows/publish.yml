@@ -6,43 +6,38 @@ on:
       - main
     paths:
       - CHANGELOG.md
-  # Manually execute
+
+  #add dispatch in case job fails and needs to be manually executed
   workflow_dispatch:
 
 jobs:
-  # job
   get_version:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Get version from package.json
         id: semver
         uses: martinbeentjes/npm-get-version-action@main
     outputs:
       version: ${{ steps.semver.outputs.current-version }}
 
-  # job
   integrated_tests:
     permissions:
+      id-token: write
       contents: read
-      packages: read
+      packages: write
     needs: get_version
     env:
       APP_NAME: access
     runs-on: ubuntu-latest
     steps:
-
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: configure-node
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-          scope: 'telicent-oss'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
-
+          node-version: 20
       - name: Get node version
         id: node
         run: |
@@ -58,42 +53,52 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
 
-      - name: Install frontend dependencies
-        run: |
-          cd frontend
-          mkdir -p reports
-          yarn install
-          yarn test:ci
-      # TODO: Re-enable uploading of test artifacts
-      # WHEN: GH Admin completes: https://github.com/Telicent-io/telicent-access/issues/361
-      # WHO: Anyone
-      # HOW: Uncomment the following step, and check if it passes
-      # - uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-      #     publish_dir: ./frontend/reports
+      - name: Install dependencies
+        run: cd frontend && mkdir reports && yarn install
+      - run: cd frontend && yarn test:ci
 
-  # job
-  publish_frontend_image_to_container_registries:
+  vuln_scan_api:
+    needs:
+      - get_version
+      - integrated_tests
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@update/for-frontend-trivy
+    with:
+      APP_NAME: access
+    secrets: inherit
+
+  vuln_scan_frontend:
+    needs:
+      - get_version
+      - integrated_tests
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@update/for-frontend-trivy
+    with:
+      APP_NAME: access
+      package-directory: frontend
+    secrets: inherit
+
+  publish_frontend:
     needs:
       - integrated_tests
       - get_version
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+      - vuln_scan_frontend
+    uses: telicent-oss/shared-workflows/.github/workflows/push-to-registries.yml@update/for-frontend-trivy
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
       PATH: ./frontend
       VERSION: ${{ needs.get_version.outputs.version }}
+      ALLOW_MUTABLE_TAGS: false
+      package-directory: frontend
     secrets: inherit
-
-  # job
-  publish_api_image_to_container_registries:
+  publish_api:
     needs:
       - integrated_tests
       - get_version
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+      - vuln_scan_api
+    uses: telicent-oss/shared-workflows/.github/workflows/push-to-registries.yml@update/for-frontend-trivy
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
       VERSION: ${{ needs.get_version.outputs.version }}
+      ALLOW_MUTABLE_TAGS: false
     secrets: inherit

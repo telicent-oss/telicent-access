@@ -2,7 +2,6 @@ import { connect, connection } from "mongoose";
 
 import { createDefaultAttributes } from "./defaults";
 import models from "./models";
-import { init as SynchroniseUsers } from "../adapters";
 import config from "../config";
 import { getAllAttributes } from "../controllers/attributes/read";
 import logger from "../lib/logger";
@@ -67,8 +66,6 @@ export const init = async () => {
       }
     }
     logger.info("Labels status: PASSED");
-    logger.info("Synchronising keycloak users with database");
-    SynchroniseUsers(); // Ensure Keycloak and Mongo users match.
     health = { ok: true, message: "connected" };
   };
 

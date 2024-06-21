@@ -28,6 +28,7 @@ describe("Groups - UTILS", () => {
     expect(statusCode).toBe(404);
     expect(data).toStrictEqual({
       code: 404,
+      detail: undefined,
       message: "Group(s) not found",
     });
   });

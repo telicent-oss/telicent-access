@@ -88,7 +88,7 @@ const hierarchySchema = new Schema({
   uuid: String,
   name: { type: String, required: true, unique: true },
   tiers: [String],
-  readOnly: { type: Boolean, example: false },
+  readonly: { type: Boolean, example: false },
 });
 
 export default model("Hierarchies", hierarchySchema);

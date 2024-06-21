@@ -1,8 +1,9 @@
 import { SUCCESS_CODE, INVALID_CODE } from "./constants";
 
-export const buildErrorObject = (code, message) => ({
+export const buildErrorObject = (code, message, detail) => ({
   code,
   message,
+  detail,
 });
 
 export const buildDataErrorObject = (code, message) => ({
@@ -22,20 +23,21 @@ export const sendInvalidRequest = (res) =>
     .status(INVALID_CODE)
     .send(buildErrorObject(INVALID_CODE, "Invalid request"));
 
-export const sendErrorResponse = (res, { code, message }) =>
-  res.status(code).send(buildErrorObject(code, message));
+export const sendErrorResponse = (res, { code, message, detail }) =>
+  res.status(code).send(buildErrorObject(code, message, detail));
 
-export const setupSuccessResponseCode = (code) => (action) => (res, id) => {
-  const obj = {
-    [action]: true,
+export const setupSuccessResponseCode =
+  (code) =>
+  (action, bool = true) =>
+  (res, id) => {
+    const obj = {
+      [action]: bool,
+    };
+    if (id) {
+      obj.uuid = id;
+    }
+    return res.status(code).send(obj);
   };
-  if (id) {
-    obj.uuid = id;
-  }
-  return res.status(code).send({
-    data: obj,
-  });
-};
 
 /**
  * Setup Success action string. Action is an object key so must follow variable

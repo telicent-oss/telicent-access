@@ -26,8 +26,7 @@ const options = {
   },
   apis: [
     "./src/database/models/*.js",
-    "./src/router/*.js",
-    "./src/router/user-info/*.js",
+    "./src/router/*/*.js",
   ],
 };
 

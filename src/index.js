@@ -6,15 +6,28 @@ import { buildErrorObject, sendInvalidRequest } from "./controllers/utils";
 import { init } from "./database";
 import logger from "./lib/logger";
 import router from "./router";
-import userRouter from "./router/user-info";
+import apiDocs from "./router/api-docs"
+import DecodeJWT from "./middleware/decode";
+import AccessRouter from "./router";
 
 const createServer = async () => {
   const scimJson = "application/scim+json";
   const json = "application/json";
   const mongo = await init();
   const app = express();
-  app.use(cors());
 
+  const corsOptions = {
+    origin: function (origin, callback) {
+      const allowedDomains = [process.env.DEPLOYED_DOMAIN]; // e.g. For local ["http://localhost:8091", "http://localhost:8091"];
+      if (!origin || allowedDomains.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS policy does not allow access from the specified origin: ${origin}`));
+      }
+    },
+    optionsSuccessStatus: 200 // For legacy browser support
+  };
+  app.use(cors(corsOptions));
   /**
    * @openapi
    * /health:
@@ -32,9 +45,9 @@ const createServer = async () => {
    *          application/json
    */
   app.get("/health", (req, res) =>
-    res.status(200).send({ server: "ok", mongo: mongo.getHealth() })
+    res.status(200).send({ server: "ok", mongo: mongo.health })
   );
-
+  app.use("/api-docs", apiDocs)
   app.use(
     express.json({
       type: [scimJson, json],
@@ -51,9 +64,12 @@ const createServer = async () => {
       },
     })
   );
+  const decoder = new DecodeJWT(config.openidProviderUrl, config.jwtHeader, config.groupKey)
+  await decoder.initialize()
+  const router = new AccessRouter(decoder.middleware)
+  router.init()
 
-  app.use(router);
-  app.use(userRouter);
+  app.use(router.router);
   return app;
 };
 (async () => {
