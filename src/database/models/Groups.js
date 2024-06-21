@@ -10,7 +10,7 @@ import { model, Schema } from "mongoose";
  *         _id:
  *           type: string
  *           example: 6540c84426bc7a0bd66584aa
- *         groupId:
+ *         group_id:
  *           type: string
  *           example: urn:telicent:groups:example
  *         label:
@@ -63,6 +63,15 @@ import { model, Schema } from "mongoose";
  *             deleted:
  *               type: boolean
  *               example: true
+ *     ToggleActiveGroup:
+ *       type: object
+ *       properties:
+ *         data:
+ *           type: object
+ *           properties:
+ *             active:
+ *               type: boolean
+ *               example: true
  *     GroupBadRequest:
  *       type: object
  *       properties:
@@ -92,7 +101,7 @@ import { model, Schema } from "mongoose";
  *           example: Group already exists
  */
 const groupSchema = new Schema({
-  groupId: {
+  group_id: {
     type: String,
     required: true,
     unique: true,

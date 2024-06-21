@@ -1,62 +1,31 @@
 import express from "express";
-import fs from "fs";
-import path from "path";
+import adminRouter from "./admin/index"
 
-import config from "../config";
+import userRouter from "./users/index"
+import systemRouter from "./system/index"
 
-const router = express.Router();
-const localPath = `${__dirname}/`;
+class AccessRouter{
 
-/**
- * @openapi
- * components:
- *   schemas:
- *     ServerError:
- *       type: object
- *       properties:
- *         code:
- *           type: number
- *           example: 500
- *         message:
- *           type: string
- *           example: Server error
- */
-fs.readdirSync(localPath)
-  .filter((file) => {
-    if (file === "index.js" || path.extname(file) !== ".js") {
-      return false;
+    constructor(middleware){
+        this.decoder = middleware
     }
-    return true;
-  })
-  .forEach((file) => {
-    const filename = file.split(".")[0];
-    router.use(`/${filename}`, require(`./${filename}`));
-  });
 
-/**
- * @openapi
- * /scim/v2/IsEnabled:
- *   get:
- *     summary: Get SCIM enabled status
- *     tags:
- *       - SCIM
- *     description: Get if SCIM is configured for the back end - i.e. an external IdP is being used to managed users
- *     produces:
- *       - application/json
- *     responses:
- *       200:
- *         description: SCIM enabled status returned
- *         content:
- *           application/json:
- *             schema:
- *               properties:
- *                 isEnabled:
- *                   type: boolean
- *                   example: true
- */
-router.get("/scim/v2/IsEnabled", (req, res) => {
-  res.status(200).send({ isEnabled: config.isScimEnabled });
-  return;
-});
+    init(){
+        const protectedRouter = express.Router();
+        protectedRouter.use(this.decoder)
+        protectedRouter.use(adminRouter)
+        protectedRouter.use(userRouter)
 
-export default router;
+        const unprotectedRouter = express.Router();
+
+        unprotectedRouter.use(systemRouter)
+
+        const router = express.Router();
+        router.use(unprotectedRouter)
+        router.use(protectedRouter)
+        this.router = router
+    }
+}
+
+
+export default AccessRouter

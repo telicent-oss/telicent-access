@@ -9,5 +9,5 @@ on:
 jobs:
   quality:
     name: Run unit tests
-    uses: Telicent-oss/shared-workflows/.github/workflows/javascript-feature-branch-test.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/feature-branch-test.yml@main
     secrets: inherit

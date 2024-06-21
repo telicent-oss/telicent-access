@@ -1,5 +1,61 @@
 # Changelog
 
+## [1.0.2](https://github.com/Telicent-io/telicent-access/compare/v1.0.1...v1.0.2) (2024-06-19)
+
+
+### Bug Fixes
+
+* **deps:** reported vulnerabilities ([#379](https://github.com/Telicent-io/telicent-access/issues/379)) ([2e8b552](https://github.com/Telicent-io/telicent-access/commit/2e8b552a85cedac44f043f0b9822e23670396087))
+
+## [1.0.1](https://github.com/Telicent-io/telicent-access/compare/v1.0.0...v1.0.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* tidy up not required console logs ([#373](https://github.com/Telicent-io/telicent-access/issues/373)) ([27d439d](https://github.com/Telicent-io/telicent-access/commit/27d439da9e628cd132db05d940d7fe174a5c9012))
+
+## [1.0.0](https://github.com/Telicent-io/telicent-access/compare/v0.11.3...v1.0.0) (2024-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Updating the token handling will mean that different config and different details are required
+* Removing any dependency between ACCESS and the IdP, means Telicent apps must called the whoami endpoint in ACCESS on load
+
+### Features
+
+* add override env variables file, and include readme ([039dc1e](https://github.com/Telicent-io/telicent-access/commit/039dc1ed33ff9022e2a6e9231ce22298ee8c1974))
+* further updates to make the access focus on entitlements ([509f295](https://github.com/Telicent-io/telicent-access/commit/509f2952e4be19dffb23b4186165ba99b21a4801))
+* improve token handling, documentation and helper scripts ([7f1f33b](https://github.com/Telicent-io/telicent-access/commit/7f1f33b1e16450b92faef68b7fdc246b734bfaec))
+* make access ui run as an unprivileged user ([d5361f9](https://github.com/Telicent-io/telicent-access/commit/d5361f9d138e38a7c0bed12c88ea4c674ad5787c))
+* make fe nginx contain use unprivileged user ([4672d8e](https://github.com/Telicent-io/telicent-access/commit/4672d8e7d30f06f7b9eae3f4b2067c52a50be5fc))
+* merge conflict resolutions for changes to remove IdP management from ACCESS ([af6ae39](https://github.com/Telicent-io/telicent-access/commit/af6ae3936595b1ea26c93d02ff5be669527310e3))
+* remove adapters which control IdP user management ([1aaa2b5](https://github.com/Telicent-io/telicent-access/commit/1aaa2b54d27093a85f3ce2421353a542cb16676b))
+* remove not needed chown from dockerfile ([d0a22b2](https://github.com/Telicent-io/telicent-access/commit/d0a22b22e2d60da2f6848c0e97ee4407e77c4e17))
+* rework router and add initial authz ([52ca812](https://github.com/Telicent-io/telicent-access/commit/52ca8121076b262951cf79cc00df524493585889))
+* roll back to old dockerfile, to be fix in future release ([da10c21](https://github.com/Telicent-io/telicent-access/commit/da10c216f3ae6e29797b0cc11be5405d705bad63))
+* rollback dockerfile changes and fix docker compose to use local build as part of testing ([d7a8b15](https://github.com/Telicent-io/telicent-access/commit/d7a8b15cd0f20fbe0bcae6e00823969f33fd19b0))
+* start to uplift access as entitlements rather than idp controller ([7544ba1](https://github.com/Telicent-io/telicent-access/commit/7544ba152454dbd738d342049a9fda8a85670ef8))
+
+
+### Bug Fixes
+
+* **aws:** remove for OSS ([#359](https://github.com/Telicent-io/telicent-access/issues/359)) ([a77d8cf](https://github.com/Telicent-io/telicent-access/commit/a77d8cfab7fa0b2736f481a85a1fa9f057d69fef))
+* bring up to date with oss version ([9b45bbf](https://github.com/Telicent-io/telicent-access/commit/9b45bbf0da2626cc4df2d9fd024b35cf39154124))
+* fix the unprivileged user env variable issues ([3abd6f8](https://github.com/Telicent-io/telicent-access/commit/3abd6f8643d69ac99feee9da0268eb8cc066befa))
+* **frontend/Dockerfile:** test & tweak ([6e77035](https://github.com/Telicent-io/telicent-access/commit/6e7703576749a8750ffe579d49739c461487459e))
+* make decode token more general ([e1ceb05](https://github.com/Telicent-io/telicent-access/commit/e1ceb051cfd2c56e6e00a46b0c017d1eb2b865c9))
+* **ngnix:** NON-root user ([#365](https://github.com/Telicent-io/telicent-access/issues/365)) ([eb32eee](https://github.com/Telicent-io/telicent-access/commit/eb32eeecf9fe2c8682701e832c085ffc14c966c4))
+* **publish.yaml:** [TELFE-194] ALLOW_MUTABLE_TAGS on build image ([8747bc7](https://github.com/Telicent-io/telicent-access/commit/8747bc7af2379508981fe0d7fb6aa89415375dd8))
+* **publish.yml:** make postinstall optional ([b39133f](https://github.com/Telicent-io/telicent-access/commit/b39133f7283ef27c77f24dd0931dfe2cd2bf96e9))
+* remove api authz and rollb ack dockerfile front end change ([16f2f07](https://github.com/Telicent-io/telicent-access/commit/16f2f0700815b20d70c17aeb3e5c63dfbb5976cb))
+* remove names ([9e51e77](https://github.com/Telicent-io/telicent-access/commit/9e51e77bdbb5281bbdb1622c70c30ece696e5b1d))
+* remove names ([86aa722](https://github.com/Telicent-io/telicent-access/commit/86aa72297c5a6dc59bb3c88f95c385617e50ff77))
+* remove unneeded file missed on previous commit ([55591a0](https://github.com/Telicent-io/telicent-access/commit/55591a0a35342e19e95a81331c07d9ba6cff4877))
+* remove uuids/ids ([be85d96](https://github.com/Telicent-io/telicent-access/commit/be85d96f2cd8792a231773abb6b6448a106456f7))
+* **scripts:** better multi-package behavior ([86a4f36](https://github.com/Telicent-io/telicent-access/commit/86a4f36373649f9a62e5459fadd7fb5568d79db5))
+* **sensitive data:** remove ([a1bb239](https://github.com/Telicent-io/telicent-access/commit/a1bb2398b21614dd9bc909e797642c071b67fe38))
+
 ## 1.0.0 (2024-04-03)
 
 

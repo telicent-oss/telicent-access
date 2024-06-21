@@ -10,6 +10,7 @@ describe("Attribute UTILS", () => {
     expect(data).toStrictEqual({
       code: 404,
       message: "Attribute(s) not found",
+      detail: undefined,
     });
   });
 });

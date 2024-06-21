@@ -1,6 +1,8 @@
 import usersModel from "../../database/models/Users";
 import { buildDataErrorObject, sendErrorResponse } from "../utils";
 import logger from "../../lib/logger";
+import { create } from "./create";
+import { mapSkeletonToUser } from "./utils";
 
 export const getAllUsers = async (filters) => {
   try {
@@ -44,10 +46,12 @@ export const getUserAttributes = async (req, res) => {
   res.status(200).json(data);
 };
 
-const getAttributesByEmail = async (email) => {
+
+
+const getAttributesByKeyValue = async (key,value) => {
   try {
     const result = await usersModel
-      .findOne({ email })
+      .findOne({ [key]: value })
       .select({
         labels: 1,
         id: 1,
@@ -89,7 +93,7 @@ const getAttributesByEmail = async (email) => {
 export const getUserFromEmail = async (req, res) => {
   const email = req.params.email;
 
-  const { data, error } = await getAttributesByEmail(email);
+  const { data, error } = await getAttributesByKeyValue("email", email);
   if (error) {
     res.status(error.code).json(error);
     return;
@@ -99,39 +103,72 @@ export const getUserFromEmail = async (req, res) => {
   res.status(200).json(data);
 };
 
-const getUserFromToken = async (token) => {
-  const { email, sub } = token;
-  try {
+export const getUserFromExternalId = async (req, res) => {
+  const exId = req.params.sub;
+  const { data, error } = await getAttributesByKeyValue("externalId", exId);
+  if (error) {
+    res.status(error.code).json(error);
+    return;
+  }
+
+  logger.debug("User: ", exId, " retrieves with attributes: ", data);
+  res.status(200).json(data);
+}
+
+const getUserFromIdPId = async (sub) => {
     const result = await usersModel
-      .findOne({ email, externalId: sub })
+      .findOne({ externalId: sub })
       .select({
         name: 1,
+        id: 1,
         _id: 0,
         labels: 1,
         userGroups: 1,
         active: 1,
+        email: 1
       })
       .exec();
-    if (!result) {
-      return buildDataErrorObject(404, "User not found");
-    }
-    const { active, labels, name, userGroups } = result;
-    const attributes = labels
+    return result
+
+}
+
+const accessUserToUIRepresentation = (result) => {
+
+  const attributes = result.labels
       .filter((label) => label.toString)
       .reduce((acc, { name, value }) => {
         acc[name] = value;
         return acc;
       }, {});
 
+    const groups = result.userGroups.map((group) => group);
+
+    delete result.labels;
+    delete result.userGroups;
+
+    const user = {
+      username: result.name,
+      active: result.active,
+      email: result.email,
+      userId: result.id,
+      attributes,
+      groups,
+    }
+    return user
+}
+const getUserFromToken =  async (token) => {
+  const { sub } = token;
+  
+  try {
+    const result = await getUserFromIdPId(sub)
+    if (!result) {
+      return buildDataErrorObject(404, "User not found");
+    }
+
+    const user = accessUserToUIRepresentation(result)
+
     return {
-      data: {
-        userId: sub,
-        userName: name,
-        email,
-        attributes,
-        active,
-        groups: userGroups,
-      },
+      data: user,
     };
   } catch (err) {
     return buildDataErrorObject(422, err.message);
@@ -147,3 +184,33 @@ export const getUserDetails = async (req, res) => {
 
   return res.status(200).json(data);
 };
+
+export const createUserIfNotExist = async (req, res) => {
+  const { token } = req;
+  let { data, error } = await getUserFromToken(token);
+
+  if (error?.code === 404) {
+    const {data: userData, error:err} = await create(mapSkeletonToUser(createSkeletonUser(token)))
+   
+    if(err){
+      res.status(err.code).json(err);
+      return;
+    }
+    return res.status(200).json(accessUserToUIRepresentation(userData))
+  }else if(error){
+    res.status(error.code).json(error);
+    return;
+  }
+  return res.status(200).json(data);
+}
+
+const createSkeletonUser = (token) => {
+  const {sub, email, name} = token
+  return {
+    externalId : sub,
+    name: name || email,
+    email, 
+    active: false,
+    userGroups: []
+  }
+}

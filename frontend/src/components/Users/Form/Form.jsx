@@ -40,7 +40,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     const defaults = {
       nationality: "GBR",
       clearance: "O",
-      personnelType: "NON-GOV",
+      personnel_type: "NON-GOV",
     };
 
     if (basis) {
@@ -71,8 +71,8 @@ const Form = forwardRef(({ basis, children }, ref) => {
           sort(
             data
               .filter(({ active }) => active)
-              .map(({ groupId, label, description }) => ({
-                value: groupId,
+              .map(({ group_id, label, description }) => ({
+                value: group_id,
                 label,
                 description,
               })),
@@ -188,7 +188,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     return null;
   };
 
-  const { name, email, deployedOrganisation, active, temporaryPassword } =
+  const { name, email, deployed_organisation, active, temporary_password } =
     values;
   const [isValidationActive, setIsValidationActive] = useState(false);
 
@@ -198,7 +198,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
       nameRef.current?.setFocus(!name);
       emailRef.current?.setFocus(name && !validateEmail(email));
       orgRef.current?.setFocus(
-        name && validateEmail(email) && !deployedOrganisation
+        name && validateEmail(email) && !deployed_organisation
       );
     },
     getValues() {
@@ -234,26 +234,26 @@ const Form = forwardRef(({ basis, children }, ref) => {
             />
             {(!Object.keys(values).length || !labels) && <p>Loading...</p>}
             {values &&
-              labels?.map(({ _id, userAttributeName, value }) =>
+              labels?.map(({ _id, user_attribute_name, value }) =>
                 mapLabelToInput({
                   id: _id,
                   type: value.type,
-                  label: userAttributeName,
+                  label: user_attribute_name,
                   values,
                   options: value.values,
                   onChange: onValueChange,
                   isValidationActive,
                 })
               )}
-            {Object.keys(values).includes("temporaryPassword") && (
+            {Object.keys(values).includes("temporary_password") && (
               <FormInput
                 id="temp-password"
                 label="temporary password"
                 placeholder={
                   isValidationActive ? "Required" : "Enter temporary password"
                 }
-                value={temporaryPassword}
-                onChange={onValueChange("temporaryPassword")}
+                value={temporary_password}
+                onChange={onValueChange("temporary_password")}
                 isValidationActive={isValidationActive}
               />
             )}

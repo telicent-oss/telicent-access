@@ -10,12 +10,12 @@ import { model, Schema } from "mongoose";
  *         _id:
  *           type: string
  *           example: 653f71ef35fe27f9f7ff1627
- *         userAttributeName:
+ *         user_attribute_name:
  *           type: string
- *           example: personnelType
- *         dataAttributeName:
+ *           example: personnel_type
+ *         data_attribute_name:
  *           type: string
- *           example: personnelType
+ *           example: personnel_type
  *         value:
  *           type: object
  *           properties:
@@ -25,18 +25,18 @@ import { model, Schema } from "mongoose";
  *             values:
  *               type: array
  *               example: ["GOV", "NON-GOV"]
- *         isIhm:
+ *         ihm:
  *           type: boolean
  *           example: false
- *         readOnly:
+ *         readonly:
  *           type: boolean
  *           example: false
  *     AttributesToStrings:
  *       type: array
  *       example: [
- *         "permittedNationalities='GBR'",
+ *         "permitted_nationalities='GBR'",
  *         "classification='OS'",
- *         "permittedOrganisations='Org1'",
+ *         "permitted_organisations='Org1'",
  *         "urn:telicent:groups:G1:and",
  *         "urn:telicent:groups:G2:and",
  *         "urn:telicent:groups:G3:or",
@@ -63,7 +63,7 @@ import { model, Schema } from "mongoose";
  *         tiers:
  *           type: array
  *           example: [O, OS, S, TS]
- *         readOnly:
+ *         readonly:
  *           type: boolean
  *     HierarchyNotFound:
  *       type: object
@@ -76,8 +76,8 @@ import { model, Schema } from "mongoose";
  *           example: Hierarchy/ies not found
  */
 const attributeSchema = new Schema({
-  userAttributeName: { type: String, required: true, unique: true },
-  dataAttributeName: { type: String, unique: true },
+  user_attribute_name: { type: String, required: true, unique: true },
+  data_attribute_name: { type: String, unique: true },
   value: {
     type: {
       type: String,
@@ -86,8 +86,8 @@ const attributeSchema = new Schema({
     },
     values: { type: [String], default: null },
   },
-  isIhm: { type: Boolean, default: false },
-  readOnly: { type: Boolean, default: false },
+  ihm: { type: Boolean, default: false },
+  readonly: { type: Boolean, default: false },
 });
 
 export default model("Attributes", attributeSchema);

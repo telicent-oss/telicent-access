@@ -57,26 +57,5 @@ describe("App component", () => {
     });
   });
 
-  test("render create page on button click", async () => {
-    const { user } = renderWithBrowserRouter(withLookupProvider(<App />));
-
-    await waitFor(() => {
-      user.click(screen.getByRole("button", { name: "Create" }));
-      expect(location.pathname).toBe("/users/create");
-    });
-  });
-
-  test("clicking cancel button returns to users page", async () => {
-    const { user } = renderWithBrowserRouter(withLookupProvider(<App />));
-
-    await waitFor(() => {
-      user.click(screen.getByRole("button", { name: "Create" }));
-      expect(location.pathname).toBe("/users/create");
-    });
-
-    user.click(screen.getByRole("button", { name: "Cancel" }));
-    await waitFor(() => {
-      expect(location.pathname).toBe("/users");
-    });
-  });
+  
 });

@@ -1,24 +1,16 @@
 import { deactivateUser, deleteUser } from "../delete";
-import * as adapters from "../../../adapters";
 import usersModel from "../../../database/models/Users";
-import { server } from "../../../mocks";
+
 import TestResponse from "../../../testUtils";
 
 const mockingoose = require("mockingoose");
 
 describe("Users - DELETE", () => {
-  beforeAll(() => {
-    server.listen();
-  });
   beforeEach(() => {
     mockingoose.resetAll();
   });
-  afterAll(() => {
-    server.close();
-  });
 
   it("should successfully delete a user", async () => {
-    adapters.deleteAuthUser = jest.fn(() => true);
     mockingoose(usersModel)
       .toReturn(
         {
@@ -35,14 +27,10 @@ describe("Users - DELETE", () => {
       },
     };
     await deleteUser(mockRequest, mockResponse);
-
-    expect(adapters.deleteAuthUser).toHaveBeenCalledTimes(1);
-    expect(adapters.deleteAuthUser).toBeCalledWith("aaa-bbb-ccc");
     expect(mockResponse.statusCode).toBe(200);
   });
 
   it("should successfully handle error on unsuccessful deleting of a user", async () => {
-    adapters.deleteAuthUser = jest.fn(() => true);
     mockingoose(usersModel)
       .toReturn({ externalId: "aaa-bbb-ccc" }, "findOne")
       .toReturn({ deletedCount: 0 }, "deleteOne");
@@ -63,11 +51,8 @@ describe("Users - DELETE", () => {
     expect(message).toBe("User delete failed");
   });
 
-  it("should successfully handle error on unexpected error", async () => {
-    adapters.deleteAuthUser = jest.fn(() => {
-      throw new Error("Something unexpected");
-    });
-    mockingoose(usersModel).toReturn({ externalId: "aaa-bbb-ccc" }, "findOne");
+  it("should successfully handle if user doesn't exist", async () => {
+    mockingoose(usersModel).toReturn(undefined, "findOne");
 
     const mockResponse = new TestResponse();
     const mockRequest = {
@@ -81,8 +66,8 @@ describe("Users - DELETE", () => {
       statusCode,
       data: { message },
     } = mockResponse;
-    expect(statusCode).toBe(422);
-    expect(message).toBe("Something unexpected");
+    expect(statusCode).toBe(404);
+    expect(message).toBe("User does not exist");
   });
 
   it("should successfully deactivate user", async () => {
@@ -129,6 +114,7 @@ describe("Users - DELETE", () => {
     expect(statusCode).toBe(404);
     expect(data).toStrictEqual({
       code: 404,
+      detail: undefined,
       message: "User not found",
     });
   });
@@ -158,6 +144,7 @@ describe("Users - DELETE", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "User deactivation failed",
     });
   });
@@ -180,6 +167,7 @@ describe("Users - DELETE", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });

@@ -10,12 +10,9 @@ global.ResizeObserver = require("resize-observer-polyfill");
 
 global.URL.createObjectURL = jest.fn();
 
-export const access = "http://localhost:8092";
+export const access = "http://localhost:8091";
 
-global.window._env_ = {
-  ACCESS_API_URL: access,
-  BETA: true,
-};
+
 
 export const server = setupServer(...handlers(access));
 

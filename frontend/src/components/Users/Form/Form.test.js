@@ -45,7 +45,7 @@ describe("Form component", () => {
 
   test("fills fields and selects values with user data", async () => {
     const { name, email } = exampleUser;
-    const { deployedOrganisation, nationality, clearance, personnelType } =
+    const { deployed_organisation, nationality, clearance, personnel_type } =
       labels;
 
     renderWithBrowserRouter(
@@ -60,10 +60,10 @@ describe("Form component", () => {
           basis={{
             name,
             email,
-            deployedOrganisation,
+            deployed_organisation,
             nationality,
             clearance,
-            personnelType,
+            personnel_type,
           }}
         />
       </LookupContext.Provider>
@@ -76,7 +76,7 @@ describe("Form component", () => {
       email
     );
     expect(await screen.findByTestId("org-test-id")).toHaveValue(
-      deployedOrganisation
+      deployed_organisation
     );
     expect(await screen.findByTestId("nationality-test-id")).toHaveValue(
       nationality
@@ -85,7 +85,7 @@ describe("Form component", () => {
       clearance
     );
     expect(await screen.findByTestId("personnel-type-test-id")).toHaveValue(
-      personnelType
+      personnel_type
     );
   });
 });

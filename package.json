@@ -1,31 +1,36 @@
 {
-  "name": "telicent-access-api",
-  "version": "1.0.0",
+  "name": "@telicent-oss/telicent-access-api",
+  "version": "1.0.4",
   "description": "Project to provide user attribute lookups",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore ./cognito-local --exec babel-node src/index.js",
     "build": "babel src --out-dir dist --copy-files",
+    "bump:prerelease": "yarn version --prerelease && git push && git push --tags",
+    "bump:pre": "yarn bump:prerelease",
     "prepare": "husky install",
-    "postinstall": "cd frontend && yarn install",
-    "test": "jest --no-cache --coverage=false --watchAll=false && cd frontend && yarn test --coverage=false --watchAll=false"
+    "postinstall": "[ \"$LOCAL_MACHINE\" != \"false\" ] && { cd frontend && yarn install; } || { echo 'Skipping yarn install on CI'; }",
+    "test": "jest --no-cache --coverage=false --watchAll=false && cd frontend && yarn test --coverage=false --watchAll=false",
+    "test:be": "jest --no-cache --coverage=true",
+    "test:vuln": "trivy fs --security-checks vuln --ignore-unfixed --severity HIGH,CRITICAL ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Telicent-io/telicent-access.git"
+    "url": "git+https://github.com/telicent-oss/telicent-access.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Telicent-io/telicent-access/issues"
+    "url": "https://github.com/telicent-oss/telicent-access/issues"
   },
-  "homepage": "https://github.com/Telicent-io/telicent-access#readme",
+  "homepage": "https://github.com/telicent-oss/telicent-access#readme",
   "dependencies": {
     "@babel/runtime": "^7.24.1",
-    "aws-sdk": "^2.1584.0",
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "express": "^4.19.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwk-to-pem": "^2.0.5",
     "jws": "^4.0.0",
     "mongoose": "^8.3.1",
     "papaparse": "^5.4.1",
@@ -35,15 +40,15 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.24.3",
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
     "@babel/node": "^7.23.9",
     "@babel/plugin-transform-runtime": "^7.24.3",
-    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-env": "^7.24.5",
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
     "babel-jest": "^29.7.0",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^9.1.3",
     "bson": "^6.6.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -52,7 +57,6 @@
     "mockingoose": "^2.16.2",
     "msw": "^1.3.3",
     "nodemon": "^2.0.22",
-    "release-please": "^14.17.5",
     "webpack": "^5.91.0"
   },
   "config": {
@@ -63,9 +67,6 @@
   "jest": {
     "testMatch": [
       "<rootDir>/src/**/**/*.test.js"
-    ],
-    "setupFiles": [
-      "<rootDir>/setupEnvs.js"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
