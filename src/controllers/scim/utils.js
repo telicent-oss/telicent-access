@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 export const mapScimToUser = (user) => {
-  const id = new mongoose.Types.ObjectId();
+  const id = new Types.ObjectId();
   const { externalId, userName, name, displayName, emails, groups } = user;
   const create = {
     _id: id,

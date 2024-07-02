@@ -20,10 +20,8 @@ describe("Groups - CREATE", () => {
     const { statusCode, data } = mockResponse;
     expect(statusCode).toBe(201);
     expect(data).toStrictEqual({
-      data: {
-        created: true,
-        uuid: `urn:telicent:groups:test`,
-      },
+      created: true,
+      uuid: `urn:telicent:groups:test`,
     });
   });
 
@@ -38,6 +36,7 @@ describe("Groups - CREATE", () => {
     expect(statusCode).toBe(INVALID_CODE);
     expect(data).toStrictEqual({
       code: INVALID_CODE,
+      detail: undefined,
       message: "Invalid request",
     });
   });
@@ -80,6 +79,7 @@ describe("Groups - CREATE", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });
@@ -101,6 +101,7 @@ describe("Groups - CREATE", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });
@@ -110,7 +111,7 @@ class DuplicateError extends Error {
   constructor() {
     super("Duplicate");
     this.code = 11000;
-    this.keyPattern = { groupId: 0 };
+    this.keyPattern = { group_id: 0 };
   }
 }
 

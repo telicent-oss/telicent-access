@@ -29,8 +29,8 @@ describe("List component", () => {
   const { name: name0, email: email0 } = egUser0;
   const {
     nationality: nationality0,
-    deployedOrganisation: deployedOrganisation0,
-    personnelType: personnelType0,
+    deployed_organisation: deployedOrganisation0,
+    personnel_type: personnelType0,
     clearance: clearance0,
   } = getLabels(egUser0);
   const egUser1 = exampleUsers[1];

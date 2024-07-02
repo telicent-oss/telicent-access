@@ -3,7 +3,7 @@ FROM node:20-alpine as installation
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile && yarn cache clean
+RUN LOCAL_MACHINE=false yarn install --frozen-lockfile && yarn cache clean
 
 FROM installation as build
 COPY src src
@@ -14,8 +14,9 @@ RUN yarn build
 FROM node:20-alpine
 WORKDIR /app
 RUN mkdir dist node_modules
+COPY ./access.sbom.json /opt/telicent/sbom/sbom.json
 COPY package.json yarn.lock wait-for.sh ./
-RUN yarn install --frozen-lockfile && yarn cache clean
+RUN LOCAL_MACHINE=false yarn install --frozen-lockfile && yarn cache clean
 COPY --from=build /app/dist ./dist
 RUN chown -R 1000:1000 /app
 USER 1000

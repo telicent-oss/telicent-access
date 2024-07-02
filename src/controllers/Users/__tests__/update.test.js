@@ -1,7 +1,5 @@
 import { updateUser } from "../update";
-import * as adapters from "../../../adapters";
 import usersModel from "../../../database/models/Users";
-import { server } from "../../../mocks";
 import TestResponse from "../../../testUtils";
 
 const mockingoose = require("mockingoose");
@@ -18,7 +16,7 @@ const mockUser = {
       name: "nationality",
       value: "GBR",
       toString: "nationality='GBR'",
-      toDataLabelString: "permittedNationalities='GBR'",
+      toDataLabelString: "permitted_nationalities='GBR'",
       _id: "64dd1f2yyyyyyyyyyy90e9ce",
     },
     {
@@ -29,17 +27,17 @@ const mockUser = {
       _id: "64dd1zzzzzzzzzzzzzz0e9cf",
     },
     {
-      name: "personnelType",
+      name: "personnel_type",
       value: "NON-GOV",
-      toString: "personnelType='NON-GOV'",
+      toString: "personnel_type='NON-GOV'",
       toDataLabelString: null,
       _id: "64dd1faaaaaaaaaaaaa0e9d0",
     },
     {
-      name: "deployedOrganisation",
+      name: "deployed_organisation",
       value: "Telicent",
-      toString: "deployedOrganisation='Telicent'",
-      toDataLabelString: "permittedOrganisations='Telicent'",
+      toString: "deployed_organisation='Telicent'",
+      toDataLabelString: "permitted_organisations='Telicent'",
       _id: "64dd1bbbbbbbbbbbbbbbe9d1",
     },
   ],
@@ -50,18 +48,14 @@ const mockUser = {
 };
 
 describe("Users - UPDATE", () => {
-  beforeAll(() => {
-    server.listen();
-  });
+ 
   beforeEach(() => {
     mockingoose.resetAll();
+    
   });
-  afterAll(() => {
-    server.close();
-  });
+ 
 
   it("should update a user successfully", async () => {
-    adapters.updateAuthUser = jest.fn(() => true);
     mockingoose(usersModel)
       .toReturn(mockUser, "findOne")
       .toReturn({ modifiedCount: 1, matchedCount: 1 }, "updateOne");
@@ -77,12 +71,7 @@ describe("Users - UPDATE", () => {
     await updateUser(mockRequest, mockResponse);
 
     const { statusCode, data } = mockResponse;
-    expect(adapters.updateAuthUser).toBeCalledWith({
-      payload: {
-        uuid: "8bb01245-261e-4609-a4a5-xxxxxxxxxxxx",
-        email: "headofeng@telicent.io",
-      },
-    });
+   
     expect(statusCode).toBe(200);
     expect(data).toEqual({
       id: "64dd02xxxxxxxxxxxcecbe13c",
@@ -131,6 +120,30 @@ describe("Users - UPDATE", () => {
     expect(updated).toBe(false);
   });
 
+  it("should handle attempting to update user", async () => {
+    mockingoose(usersModel)
+      .toReturn(mockUser, "findOne")
+      .toReturn({ modifiedCount: 0, matchedCount: 1 }, "updateOne");
+    const mockRequest = {
+      params: {
+        id: "64dd02xxxxxxxxxxxcecbe13c",
+      },
+      body: {
+        nationality: "FRA",
+        active: false,
+        test_label: "abc-123"
+      },
+    };
+    const mockResponse = new TestResponse();
+    await updateUser(mockRequest, mockResponse);
+
+    const {
+      statusCode,
+      data: { updated },
+    } = mockResponse;
+    expect(statusCode).toBe(200);
+    expect(updated).toBe(false);
+  });
   it("updating users - user not found", async () => {
     usersModel.findOne = jest.fn().mockImplementationOnce(() => {
       return null;
@@ -204,4 +217,7 @@ describe("Users - UPDATE", () => {
     expect(statusCode).toBe(400);
     expect(message).toBe("Invalid request");
   });
+
+
+
 });

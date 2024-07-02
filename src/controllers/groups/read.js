@@ -1,6 +1,7 @@
 import groupsModel from "../../database/models/Groups";
 import { sendNotFound } from "./utils";
 import { sendErrorResponse, sendResults } from "../utils";
+import { Types } from "mongoose";
 
 export const getAllGroups = async (label) => {
   try {
@@ -11,7 +12,7 @@ export const getAllGroups = async (label) => {
       {
         $lookup: {
           from: "users",
-          localField: "groupId",
+          localField: "group_id",
           foreignField: "userGroups",
           as: "users",
         },
@@ -39,15 +40,16 @@ export const getAll = async (req, res) => {
 };
 
 export const getGroup = async (req, res) => {
-  const { groupId } = req.params;
+  const { group } = req.params;
+
   try {
     const groups = await groupsModel.aggregate([
-      { $match: { groupId } },
+      { $match: { _id: Types.ObjectId.createFromHexString(group) } },
       { $project: { __v: 0 } },
       {
         $lookup: {
           from: "users",
-          localField: "groupId",
+          localField: "group_id",
           foreignField: "userGroups",
           pipeline: [
             {

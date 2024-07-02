@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 import Panel from "../../../lib/Panel";
 
-const Item = ({ id, name, description, active, userCount }) => {
+const Item = ({ id, hexId, name, description, active, userCount }) => {
   const navigate = useNavigate();
 
   return (
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     /* eslint-disable jsx-a11y/click-events-have-key-events */
-    <div className="cursor-pointer" onClick={() => navigate(`/groups/${id}`)}>
+    <div
+      className="cursor-pointer"
+      onClick={() => navigate(`/groups/${hexId}`)}
+    >
       <Panel ariaLabel="tile-group">
         <div className="w-full">
           <div className="flex">

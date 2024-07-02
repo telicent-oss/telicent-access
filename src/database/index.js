@@ -1,14 +1,12 @@
-import mongoose from "mongoose";
+import { connect, connection } from "mongoose";
 
 import { createDefaultAttributes } from "./defaults";
 import models from "./models";
-import { init as SynchroniseUsers } from "../adapters";
 import config from "../config";
 import { getAllAttributes } from "../controllers/attributes/read";
 import logger from "../lib/logger";
 
 export const init = async () => {
-  const { connect, connection } = mongoose;
   let health = { ok: true, message: "starting up" };
 
   const connectDb = async () => {
@@ -33,7 +31,6 @@ export const init = async () => {
       await connect(
         `mongodb://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}`,
         {
-          useNewUrlParser: true,
           retryWrites: mongoRetryRewrites,
         }
       );
@@ -69,8 +66,6 @@ export const init = async () => {
       }
     }
     logger.info("Labels status: PASSED");
-    logger.info("Synchronising keycloak users with database");
-    SynchroniseUsers(); // Ensure Keycloak and Mongo users match.
     health = { ok: true, message: "connected" };
   };
 

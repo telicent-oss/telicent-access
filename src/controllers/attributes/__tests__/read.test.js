@@ -51,6 +51,7 @@ describe("Attributes - READ", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });
@@ -82,6 +83,7 @@ describe("Attributes - READ", () => {
     expect(statusCode).toBe(422);
     expect(data).toStrictEqual({
       code: 422,
+      detail: undefined,
       message: "database error",
     });
   });

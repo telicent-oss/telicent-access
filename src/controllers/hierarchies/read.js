@@ -11,6 +11,7 @@ export const getAllHierarchies = async () => {
 
     return { data: groups.map(mapToHierarchy) };
   } catch (error) {
+
     return { error };
   }
 };
@@ -29,7 +30,6 @@ export const getHierarchy = async (req, res) => {
       { _id: req.params.hierarchyId },
       { __v: 0 }
     );
-
     if (!group) return sendNotFound(res);
     sendResults(res, mapToHierarchy(group));
   } catch (err) {
@@ -43,8 +43,8 @@ export const getHierarchyLookup = async (req, res) => {
   try {
     const key =
       query.isUserAttribute?.toLowerCase() === "true"
-        ? "userAttributeName"
-        : "dataAttributeName";
+        ? "user_attribute_name"
+        : "data_attribute_name";
 
     const group = await Attributes.findOne(
       { [key]: params.name, "value.type": "hierarchy" },
@@ -62,15 +62,15 @@ export const getHierarchyLookup = async (req, res) => {
 const mapToHierarchy = (attr) => {
   const {
     _id,
-    dataAttributeName,
+    data_attribute_name,
     value: { values },
-    readOnly,
+    readonly,
   } = attr;
 
   return {
     uuid: _id,
-    name: dataAttributeName,
+    name: data_attribute_name,
     tiers: values,
-    readOnly,
+    readonly,
   };
 };

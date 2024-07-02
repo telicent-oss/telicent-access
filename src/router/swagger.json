@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Telicent ACCESS",
-    "version": "0.11.2",
+    "version": "1.0.0",
     "description": "Telicent ACCESS API",
     "contact": {
       "name": "Telicent",
@@ -19,13 +19,9 @@
     "/attributes": {
       "get": {
         "summary": "Get all attributes",
-        "tags": [
-          "Attributes"
-        ],
+        "tags": ["Attributes"],
         "description": "Returns all attributes",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved array of attributes",
@@ -52,23 +48,19 @@
         }
       }
     },
-    "/attributes/{uuid}": {
+    "/attributes/{_id}": {
       "get": {
-        "summary": "Get specific attribute by UUID",
-        "tags": [
-          "Attributes"
-        ],
+        "summary": "Get specific attribute by ID",
+        "tags": ["Attributes"],
         "parameters": [
           {
             "in": "path",
-            "name": "uuid",
+            "name": "_id",
             "description": "unique identifier for attribute"
           }
         ],
-        "description": "Get specific attribute by UUID",
-        "produces": [
-          "application/json"
-        ],
+        "description": "Get specific attribute by ID",
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved attribute",
@@ -96,13 +88,9 @@
     "/countries": {
       "get": {
         "summary": "Get a list of all available countries",
-        "tags": [
-          "Countries"
-        ],
+        "tags": ["Countries"],
         "description": "Returns all countries",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "An array of countries",
@@ -120,13 +108,9 @@
     "/groups": {
       "get": {
         "summary": "Get all groups",
-        "tags": [
-          "Groups"
-        ],
+        "tags": ["Groups"],
         "description": "Returns all groups",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved array of groups",
@@ -164,9 +148,7 @@
       },
       "post": {
         "summary": "Create a new group",
-        "tags": [
-          "Groups"
-        ],
+        "tags": ["Groups"],
         "description": "Creates a new group",
         "requestBody": {
           "required": true,
@@ -178,9 +160,7 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "201": {
             "description": "Created group ID",
@@ -225,23 +205,19 @@
         }
       }
     },
-    "/groups/{groupId}": {
+    "/groups/{group_id}": {
       "get": {
-        "summary": "Get specific group by groupId",
-        "tags": [
-          "Groups"
-        ],
+        "summary": "Get specific group by group_id",
+        "tags": ["Groups"],
         "description": "Get specific group by its ID",
         "parameters": [
           {
             "in": "path",
-            "name": "groupId",
+            "name": "group_id",
             "description": "unique identifier for groups"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved group",
@@ -296,21 +272,17 @@
         }
       },
       "delete": {
-        "summary": "Delete specific group by groupId",
-        "tags": [
-          "Groups"
-        ],
+        "summary": "Delete specific group by group_id",
+        "tags": ["Groups"],
         "description": "Delete group from access - soft delete which removes the group from use by updating it to be inactive",
         "parameters": [
           {
             "in": "path",
-            "name": "groupId",
+            "name": "group_id",
             "description": "unique identifier for groups"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully soft deleted group",
@@ -338,13 +310,9 @@
     "/hierarchies": {
       "get": {
         "summary": "Get all hierarchies",
-        "tags": [
-          "Hierarchies"
-        ],
+        "tags": ["Hierarchies"],
         "description": "Returns all hierarchies",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved all hierarchies",
@@ -374,9 +342,7 @@
     "/hierarchies/{hierarchyId}": {
       "get": {
         "summary": "Get hierarchy with id :hierarchyId",
-        "tags": [
-          "Hierarchies"
-        ],
+        "tags": ["Hierarchies"],
         "description": "Returns hierarchy with specified ID",
         "parameters": [
           {
@@ -385,9 +351,7 @@
             "description": "Identifier of requested hierarchy"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved hierarchy",
@@ -412,13 +376,251 @@
         }
       }
     },
+    "/scim/v2/IsEnabled": {
+      "get": {
+        "summary": "Get SCIM enabled status",
+        "tags": ["SCIM"],
+        "description": "Get if SCIM is configured for the back end - i.e. an external IdP is being used to managed users",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "SCIM enabled status returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "isEnabled": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "tags": ["Users"],
+        "description": "Returns all users",
+        "produces": [
+          {
+            "application/json": null
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Operation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get user by ID",
+        "tags": ["Users"],
+        "description": "Returns user based on specified ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Operation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing user",
+        "tags": ["Users"],
+        "description": "Updates an existing user",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserInput"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successfully updated an existing user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to update user - invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalidRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Operation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete existing user",
+        "tags": ["Users"],
+        "description": "Deletes an existing user by specified ID (if SCIM is enabled, delete is a soft delete)",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted existing user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteUserSuccess"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "User delete failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                },
+                "example": {
+                  "code": 422,
+                  "message": "User delete failed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/hierarchies/lookup/{name}": {
       "get": {
         "summary": "Look up hierarchy by name",
-        "tags": [
-          "Hierarchies"
-        ],
-        "description": "Looks up hierarchy by name, using the dataAttributeName or userAttributeName property of the hierarchy attribute",
+        "tags": ["Hierarchies"],
+        "description": "Looks up hierarchy by name, using the data_attribute_name or user_attribute_name property of the hierarchy attribute",
         "parameters": [
           {
             "in": "path",
@@ -432,13 +634,11 @@
               "type": "boolean",
               "required": false,
               "default": false,
-              "description": "isUserAttribute being set to true tells ACCESS to look up the hierarchy using the userAttributeName property rather than dataAttributeName"
+              "description": "isUserAttribute being set to true tells ACCESS to look up the hierarchy using the user_attribute_name property rather than data_attribute_name"
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully looked up hierarchy",
@@ -463,45 +663,12 @@
         }
       }
     },
-    "/scim/v2/IsEnabled": {
-      "get": {
-        "summary": "Get SCIM enabled status",
-        "tags": [
-          "SCIM"
-        ],
-        "description": "Get if SCIM is configured for the back end - i.e. an external IdP is being used to managed users",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "SCIM enabled status returned",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "isEnabled": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/scim/v2/Users": {
       "get": {
         "summary": "Get all SCIM users",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns all SCIM users",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved array of SCIM users",
@@ -537,9 +704,7 @@
       },
       "post": {
         "summary": "Create a new SCIM user",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Create a new SCIM user",
         "requestBody": {
           "required": true,
@@ -551,9 +716,7 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "201": {
             "description": "Successfully created SCIM user",
@@ -605,9 +768,7 @@
     "/scim/v2/Users/{userId}": {
       "get": {
         "summary": "Get specific SCIM user by UUID",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns specific SCIM user based on specified UUID",
         "parameters": [
           {
@@ -616,9 +777,7 @@
             "description": "user id to retrieve attributes for"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved SCIM user",
@@ -664,9 +823,7 @@
       },
       "delete": {
         "summary": "Delete an existing SCIM user",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Deletes an existing SCIM user based on specified user ID",
         "parameters": [
           {
@@ -675,9 +832,7 @@
             "description": "user identifier for user to be deleted"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully deleted existing SCIM user",
@@ -717,9 +872,7 @@
       },
       "patch": {
         "summary": "Patch an existing SCIM user",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "parameters": [
           {
             "in": "path",
@@ -757,9 +910,7 @@
           }
         },
         "description": "Patch an existing SCIM user",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "501": {
             "description": "Operation in patch not supported",
@@ -775,9 +926,7 @@
       },
       "put": {
         "summary": "Patch an existing SCIM user via PUT",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "parameters": [
           {
             "in": "path",
@@ -815,9 +964,7 @@
           }
         },
         "description": "Patch an existing SCIM user",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "501": {
             "description": "Operation in patch not supported",
@@ -835,13 +982,9 @@
     "/scim/v2/ServiceProviderConfig": {
       "get": {
         "summary": "Get service provider configuration",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns service provider configuration",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Returned service provider configuration",
@@ -859,13 +1002,9 @@
     "/scim/v2/ResourceTypes": {
       "get": {
         "summary": "Get resource types",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns resource types",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Returned resource types",
@@ -883,9 +1022,7 @@
     "/scim/v2/ResourceTypes/{name}": {
       "get": {
         "summary": "Get resource type by name",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns resource type based on specified name",
         "parameters": [
           {
@@ -894,9 +1031,7 @@
             "description": "name of the resource type to be looked up"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Returned resource type",
@@ -914,13 +1049,9 @@
     "/scim/v2/Schemas": {
       "get": {
         "summary": "Get all schemas",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Return all schemas",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Returned all schemas",
@@ -938,9 +1069,7 @@
     "/scim/v2/Schemas/{id}": {
       "get": {
         "summary": "Get schema",
-        "tags": [
-          "SCIM"
-        ],
+        "tags": ["SCIM"],
         "description": "Returns schema by specified ID",
         "parameters": [
           {
@@ -949,9 +1078,7 @@
             "description": "ID of the schema to be looked up"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Returned schema by ID",
@@ -966,313 +1093,11 @@
         }
       }
     },
-    "/users": {
-      "get": {
-        "summary": "Get all users",
-        "tags": [
-          "Users"
-        ],
-        "description": "Returns all users",
-        "produces": [
-          {
-            "application/json": null
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of users",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalid"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a new user",
-        "tags": [
-          "Users"
-        ],
-        "description": "Creates a new user",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserInput"
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created user ID",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateUserSuccess"
-                }
-              }
-            }
-          },
-          "405": {
-            "description": "SCIM currently enabled, create not allowed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnableToCreateUser"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "User already exists in IdP",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserExists"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalid"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users/{id}": {
-      "get": {
-        "summary": "Get user by ID",
-        "tags": [
-          "Users"
-        ],
-        "description": "Returns user based on specified ID",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserNotFound"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalid"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an existing user",
-        "tags": [
-          "Users"
-        ],
-        "description": "Updates an existing user",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserInput"
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully updated an existing user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateUserSuccess"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Failed to update user - invalid request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalidRequest"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserNotFound"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalid"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete existing user",
-        "tags": [
-          "Users"
-        ],
-        "description": "Deletes an existing user by specified ID (if SCIM is enabled, delete is a soft delete)",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully deleted existing user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeleteUserSuccess"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserNotFound"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "User delete failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserInvalid"
-                },
-                "example": {
-                  "code": 422,
-                  "message": "User delete failed"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/users/lookup/{email}": {
       "get": {
         "summary": "Get user attributes by email",
-        "tags": [
-          "Users"
-        ],
+        "deprecated": true,
+        "tags": ["Users"],
         "description": "Returns user attributes based on specified email address",
         "parameters": [
           {
@@ -1280,9 +1105,7 @@
             "name": "email"
           }
         ],
-        "producers": [
-          "application/json"
-        ],
+        "producers": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully retrieved user",
@@ -1336,16 +1159,107 @@
         }
       }
     },
+    "/users/retrieve/{sub}": {
+      "get": {
+        "summary": "Get user attributes by subject of token",
+        "tags": ["Users"],
+        "description": "Returns user attributes based on specified IdP identifier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sub"
+          }
+        ],
+        "producers": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "6564acddf66ddafd4a2fd645"
+                    },
+                    "attributes": {
+                      "$ref": "#/components/schemas/AttributesToStrings"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Operation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/whoami": {
+      "get": {
+        "summary": "Gets who user is, will create if no user exists",
+        "tags": ["UserInfo"],
+        "description": "Returns details for the user querying",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successfully returned full user details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Operation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInvalid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user-info/self": {
       "get": {
         "summary": "Get user details",
-        "tags": [
-          "UserInfo"
-        ],
+        "tags": ["UserInfo"],
         "description": "Returns details for the user querying",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Successfully returned full user details",
@@ -1390,13 +1304,13 @@
             "type": "string",
             "example": "653f71ef35fe27f9f7ff1627"
           },
-          "userAttributeName": {
+          "user_attribute_name": {
             "type": "string",
-            "example": "personnelType"
+            "example": "personnel_type"
           },
-          "dataAttributeName": {
+          "data_attribute_name": {
             "type": "string",
-            "example": "personnelType"
+            "example": "personnel_type"
           },
           "value": {
             "type": "object",
@@ -1407,18 +1321,15 @@
               },
               "values": {
                 "type": "array",
-                "example": [
-                  "GOV",
-                  "NON-GOV"
-                ]
+                "example": ["GOV", "NON-GOV"]
               }
             }
           },
-          "isIhm": {
+          "ihm": {
             "type": "boolean",
             "example": false
           },
-          "readOnly": {
+          "readonly": {
             "type": "boolean",
             "example": false
           }
@@ -1427,9 +1338,9 @@
       "AttributesToStrings": {
         "type": "array",
         "example": [
-          "permittedNationalities='GBR'",
+          "permitted_nationalities='GBR'",
           "classification='OS'",
-          "permittedOrganisations='Org1'",
+          "permitted_organisations='Org1'",
           "urn:telicent:groups:G1:and",
           "urn:telicent:groups:G2:and",
           "urn:telicent:groups:G3:or",
@@ -1462,14 +1373,9 @@
           },
           "tiers": {
             "type": "array",
-            "example": [
-              "O",
-              "OS",
-              "S",
-              "TS"
-            ]
+            "example": ["O", "OS", "S", "TS"]
           },
-          "readOnly": {
+          "readonly": {
             "type": "boolean"
           }
         }
@@ -1494,7 +1400,7 @@
             "type": "string",
             "example": "6540c84426bc7a0bd66584aa"
           },
-          "groupId": {
+          "group_id": {
             "type": "string",
             "example": "urn:telicent:groups:example"
           },
@@ -1519,11 +1425,7 @@
       },
       "CreateGroup": {
         "type": "object",
-        "required": [
-          "label",
-          "description",
-          "active"
-        ],
+        "required": ["label", "description", "active"],
         "properties": {
           "label": {
             "type": "string",
@@ -1619,11 +1521,7 @@
           },
           "tiers": {
             "type": "array",
-            "example": [
-              "O",
-              "S",
-              "TS"
-            ]
+            "example": ["O", "S", "TS"]
           }
         }
       },
@@ -1634,10 +1532,7 @@
           },
           {
             "type": "object",
-            "required": [
-              "uuid",
-              "tiers"
-            ]
+            "required": ["uuid", "tiers"]
           }
         ]
       },
@@ -1664,10 +1559,7 @@
       },
       "CreateHierarchiesInput": {
         "type": "object",
-        "required": [
-          "name",
-          "tiers"
-        ],
+        "required": ["name", "tiers"],
         "properties": {
           "name": {
             "type": "string",
@@ -1675,11 +1567,7 @@
           },
           "tiers": {
             "type": "array",
-            "example": [
-              "O",
-              "S",
-              "TS"
-            ]
+            "example": ["O", "S", "TS"]
           }
         }
       },
@@ -1749,7 +1637,7 @@
               "externalId": {
                 "description": "Auth identifier for the user in Telicent ACCESS",
                 "type": "string",
-                "example": "507f1f77bcf86cd799439011"
+                "example": "31127653-a234-48bc-b940-34c866bfe837"
               },
               "name": {
                 "type": "string",
@@ -1770,7 +1658,7 @@
                     "name": "nationality",
                     "value": "GBR",
                     "toString": "nationality=\"GBR\"",
-                    "toDataLabelString": "permittedNationalities='GBR'",
+                    "toDataLabelString": "permitted_nationalities='GBR'",
                     "_id": "6540c57326bc7a0bd6658494"
                   },
                   {
@@ -1781,17 +1669,17 @@
                     "_id": "6540c57326bc7a0bd6658495"
                   },
                   {
-                    "name": "personnelType",
+                    "name": "personnel_type",
                     "value": "GOV",
-                    "toString": "personnelType=\"GOV\"",
+                    "toString": "personnel_type=\"GOV\"",
                     "toDataLabelString": null,
                     "_id": "6540c57326bc7a0bd6658496"
                   },
                   {
-                    "name": "deployedOrganisation",
+                    "name": "deployed_organisation",
                     "value": "Org1",
-                    "toString": "deployedOrganisation=\"Org1\"",
-                    "toDataLabelString": "permittedOrganisations='Org1'",
+                    "toString": "deployed_organisation=\"Org1\"",
+                    "toDataLabelString": "permitted_organisations='Org1'",
                     "_id": "6540c57326bc7a0bd6658497"
                   }
                 ]
@@ -1815,9 +1703,7 @@
                 "items": {
                   "type": "string"
                 },
-                "example": [
-                  "urn:ietf:params:scim:schemas:core:2.0:User"
-                ]
+                "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
               }
             }
           }
@@ -1836,14 +1722,9 @@
           },
           "clearance": {
             "type": "string",
-            "enum": [
-              "O",
-              "OS",
-              "S",
-              "TS"
-            ]
+            "enum": ["O", "OS", "S", "TS"]
           },
-          "deployedOrganisation": {
+          "deployed_organisation": {
             "type": "string",
             "example": "Organisation name"
           },
@@ -1851,12 +1732,9 @@
             "type": "string",
             "example": "GBR"
           },
-          "personnelType": {
+          "personnel_type": {
             "type": "string",
-            "enum": [
-              "GOV",
-              "NON-GOV"
-            ]
+            "enum": ["GOV", "NON-GOV"]
           },
           "active": {
             "type": "boolean",
@@ -2022,9 +1900,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ]
+            "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
           },
           "groups": {
             "type": "array",
@@ -2058,9 +1934,7 @@
           "schemas": {
             "type": "array",
             "items": "string",
-            "example": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ]
+            "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
           },
           "totalResults": {
             "type": "number"
@@ -2081,9 +1955,7 @@
       },
       "CreateSCIMUser": {
         "type": "object",
-        "required": [
-          "externalId"
-        ],
+        "required": ["externalId"],
         "properties": {
           "externalId": {
             "type": "string",
@@ -2103,9 +1975,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ]
+            "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
           },
           "groups": {
             "type": "array",
@@ -2212,9 +2082,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ]
+            "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
           },
           "schema": {
             "type": "string",
@@ -2252,9 +2120,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
-            ]
+            "example": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
           },
           "Resources": {
             "type": "array",
@@ -2336,9 +2202,7 @@
           },
           "schemas": {
             "type": "string",
-            "example": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ]
+            "example": ["urn:ietf:params:scim:schemas:core:2.0:User"]
           },
           "description": {
             "type": "string",
@@ -2382,9 +2246,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
-            ]
+            "example": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
           },
           "Resources": {
             "type": "array",
@@ -2460,9 +2322,7 @@
           },
           "schemas": {
             "type": "array",
-            "example": [
-              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
-            ]
+            "example": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
           },
           "etag": {
             "type": "object",

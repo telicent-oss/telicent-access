@@ -1,0 +1,20 @@
+# #!/usr/bin/env bash
+set -e
+cd frontend
+
+export NPM_TOKEN=$(UNMASK=true yarn --silent tefe npmrc-authtoken //npm.pkg.github.com/)
+
+if [[ -z "$NPM_TOKEN"  ]]; then
+  echo "Necessary tokens not found in .npmrc, cannot proceed with build."
+  exit 1
+fi
+
+
+# To debug it helps to use:  --no-cache \
+docker build \
+    --no-cache \
+    --progress=plain \
+    -f ./Dockerfile \
+    --build-arg NPM_TOKEN="$NPM_TOKEN" \
+    -t telicent-access-ui-local \
+    --load .

@@ -1,5 +1,4 @@
 import usersModel from "../../database/models/Users";
-import { deleteAuthUser } from "../../adapters";
 import { buildDataErrorObject, sendErrorResponse, sendResults } from "../utils";
 
 /**
@@ -10,10 +9,12 @@ import { buildDataErrorObject, sendErrorResponse, sendResults } from "../utils";
 export const deleteUserById = async (id) => {
   try {
     const user = await usersModel.findOne({
-      id,
+      _id: id,
     });
-
-    await deleteAuthUser(user.externalId);
+    if(!user){
+      return buildDataErrorObject(404, "User does not exist")
+    }
+   
     const result = await usersModel.deleteOne({ _id: id });
 
     if (result.deletedCount === 0)

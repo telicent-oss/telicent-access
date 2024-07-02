@@ -21,7 +21,7 @@ describe("controller utils", () => {
     updatedSuccessResponse(mockUpdatedResponse);
     createdSuccessResponse(mockCreatedResponse);
 
-    expect(mockUpdatedResponse.data).toEqual({ data: { updated: true } });
-    expect(mockCreatedResponse.data).toEqual({ data: { created: true } });
+    expect(mockUpdatedResponse.data).toEqual({ updated: true });
+    expect(mockCreatedResponse.data).toEqual({ created: true });
   });
 });

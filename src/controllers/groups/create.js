@@ -30,14 +30,14 @@ export const createGroup = async (req, res) => {
 
   const id = `urn:${organisation}:groups:${label}`;
   const payload = {
-    groupId: id,
+    group_id: id,
     label,
     description,
     active: true,
   };
 
   try {
-    const groups = await groupsModel.findOne({ groupId: id }, { __v: 0 });
+    const groups = await groupsModel.findOne({ group_id: id }, { __v: 0 });
 
     if (groups) {
       return res.status(409).send({
@@ -46,10 +46,10 @@ export const createGroup = async (req, res) => {
       });
     }
 
-    const { error, groupId } = await groupsModel.create(payload);
+    const { error, group_id } = await groupsModel.create(payload);
 
     if (error) return sendErrorResponse(res, error);
-    sendSuccessCreated(res, groupId);
+    sendSuccessCreated(res, group_id);
   } catch (error) {
     const { code } = error;
     if (code === 11000) {
