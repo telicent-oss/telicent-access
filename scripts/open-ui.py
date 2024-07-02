@@ -10,8 +10,5 @@ def open_browser(url):
         print(f"Failed to open the browser. Error: {e}")
         sys.exit(1)
 
-# URL to open
-url = "http://localhost:8080/access"
-
 # Open URL in the default web browser
-open_browser(url)
+open_browser("http://localhost:8080/access")
