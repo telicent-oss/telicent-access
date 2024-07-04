@@ -1,6 +1,7 @@
 name: Build and push telicent-access
 
 on:
+  # Manually execute
   push:
     branches:
       - main
