@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/telicent-oss/telicent-access/compare/v1.0.1...v1.0.2) (2024-07-04)
+
+
+### Bug Fixes
+
+* **vuln:** [TELFE-336] nth-check ([4504ae9](https://github.com/telicent-oss/telicent-access/commit/4504ae9ed76721ca1b95cc28ba1151a8a4d4664d))
+
 ## [1.0.1](https://github.com/telicent-oss/telicent-access/compare/v1.0.0...v1.0.1) (2024-06-21)
 
 
