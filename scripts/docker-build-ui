@@ -2,6 +2,17 @@
 set -e
 cd frontend
 
+# Function deletes tmp file
+cleanup() {
+  rm -f accessfrontend.sbom.json
+}
+# call the cleanup() on EXIT
+trap cleanup EXIT
+
+# Create temp file
+echo "{}" > accessfrontend.sbom.json
+
+
 export NPM_TOKEN=$(UNMASK=true yarn --silent tefe npmrc-authtoken //npm.pkg.github.com/)
 
 if [[ -z "$NPM_TOKEN"  ]]; then

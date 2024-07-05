@@ -8,7 +8,7 @@ RUN LOCAL_MACHINE=false yarn install --frozen-lockfile && yarn cache clean
 FROM installation as build
 COPY src src
 COPY .babelrc .babelrc
-RUN yarn build 
+RUN LOCAL_MACHINE=false yarn build 
 
 
 FROM node:20-alpine

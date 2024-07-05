@@ -55,7 +55,7 @@ jobs:
             ${{ runner.os }}-node_modules-
 
       - name: Install dependencies
-        run: cd frontend && mkdir reports && yarn install
+        run: cd frontend && mkdir reports && LOCAL_MACHINE=false yarn install
       - run: cd frontend && yarn test:ci
 
   vuln_scan_api:

@@ -17,9 +17,11 @@
   "homepage": "/access",
   "scripts": {
     "start": "react-scripts start",
+    "prestart": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "build:tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css",
     "test:ci": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --ci --json --outputFile=\"reports/results.json\" --watchAll=false",
     "build": "react-scripts build",
+    "prebuild": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
   },
