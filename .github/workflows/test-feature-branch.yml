@@ -9,8 +9,8 @@ on:
 jobs:
   quality:
     name: Run unit tests
-    uses: telicent-oss/shared-workflows/.github/workflows/feature-branch-test.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/feature-branch-test.yml@javascript-test-feature-branch/yarn-test-command
     secrets: inherit
     with:
       working-directory: frontend
-
+      javascript-test-feature-branch/yarn-test-command: test:ci
