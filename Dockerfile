@@ -1,4 +1,4 @@
-FROM node:20-alpine as installation 
+FROM node:20-alpine as installation
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
@@ -8,10 +8,12 @@ RUN LOCAL_MACHINE=false yarn install --frozen-lockfile && yarn cache clean
 FROM installation as build
 COPY src src
 COPY .babelrc .babelrc
+
 RUN LOCAL_MACHINE=false yarn build 
 
-
 FROM node:20-alpine
+# Install curl
+RUN apk --no-cache add curl
 WORKDIR /app
 RUN mkdir dist node_modules
 COPY ./access.sbom.json /opt/telicent/sbom/sbom.json
