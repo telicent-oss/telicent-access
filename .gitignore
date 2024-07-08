@@ -108,4 +108,7 @@ dist
 
 # misc
 .DS_Store
+
+# Generated in CI
 access.sbom.json
+accessfrontend.sbom.json
