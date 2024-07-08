@@ -108,3 +108,4 @@ dist
 
 # misc
 .DS_Store
+access.sbom.json
