@@ -14,4 +14,4 @@ jobs:
     uses: telicent-oss/shared-workflows/.github/workflows/javascript-test-feature-branch.yml@javascript-test-feature-branch/yarn-test-command
     secrets: inherit
     with:
-      javascript-test-feature-branch/yarn-test-command: test:ci
+      yarn-test-command: test:ci

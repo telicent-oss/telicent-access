@@ -15,4 +15,4 @@ jobs:
     secrets: inherit
     with:
       working-directory: frontend
-      javascript-test-feature-branch/yarn-test-command: test:ci
+      yarn-test-command: test:ci
