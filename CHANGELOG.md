@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/telicent-oss/telicent-access/compare/v1.0.2...v1.1.0) (2024-07-05)
+
+
+### Features
+
+* **test workflows:** allow manual trigger ([16e3278](https://github.com/telicent-oss/telicent-access/commit/16e327868fd35e0dcb54288b18933fd726220b8e))
+
 ## [1.0.2](https://github.com/telicent-oss/telicent-access/compare/v1.0.1...v1.0.2) (2024-07-04)
 
 
