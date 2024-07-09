@@ -12,7 +12,7 @@
     "postinstall": "[ \"$LOCAL_MACHINE\" != \"false\" ] && { cd frontend && yarn install; } || { echo 'Skipping yarn install on CI'; }",
     "test": "yarn test:run && cd frontend && yarn test:run",
     "test:api": "jest --no-cache",
-    "test:ci": "jest --ci --json --no-cache --watchAll=false --outputFile=\"reports/results.json\"",
+    "test:ci": "mkdir -p reports && jest --ci --json --no-cache --watchAll=false --outputFile=\"reports/results.json\"",
     "test:run": "jest --coverage=false --watchAll=false",
     "test:run:diffMain": "yarn test:run --changedSince=main --bail",
     "test:vuln": "trivy fs --security-checks vuln --ignore-unfixed --severity HIGH,CRITICAL ."
