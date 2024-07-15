@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.1](https://github.com/telicent-oss/telicent-access/compare/v1.1.0...v1.1.1) (2024-07-15)
+
+
+### Bug Fixes
+
+* **test workflows:** correct path ([66a836e](https://github.com/telicent-oss/telicent-access/commit/66a836ebd971d30d675ca1ae995e037551b7330e))
+* **test workflows:** correct path ([7b2c036](https://github.com/telicent-oss/telicent-access/commit/7b2c03667035ef16659e417f0b4da9874fe4e5ca))
+* **test workflows:** correct path ([328a400](https://github.com/telicent-oss/telicent-access/commit/328a400eeca0733f39493878d97d9a69eb2cfdc8))
+* **test workflows:** create dir ([bc8517a](https://github.com/telicent-oss/telicent-access/commit/bc8517a264c19fade2d59670913ffd8994c19b58))
+
 ## [1.1.0](https://github.com/telicent-oss/telicent-access/compare/v1.0.2...v1.1.0) (2024-07-05)
 
 
