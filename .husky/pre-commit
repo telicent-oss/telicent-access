@@ -1,9 +1,2 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-
-echo "Testing API"
-yarn test --coverage --changedSince=main --watchAll=false --bail
-
-echo "Testing Frontend"
-cd frontend
-yarn test --coverage  --changedSince=main --watchAll=false --bail

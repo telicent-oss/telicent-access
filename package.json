@@ -1,6 +1,6 @@
 {
   "name": "@telicent-oss/telicent-access-api",
-  "version": "1.1.0",
+  "version": "1.0.2-test.2",
   "description": "Project to provide user attribute lookups",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,11 @@
     "bump:pre": "yarn bump:prerelease",
     "prepare": "husky install",
     "postinstall": "[ \"$LOCAL_MACHINE\" != \"false\" ] && { cd frontend && yarn install; } || { echo 'Skipping yarn install on CI'; }",
-    "test": "jest --no-cache --coverage=false --watchAll=false && cd frontend && yarn test --coverage=false --watchAll=false",
-    "test:be": "jest --no-cache --coverage=true",
+    "test": "yarn test:run && cd frontend && yarn test:run",
+    "test:api": "jest --no-cache",
+    "test:ci": "mkdir -p reports && jest --ci --json --no-cache --watchAll=false --outputFile=\"reports/results.json\"",
+    "test:run": "jest --coverage=false --watchAll=false",
+    "test:run:diffMain": "yarn test:run --changedSince=main --bail",
     "test:vuln": "trivy fs --security-checks vuln --ignore-unfixed --severity HIGH,CRITICAL ."
   },
   "repository": {
