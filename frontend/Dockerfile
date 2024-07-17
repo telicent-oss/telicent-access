@@ -2,7 +2,6 @@ FROM node:20-alpine as installation
 
 USER 10101
 
-ARG NPM_TOKEN
 ENV PATH /node_modules/.bin:$PATH
 WORKDIR /app
 COPY yarn.lock yarn.lock 
