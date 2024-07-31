@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/telicent-oss/telicent-access/compare/v1.1.1...v1.1.2) (2024-07-29)
+
+
+### Bug Fixes
+
+* remove references to build arg ([b0201a6](https://github.com/telicent-oss/telicent-access/commit/b0201a630f7e0749752e01556b28a82023ac2b95))
+* **version:** bumpt o build with patched alpine ([b433437](https://github.com/telicent-oss/telicent-access/commit/b4334379dc7018ee8d4bb8e399093a083e29a5e8))
+
 ## [1.1.1](https://github.com/telicent-oss/telicent-access/compare/v1.1.0...v1.1.1) (2024-07-15)
 
 
