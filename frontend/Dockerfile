@@ -16,7 +16,7 @@ RUN yarn build:tailwind
 RUN LOCAL_MACHINE=false yarn build 
 WORKDIR /app/build
 
-FROM nginxinc/nginx-unprivileged:stable-alpine
+FROM nginxinc/nginx-unprivileged:stable-alpine-slim
 WORKDIR /usr/share/nginx/html/access
 COPY ./accessfrontend.sbom.json /opt/telicent/sbom/sbom.json
 COPY --from=build  /app/build .

@@ -1,10 +1,8 @@
 # #!/usr/bin/env bash
 set -e
-cd frontend
 
-# Function deletes tmp file
 cleanup() {
-  rm -f accessfrontend.sbom.json
+  rm -f access.sbom.json
 }
 # call the cleanup() on EXIT
 trap cleanup EXIT
@@ -12,37 +10,32 @@ trap cleanup EXIT
 [ -f image-SBOM.gitignored.json ] && rm image-SBOM.gitignored.json
 
 # Create temp file
-echo "{}" > accessfrontend.sbom.json
+echo "{}" > access.sbom.json
 
 # To debug it helps to use:  --no-cache \
 docker build \
     --no-cache \
     --progress=plain \
     -f ./Dockerfile \
-    -t telicent-access-ui-local \
+    -t telicent-access-api-local \
     --load .
 
-echo "------- grype -------"
-syft telicent-access-ui-local -o json | grype --quiet --fail-on high;
 
-echo "------- trivy image: os,library -------"
 trivy image  \
   --format table \
   --exit-code  1 \
   --ignore-unfixed \
   --vuln-type  os,library \
   --severity HIGH,CRITICAL \
-  telicent-access-ui-local;
+  telicent-access-api-local;
 
-echo "------- trivy image --format cyclonedx: os,library -------"
 trivy image --format cyclonedx \
   --exit-code 0 \
   --vuln-type os,library \
   --severity HIGH,CRITICAL \
   --output image-SBOM.gitignored.json \
-  telicent-access-ui-local;
+  telicent-access-api-local;
 
-echo "------- trivy sbom: os,library -------"
 trivy sbom \
   --format table \
   --exit-code 1 \

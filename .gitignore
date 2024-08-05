@@ -112,3 +112,5 @@ dist
 # Generated in CI
 access.sbom.json
 accessfrontend.sbom.json
+
+*.gitignored*
