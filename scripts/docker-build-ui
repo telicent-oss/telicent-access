@@ -22,7 +22,10 @@ docker build \
     -t telicent-access-ui-local \
     --load .
 
+echo "------- grype -------"
+syft telicent-access-ui-local -o json | grype --quiet --fail-on high;
 
+echo "------- trivy image: os,library -------"
 trivy image  \
   --format table \
   --exit-code  1 \
@@ -31,6 +34,7 @@ trivy image  \
   --severity HIGH,CRITICAL \
   telicent-access-ui-local;
 
+echo "------- trivy image --format cyclonedx: os,library -------"
 trivy image --format cyclonedx \
   --exit-code 0 \
   --vuln-type os,library \
@@ -38,6 +42,7 @@ trivy image --format cyclonedx \
   --output image-SBOM.gitignored.json \
   telicent-access-ui-local;
 
+echo "------- trivy sbom: os,library -------"
 trivy sbom \
   --format table \
   --exit-code 1 \
