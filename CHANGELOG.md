@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.3](https://github.com/telicent-oss/telicent-access/compare/v1.1.2...v1.1.3) (2024-08-05)
+
+
+### Bug Fixes
+
+* [TELFE-524] CVE-2023-52356 ([b1ced63](https://github.com/telicent-oss/telicent-access/commit/b1ced635bdc8bda12b7d9019daea2879285a09c4))
+* [TELFE-524] CVE-2023-52356 w/grype ([81f808e](https://github.com/telicent-oss/telicent-access/commit/81f808e80a0f56af2cfcaa14b49b1d8bf8884360))
+
 ## [1.1.2](https://github.com/telicent-oss/telicent-access/compare/v1.1.1...v1.1.2) (2024-07-29)
 
 
