@@ -83,5 +83,8 @@
       "src/index.js",
       "src/database"
     ]
+  },
+  "resolutions": {
+    "semver": "~7.5.2"
   }
 }
