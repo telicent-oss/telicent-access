@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/telicent-oss/telicent-access/compare/v1.1.3...v1.1.4) (2024-08-09)
+
+
+### Bug Fixes
+
+* **vuln:** CVE-2022-25883 ([9bb82b2](https://github.com/telicent-oss/telicent-access/commit/9bb82b224a279dd4ee38aed1605fc382a357977f))
+
 ## [1.1.3](https://github.com/telicent-oss/telicent-access/compare/v1.1.2...v1.1.3) (2024-08-05)
 
 
