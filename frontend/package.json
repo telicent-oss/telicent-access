@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@telicent-oss/ds": "0.0.3",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "country-code-emoji": "^2.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

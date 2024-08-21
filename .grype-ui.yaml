@@ -1,0 +1,10 @@
+# ignore:
+  # Rationale
+  # - more info
+  # - more info
+  # - vulnerability: CVE-0000-0000
+  #   package:
+  #     name: "example"
+  #     version: "0.0.0"
+  #     type: "apk"
+  #   fix-state: "fixed"
