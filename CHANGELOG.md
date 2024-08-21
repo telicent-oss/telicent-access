@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/telicent-oss/telicent-access/compare/v1.1.4...v1.1.5) (2024-08-21)
+
+
+### Bug Fixes
+
+* **sec vulns:** [TELFE=574] upg. axios ([0c537a2](https://github.com/telicent-oss/telicent-access/commit/0c537a287f394455ecffdd4c3e19887cd503561d))
+
 ## [1.1.4](https://github.com/telicent-oss/telicent-access/compare/v1.1.3...v1.1.4) (2024-08-09)
 
 
