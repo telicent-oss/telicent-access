@@ -12,6 +12,7 @@ trap cleanup EXIT
 # Create temp file
 echo "{}" > access.sbom.json
 
+
 # To debug it helps to use:  --no-cache \
 docker build \
     --no-cache \
@@ -20,6 +21,7 @@ docker build \
     -t telicent-access-api-local \
     --load .
 
+syft telicent-access-api-local -o json | grype --config ./.grype-api.yaml --only-fixed --quiet --fail-on high;
 
 trivy image  \
   --format table \

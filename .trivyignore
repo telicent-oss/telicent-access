@@ -1,0 +1,10 @@
+# Trivy Ignore File
+#
+# This file lists the CVEs that are ignored during the vulnerability scans.
+# Each CVE is ignored for specific reasons detailed below.
+#
+# Example:
+# ```
+# # Blah blah blah
+# CVE-2024-1234 
+# ```
