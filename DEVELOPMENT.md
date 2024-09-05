@@ -74,6 +74,7 @@ ACCESS can be configured using the below environment variables
 | JWT_HEADER          | string  | Header name which the token will be passed in                                                               | authorization         |
 | GROUPS_KEY          | string  | Property in the token which contains the user role groups                                                   | groups                |
 | DEPLOYED_DOMAIN     | url     | Domain ACCESS being served within - required if SCIM enabled                                                | http://localhost:8091 |
+| MONGO_PROTOCOL      | protocol| The protocol ('mongodb' | 'mongodb-srv')                                                                    | 'mongodb'             |
 | MONGO_URL           | url     | Mongo database URL                                                                                          | 127.0.0.1:27017       |
 | MONGO_COLLECTION    | string  | Mongo collection where ACCESS data will be stored                                                           | access                |
 | MONGO_USER          | string  | Mongo user for connecting to MongoDB                                                                        | telicent-access       |

@@ -39,6 +39,7 @@ services:
     environment:
       DEPLOYED_DOMAIN: http://localhost:8080
       MONGO_URL: mongo:27017
+      MONGO_PROTOCOL: mongodb
       MONGO_COLLECTION: access
       MONGO_USER: telicent-access
       MONGO_PWD: password
