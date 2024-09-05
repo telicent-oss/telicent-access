@@ -17,19 +17,21 @@ export const init = async () => {
         mongoRetryRewrites,
         mongoUrl,
         mongoUser,
+        MONGO_PROTOCOL,
       } = config;
 
       if (health.message !== "connection") {
         health = { ...health, message: "reconnecting" };
       }
       logger.info("Connecting to database...");
+      logger.info(`Protocol: ${MONGO_PROTOCOL}`);
       logger.info(`Mongo: ${mongoUrl}`);
       logger.info(`Database: ${mongoCollection}`);
       logger.info(`User: ${mongoUser}`);
 
       const encodedPwd = encodeURIComponent(mongoPwd);
       await connect(
-        `mongodb://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}`,
+        `${MONGO_PROTOCOL}://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}`,
         {
           retryWrites: mongoRetryRewrites,
         }
