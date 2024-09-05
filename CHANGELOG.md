@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.6](https://github.com/telicent-oss/telicent-access/compare/v1.1.5...v1.1.6) (2024-09-05)
+
+
+### Bug Fixes
+
+* **api config:** +MONGO_PROTOCOL ([8e15cc9](https://github.com/telicent-oss/telicent-access/commit/8e15cc949d4bd44e6ae3dfa0a195ab202b51f76b))
+* **README:** correct +srv ([9ec411b](https://github.com/telicent-oss/telicent-access/commit/9ec411b833875bdeacac1b142033af9b0121227f))
+
 ## [1.1.5](https://github.com/telicent-oss/telicent-access/compare/v1.1.4...v1.1.5) (2024-08-21)
 
 
