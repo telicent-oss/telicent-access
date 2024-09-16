@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.7](https://github.com/telicent-oss/telicent-access/compare/v1.1.6...v1.1.7) (2024-09-16)
+
+
+### Bug Fixes
+
+* **.trivyignore:** add dev cves ([a24bba1](https://github.com/telicent-oss/telicent-access/commit/a24bba19e42f9b5478bb2a7c713804e90ca39e5d))
+* update express to resolve cves ([f29e428](https://github.com/telicent-oss/telicent-access/commit/f29e4289fa13902b7e2de17b5e7ba750f2b0627b))
+
 ## [1.1.6](https://github.com/telicent-oss/telicent-access/compare/v1.1.5...v1.1.6) (2024-09-05)
 
 
