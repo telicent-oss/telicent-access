@@ -10,7 +10,7 @@
 # ```
 
 # CVE-2024-45590 is ignored because this is an express dependency and is only used as part of the
-# development server and is not delployed.
+# development server and is not deployed.
 CVE-2024-45590
 
 # CVE-2024-45296 is ignored because it is only used in msw (mock service worker) and expressjs, both of which
