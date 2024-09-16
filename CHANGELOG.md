@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8](https://github.com/telicent-oss/telicent-access/compare/v1.1.7...v1.1.8) (2024-09-16)
+
+
+### Bug Fixes
+
+* **publish.yml:** TRIVY_IGNORES ([ffbe8c1](https://github.com/telicent-oss/telicent-access/commit/ffbe8c1a4ed7a4912fe7bef566cbf6cee4ce347f))
+
 ## [1.1.7](https://github.com/telicent-oss/telicent-access/compare/v1.1.6...v1.1.7) (2024-09-16)
 
 
