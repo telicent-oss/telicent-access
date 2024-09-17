@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.11](https://github.com/telicent-oss/telicent-access/compare/v1.1.10...v1.1.11) (2024-09-17)
+
+
+### Bug Fixes
+
+* **CVE-2024-45296:** upg path-to-regexp ([2e2d073](https://github.com/telicent-oss/telicent-access/commit/2e2d073e4edba76be491aad092572ccc27e8a658))
+* **publish.yml:** TRIVY_IGNORES relative to package ([3277a47](https://github.com/telicent-oss/telicent-access/commit/3277a477c9a4db4960a66458c969d45658edcfff))
+
 ## [1.1.10](https://github.com/telicent-oss/telicent-access/compare/v1.1.9...v1.1.10) (2024-09-16)
 
 
