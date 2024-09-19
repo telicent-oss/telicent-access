@@ -35,15 +35,12 @@ describe("Groups - UTILS", () => {
 
   it("should validate group names", () => {
     // Basic valid names
-    expect(isGroupNameValid("Example_Word-123")).toBe(true);
     expect(isGroupNameValid("__valid_underscores__")).toBe(true);
     expect(isGroupNameValid("Valid---words")).toBe(true);
-    expect(isGroupNameValid("Group123")).toBe(true);
     expect(isGroupNameValid("_GroupName")).toBe(true);
     expect(isGroupNameValid("Group.Name")).toBe(true);
     expect(isGroupNameValid("Group:Name")).toBe(true);
     expect(isGroupNameValid("Group+Name")).toBe(true);
-    expect(isGroupNameValid("Group-Name.123")).toBe(true);
 
     // Single-character valid names
     expect(isGroupNameValid("A")).toBe(true);
@@ -54,7 +51,7 @@ describe("Groups - UTILS", () => {
     expect(isGroupNameValid("Group_Name-123.456:789+ABC")).toBe(true);
 
     // Complex combinations
-    expect(isGroupNameValid("__Group__Name--Test++123::456..789")).toBe(true);
+    expect(isGroupNameValid("__Group__Name--Test++123::456..ABC")).toBe(true);
     expect(isGroupNameValid("Group.Name-123:456+789_A-Z")).toBe(true);
     // Starting with invalid characters
     expect(isGroupNameValid("123InvalidStart")).toBe(false);        // Starts with digits
@@ -72,6 +69,9 @@ describe("Groups - UTILS", () => {
     expect(isGroupNameValid("Invalid@Char")).toBe(false);           // Contains at sign
 
     // Ending with invalid characters
+    expect(isGroupNameValid("Group123")).toBe(false);               // Ends with number
+    expect(isGroupNameValid("Example_Word-123")).toBe(false);       // Ends with number
+    expect(isGroupNameValid("Group-Name.123")).toBe(false);         // Ends with number
     expect(isGroupNameValid("cannot_end_with.")).toBe(false);       // Ends with dot
     expect(isGroupNameValid("cannot_end-with-")).toBe(false);       // Ends with hyphen
     expect(isGroupNameValid("cannot_end_with+")).toBe(false);       // Ends with plus

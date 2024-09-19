@@ -11,13 +11,13 @@ export const isGroupNameValid = (input) => {
   if (Boolean(input) === false) return false;
   const regex = new RegExp(
     "^" + // ^ - Starts with...
-      "[A-Za-z_]" + // letter char (uppercase or lowercase) or an underscore
-      "(" + // ( - START optional capture groupe
-      "[A-Za-z0-9_\\.\\-:+]*" + // Zero or more letters, digits, _, ., -, : or +
-      "[A-Za-z0-9_]" + // IF additional characters
-      // THEN last char must be a letter, digit, or underscore
-      ")?" + // )? - END optional capturing group
-      "$"
+    "[A-Za-z_]" + // letter char (uppercase or lowercase) or an underscore
+    "(" + // ( - START optional capture groupe
+    "[A-Za-z0-9_\\.\\-:+]*" + // Zero or more letters, digits, _, ., -, : or +
+    "[A-Za-z_]" + // IF additional characters
+    // THEN last char must be a letter, digit, or underscore
+    ")?" + // )? - END optional capturing group
+    "$"
   );
   return regex.test(input)
 }
