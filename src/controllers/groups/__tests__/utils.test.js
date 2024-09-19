@@ -1,4 +1,4 @@
-import { isValidPayload, sendNotFound } from "../utils";
+import { isValidPayload, sendNotFound, isGroupNameValid } from "../utils";
 import TestResponse from "../../../testUtils";
 
 describe("Groups - UTILS", () => {
@@ -32,4 +32,16 @@ describe("Groups - UTILS", () => {
       message: "Group(s) not found",
     });
   });
+
+  it("should validate group names", () => {
+    expect(isGroupNameValid("Example_Word-123")).toBe(true);
+    expect(isGroupNameValid("__valid_underscores__")).toBe(true);
+    expect(isGroupNameValid("Valid---words")).toBe(true);
+    expect(isGroupNameValid("123InvalidStart")).toBe(false);
+    expect(isGroupNameValid("Invalid*Char")).toBe(false);
+    expect(isGroupNameValid("cannot_end_with.")).toBe(false);
+    expect(isGroupNameValid("cannot_end-with-")).toBe(false);
+    expect(isGroupNameValid("cannot_end_with+")).toBe(false);
+    expect(isGroupNameValid("cannot_end_with:")).toBe(false);
+  })
 });
