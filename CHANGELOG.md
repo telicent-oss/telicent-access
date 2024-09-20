@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.12](https://github.com/telicent-oss/telicent-access/compare/v1.1.11...v1.1.12) (2024-09-20)
+
+
+### Bug Fixes
+
+* add additional tests ([0c942f1](https://github.com/telicent-oss/telicent-access/commit/0c942f1a8a24bacada2803b272dadf4ed6df0286))
+* add validation around group names ([27cf1ad](https://github.com/telicent-oss/telicent-access/commit/27cf1adf36de0bc35f186e6a3caed8eaa3d4ec60))
+* make admentments suggested in PR ([ae53591](https://github.com/telicent-oss/telicent-access/commit/ae5359163acd68acb895ece87e8532e9b0ace579))
+* update regex and tests to match updated spec ([cb4a5a8](https://github.com/telicent-oss/telicent-access/commit/cb4a5a827a871169bba570e321b60f24dbbf0084))
+
 ## [1.1.11](https://github.com/telicent-oss/telicent-access/compare/v1.1.10...v1.1.11) (2024-09-17)
 
 
