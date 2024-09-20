@@ -1,5 +1,5 @@
 import groupsModel from "../../database/models/Groups";
-import { isValidPayload } from "./utils";
+import { isGroupNameValid, isValidPayload } from "./utils";
 import {
   isBodyEmpty,
   sendErrorResponse,
@@ -22,13 +22,20 @@ export const createGroup = async (req, res) => {
   if (!label || !description) {
     return sendErrorResponse(res, {
       code: 400,
-      message: `Fields missing: ${!label ? "Name, " : ""}${
-        !description ? "Description" : ""
-      }`.replace(/,\s*$/, ""),
+      message: `Fields missing: ${!label ? "Name, " : ""}${!description ? "Description" : ""
+        }`.replace(/,\s*$/, ""),
     });
   }
 
   const id = `urn:${organisation}:groups:${label}`;
+  if (!isGroupNameValid(id)) {
+
+    return sendErrorResponse(res, {
+      code: 400,
+      message: "The group name contains invalid characters.",
+      detail: "https://github.com/telicent-oss/rdf-abac/blob/main/docs/abac-specification.md#syntax-of-words",
+    });
+  }
   const payload = {
     group_id: id,
     label,
@@ -54,9 +61,8 @@ export const createGroup = async (req, res) => {
     const { code } = error;
     if (code === 11000) {
       error.code = 409;
-      error.message = `Group with ${
-        Object.keys(error.keyPattern)[0]
-      }, ${label}, already exists`;
+      error.message = `Group with ${Object.keys(error.keyPattern)[0]
+        }, ${label}, already exists`;
     }
     sendErrorResponse(res, error);
   }
