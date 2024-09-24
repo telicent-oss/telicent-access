@@ -16,3 +16,4 @@ CVE-2024-45590
 # CVE-2024-45296 is ignored because it is only used in msw (mock service worker) and expressjs, both of which
 # are used for development but are not deployed, or used to build the app.
 CVE-2024-45296
+
