@@ -49,7 +49,8 @@
     "json5": "^2.2.3",
     "ws": "^8.17.1",
     "nth-check": "^2.1.1",
-    "semver": "~7.5.2"
+    "semver": "~7.5.2",
+    "rollup": "3.29.5"
   },
   "resolutionsReasons": {
     "json5": "eslint-plugin-import#tsconfig-paths#json5 - vulnerability",
