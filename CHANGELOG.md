@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13](https://github.com/telicent-oss/telicent-access/compare/v1.1.12...v1.1.13) (2024-09-24)
+
+
+### Bug Fixes
+
+* sec issues ([58ea4d4](https://github.com/telicent-oss/telicent-access/commit/58ea4d45fbc60c4afa2dca9a365a1bfcc3cabacb))
+
 ## [1.1.12](https://github.com/telicent-oss/telicent-access/compare/v1.1.11...v1.1.12) (2024-09-20)
 
 
