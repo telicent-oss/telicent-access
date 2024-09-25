@@ -22,9 +22,7 @@ import {
 import RenderError from "../../../utils/RenderError";
 
 const Form = forwardRef(({ basis, children }, ref) => {
-  const nameRef = useRef();
   const emailRef = useRef();
-  const orgRef = useRef();
   const { url } = config;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -36,19 +34,22 @@ const Form = forwardRef(({ basis, children }, ref) => {
     }
     return [];
   });
-  const [values, setValues] = useState(() => {
-    const defaults = {
-      nationality: "GBR",
-      clearance: "O",
-      personnel_type: "NON-GOV",
-    };
+  const [values, setValues] = useState(basis);
 
-    if (basis) {
-      return { ...defaults, ...basis };
+  useEffect(() => {
+    if (!labels) {
+      return;
     }
-    return defaults;
-  });
-
+    const requiredLabels = labels
+      .filter((label) => label.user_required)
+      .reduce((acc, curr) => {
+        acc[curr.user_attribute_name] = undefined;
+        return acc;
+      }, {});
+    setValues((prev) => {
+      return { ...requiredLabels, ...prev };
+    });
+  }, [labels]);
   useEffect(() => {
     setError();
 
@@ -188,17 +189,15 @@ const Form = forwardRef(({ basis, children }, ref) => {
     return null;
   };
 
-  const { name, email, deployed_organisation, active, temporary_password } =
-    values;
+  const { name, email, active } = values;
   const [isValidationActive, setIsValidationActive] = useState(false);
 
   useImperativeHandle(ref, () => ({
     submitAttempted() {
       setIsValidationActive(true);
-      nameRef.current?.setFocus(!name);
       emailRef.current?.setFocus(name && !validateEmail(email));
-      orgRef.current?.setFocus(
-        name && validateEmail(email) && !deployed_organisation
+      return (
+        Object.values(values).every((value) => !!value) && validateEmail(email)
       );
     },
     getValues() {
@@ -216,7 +215,6 @@ const Form = forwardRef(({ basis, children }, ref) => {
           <div className="flex flex-col col-span-1 row-span-1">
             <FormInput
               id="name"
-              ref={nameRef}
               label="name"
               placeholder={isValidationActive ? "Required" : "Enter name"}
               value={name}
@@ -245,18 +243,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
                   isValidationActive,
                 })
               )}
-            {Object.keys(values).includes("temporary_password") && (
-              <FormInput
-                id="temp-password"
-                label="temporary password"
-                placeholder={
-                  isValidationActive ? "Required" : "Enter temporary password"
-                }
-                value={temporary_password}
-                onChange={onValueChange("temporary_password")}
-                isValidationActive={isValidationActive}
-              />
-            )}
+
             <TeliSwitch
               label="active"
               checked={active}
@@ -360,11 +347,10 @@ const ClassificationFormSelect = ({
       label: getLabel("classification", tier),
       key: `classification-option-${tier}`,
     })) ?? [];
-
   return (
     <FormSelect
       id={id}
-      label="classification"
+      label="clearance"
       placeholder={placeholder}
       options={options}
       value={value}
@@ -389,7 +375,7 @@ const FormSelect = ({
   isMulti,
   isRequired,
 }) => {
-  const isMissing = isRequired && isValidationActive && value === "";
+  const isMissing = isRequired && isValidationActive && !value;
 
   return (
     <div className="flex flex-col mb-4">

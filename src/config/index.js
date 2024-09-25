@@ -13,6 +13,7 @@ const {
     MONGO_PROTOCOL,
     PORT,
     SCIM_ENABLED,
+    ATTRIBUTES_FILE_PATH,
   },
 } = process;
 
@@ -31,5 +32,6 @@ export default {
   mongoRetryRewrites: MONGO_RETRY_REWRITES || true,
   openidProviderUrl: OPENID_PROVIDER_URL || undefined,
   jwtHeader: JWT_HEADER || "authorization",
-  groupKey: GROUPS_KEY || "groups"
+  groupKey: GROUPS_KEY || "groups",
+  attributesFilePath: ATTRIBUTES_FILE_PATH || undefined,
 };

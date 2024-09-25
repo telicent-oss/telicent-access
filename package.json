@@ -40,7 +40,8 @@
     "scim2-parse-filter": "^0.2.8",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "yaml": "^2.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.5",

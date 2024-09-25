@@ -1,0 +1,10 @@
+attributes:
+  - user_attribute_name: "clearance"
+    data_attribute_name: "classification"
+    value: { type: "hierarchy", values: ["O", "OS", "S", "TS"] }
+  - user_attribute_name: "nationality"
+    data_attribute_name: "allowedNats"
+    value: { type: "countries" }
+  - user_attribute_name: "organisations"
+    data_attribute_name: "allowedOrgs"
+    value: { type: "string" }

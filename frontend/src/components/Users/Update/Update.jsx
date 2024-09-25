@@ -89,6 +89,7 @@ const Update = () => {
   }
 
   const onSubmit = async (user) => {
+    console.log(user);
     if (clearances.error) {
       setUpdateError(clearances.error);
     } else if (countries.error) {

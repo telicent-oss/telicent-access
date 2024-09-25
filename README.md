@@ -19,7 +19,7 @@ should not be used in a production environment**.
 
 ## Product summary
 
-Telicent Access controls data access within Telicent CORE©. Access is managed in
+Telicent Access is an entitlement management store for Telicent CORE. Access controlled decisions are managed in
 the **Smart Caches** (both database and API) using Attribute Based Access Control
 (ABAC). Data is labelled with security attributes at a granular level, and users
 must match these attributes to access information. This is achieved through:
@@ -31,7 +31,7 @@ must match these attributes to access information. This is achieved through:
 
 ### User permission attributes
 
-User permission attributes determine access to data within Telicent CORE©. This
+User permission attributes determine access to data within Telicent CORE. This
 access control is enforced in the **Smart Caches** (both database and API) using
 ABAC. Security labels are applied to data at a granular level, and a user's
 attributes must meet these labels to access the information.

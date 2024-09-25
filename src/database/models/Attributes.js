@@ -88,6 +88,7 @@ const attributeSchema = new Schema({
   },
   ihm: { type: Boolean, default: false },
   readonly: { type: Boolean, default: false },
+  user_required: { type: Boolean, default: true },
 });
 
 export default model("Attributes", attributeSchema);

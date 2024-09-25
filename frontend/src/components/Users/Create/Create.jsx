@@ -4,9 +4,7 @@ import { TeliButton } from "@telicent-oss/ds";
 
 import Form from "../Form/Form";
 import config from "../../../config/app-config";
-import {
-  validateEmail,
-} from "../../../utils/utils";
+import { validateEmail } from "../../../utils/utils";
 import LoadingButton from "../../../utils/LoadingButton";
 import RenderError from "../../../utils/RenderError";
 
@@ -37,25 +35,13 @@ export const FormState = ({ update, user, onSubmit, loading, error }) => {
 
   const onSubmitForm = async () => {
     const { current } = formRef;
-    const {
-      userGroups,
-      values,
-      values: { name, email, deployed_organisation, temporary_password },
-    } = current.getValues();
+    const { userGroups, values } = current.getValues();
     const userToSubmit = {
       ...values,
       userGroups,
     };
 
-    const isAttemptValid =
-      authType === "keycloak" && !update
-        ? name &&
-          validateEmail(email) &&
-          deployed_organisation &&
-          temporary_password
-        : name && validateEmail(email) && deployed_organisation;
-
-    current?.submitAttempted();
+    const isAttemptValid = current?.submitAttempted();
     setIsErrorVisible(isAttemptValid);
     if (isAttemptValid) {
       await onSubmit(userToSubmit);
