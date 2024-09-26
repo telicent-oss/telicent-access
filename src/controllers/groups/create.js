@@ -28,8 +28,7 @@ export const createGroup = async (req, res) => {
   }
 
   const id = `urn:${organisation}:groups:${label}`;
-  if (!isGroupNameValid(id)) {
-
+  if (!isGroupNameValid(label)) {
     return sendErrorResponse(res, {
       code: 400,
       message: "The group name contains invalid characters.",
