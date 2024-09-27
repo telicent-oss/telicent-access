@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.15](https://github.com/telicent-oss/telicent-access/compare/v1.1.14...v1.1.15) (2024-09-27)
+
+
+### Bug Fixes
+
+* Merge pull request [#56](https://github.com/telicent-oss/telicent-access/issues/56) from telicent-oss/fix/untested-sec-issues-fix ([bc1dc24](https://github.com/telicent-oss/telicent-access/commit/bc1dc24f74c61ed08327a81a3f9c497b4a86b968))
+* msw/path-to-regexp ([ed8005d](https://github.com/telicent-oss/telicent-access/commit/ed8005deed2658a9d0c9197ed35af4764190133a))
+* remove prerelease tag ([a855a12](https://github.com/telicent-oss/telicent-access/commit/a855a121478d929f602a58553cbe8b6b9ecbc50e))
+* security fixes attempt ([bc1dc24](https://github.com/telicent-oss/telicent-access/commit/bc1dc24f74c61ed08327a81a3f9c497b4a86b968))
+* security fixes attempt ([47bfbc9](https://github.com/telicent-oss/telicent-access/commit/47bfbc99b6853925548ceec8769dbeb579d2cbaa))
+
 ## [1.1.14](https://github.com/telicent-oss/telicent-access/compare/v1.1.13...v1.1.14) (2024-09-26)
 
 
