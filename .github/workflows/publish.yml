@@ -75,7 +75,6 @@ jobs:
     with:
       APP_NAME: access
       package-directory: frontend
-      TRIVY_IGNORES: .trivyignore
     secrets: inherit
 
   publish_frontend:

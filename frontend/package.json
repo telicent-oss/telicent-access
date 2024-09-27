@@ -54,7 +54,9 @@
   },
   "resolutionsReasons": {
     "json5": "eslint-plugin-import#tsconfig-paths#json5 - vulnerability",
-    "nth-check": "vuln, and checked with webpack dev server"
+    "nth-check": "vuln, and checked with webpack dev server",
+    "body-parser": "^1.20.3",
+    "msw/path-to-regexp": "6.3.0"
   },
   "devDependencies": {
     "@telicent-oss/telicent-frontend-cli": "1.1.3",
