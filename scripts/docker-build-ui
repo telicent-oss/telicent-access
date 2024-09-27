@@ -24,7 +24,8 @@ docker build \
 
 echo "------- grype -------"
 
-syft telicent-access-ui-local  -o json | grype --config ./.grype-ui.yaml --only-fixed --quiet --fail-on high;
+syft telicent-access-ui-local  -o json | grype --config ./.grype-ui.yaml --quiet --fail-on high;
+# --only-fixed 
 
 echo "------- trivy image: os,library -------"
 trivy image  \
