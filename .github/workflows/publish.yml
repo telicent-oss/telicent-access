@@ -74,7 +74,7 @@ jobs:
     uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
     with:
       APP_NAME: access
-      PACKAGE-DIRECTORY: frontend
+      PACKAGE_DIRECTORY: frontend
     secrets: inherit
 
   publish_frontend:
@@ -89,7 +89,7 @@ jobs:
       PATH: ./frontend
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
-      PACKAGE-DIRECTORY: frontend
+      PACKAGE_DIRECTORY: frontend
     secrets: inherit
   publish_api:
     needs:
