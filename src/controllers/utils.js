@@ -32,7 +32,7 @@ export const sendErrorResponse = (res, { code, message, detail }) => {
       `Expected HTTP error code, got ${code} (transformed to ${httpCode})`
     );
   }
-  res.status(httpCode).send(buildErrorObject(code, message, detail));
+  return res.status(httpCode).send(buildErrorObject(code, message, detail));
 };
 
 export const setupSuccessResponseCode =
