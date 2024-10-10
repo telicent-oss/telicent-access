@@ -1,4 +1,5 @@
 import { SUCCESS_CODE, INVALID_CODE } from "./constants";
+import logger from '../lib/logger';
 
 export const buildErrorObject = (code, message, detail) => ({
   code,
@@ -23,8 +24,16 @@ export const sendInvalidRequest = (res) =>
     .status(INVALID_CODE)
     .send(buildErrorObject(INVALID_CODE, "Invalid request"));
 
-export const sendErrorResponse = (res, { code, message, detail }) =>
-  res.status(code).send(buildErrorObject(code, message, detail));
+
+export const sendErrorResponse = (res, { code, message, detail }) => {
+  const httpCode = Math.max(400, Math.min(599, code));
+  if (httpCode !== code) {
+    console.warn(
+      `Expected HTTP error code, got ${code} (transformed to ${httpCode})`
+    );
+  }
+  return res.status(httpCode).send(buildErrorObject(code, message, detail));
+};
 
 export const setupSuccessResponseCode =
   (code) =>
