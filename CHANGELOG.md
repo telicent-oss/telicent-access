@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.16](https://github.com/telicent-oss/telicent-access/compare/v1.1.15...v1.1.16) (2024-10-11)
+
+
+### Bug Fixes
+
+* **workflows:** use main branches ([9af9a9c](https://github.com/telicent-oss/telicent-access/commit/9af9a9c0fa0a78773856ef2924067f786a71b9d6))
+
 ## [1.1.15](https://github.com/telicent-oss/telicent-access/compare/v1.1.14...v1.1.15) (2024-09-27)
 
 
