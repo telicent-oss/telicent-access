@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.18](https://github.com/telicent-oss/telicent-access/compare/v1.1.17...v1.1.18) (2024-10-11)
+
+
+### Bug Fixes
+
+* **groups:** [TELFE-701] remove pipeline operator ([#62](https://github.com/telicent-oss/telicent-access/issues/62)) ([5eed0a7](https://github.com/telicent-oss/telicent-access/commit/5eed0a7730224edd7c832c19064efcf7e5dd2478))
+
 ## [1.1.17](https://github.com/telicent-oss/telicent-access/compare/v1.1.16...v1.1.17) (2024-10-11)
 
 
