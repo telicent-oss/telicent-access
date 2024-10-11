@@ -62,7 +62,7 @@ jobs:
     needs:
       - get_version
       - integrated_tests
-    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@TELFE-211/scan-secrets
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
     with:
       APP_NAME: access
     secrets: inherit
@@ -71,10 +71,10 @@ jobs:
     needs:
       - get_version
       - integrated_tests
-    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@TELFE-211/scan-secrets
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
     with:
       APP_NAME: access
-      package-directory: frontend
+      PACKAGE_DIRECTORY: frontend
     secrets: inherit
 
   publish_frontend:
@@ -82,21 +82,21 @@ jobs:
       - integrated_tests
       - get_version
       - vuln_scan_frontend
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-211/scan-secrets
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
       PATH: ./frontend
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
-      package-directory: frontend
+      PACKAGE_DIRECTORY: frontend
     secrets: inherit
   publish_api:
     needs:
       - integrated_tests
       - get_version
       - vuln_scan_api
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-211/scan-secrets
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
