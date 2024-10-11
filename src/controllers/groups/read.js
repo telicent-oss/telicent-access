@@ -51,19 +51,25 @@ export const getGroup = async (req, res) => {
           from: "users",
           localField: "group_id",
           foreignField: "userGroups",
-          pipeline: [
+          as: "users",
+        },
+      },
             {
-              $project: {
-                id: 1,
-                name: 1,
-                email: 1,
-                active: 1,
-                labels: 1,
-                userGroups: 1,
+        $addFields: {
+          users: {
+            $map: {
+              input: "$users",
+              as: "user",
+              in: {
+                id: "$$user.id",
+                name: "$$user.name",
+                email: "$$user.email",
+                active: "$$user.active",
+                labels: "$$user.labels",
+                userGroups: "$$user.userGroups",
+              },
               },
             },
-          ],
-          as: "users",
         },
       },
       { $addFields: { userCount: { $size: "$users" } } },
