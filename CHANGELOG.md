@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.17](https://github.com/telicent-oss/telicent-access/compare/v1.1.16...v1.1.17) (2024-10-11)
+
+
+### Bug Fixes
+
+* **errors:** db codes used as http codes ([#59](https://github.com/telicent-oss/telicent-access/issues/59)) ([dbf8142](https://github.com/telicent-oss/telicent-access/commit/dbf81424dbde568471ab9f0b7a9addd8103fe4bf))
+
 ## [1.1.16](https://github.com/telicent-oss/telicent-access/compare/v1.1.15...v1.1.16) (2024-10-11)
 
 
