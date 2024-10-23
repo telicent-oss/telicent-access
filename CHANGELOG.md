@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.19](https://github.com/telicent-oss/telicent-access/compare/v1.1.18...v1.1.19) (2024-10-23)
+
+
+### Bug Fixes
+
+* http-proxy-middleware CVE-2024-21536 ([#64](https://github.com/telicent-oss/telicent-access/issues/64)) ([7b25636](https://github.com/telicent-oss/telicent-access/commit/7b25636a904327249a71162abdc9ad1dc0bd6071))
+
 ## [1.1.18](https://github.com/telicent-oss/telicent-access/compare/v1.1.17...v1.1.18) (2024-10-11)
 
 
