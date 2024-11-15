@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.20](https://github.com/telicent-oss/telicent-access/compare/v1.1.19...v1.1.20) (2024-11-15)
+
+
+### Bug Fixes
+
+* **frontend/public/index.html:** add manifest.json link to head ([2b7f86a](https://github.com/telicent-oss/telicent-access/commit/2b7f86ae68127157671f050d670ec7d52137b977))
+
 ## [1.1.19](https://github.com/telicent-oss/telicent-access/compare/v1.1.18...v1.1.19) (2024-10-23)
 
 
