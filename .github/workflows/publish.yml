@@ -90,6 +90,7 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
+      TRIVY_IGNORES_ONLY_FOR_BUILD_IMAGE: .trivyignore-build
     secrets: inherit
   publish_api:
     needs:
