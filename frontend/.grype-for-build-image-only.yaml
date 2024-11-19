@@ -1,0 +1,5 @@
+ignore:
+  - vulnerability: CVE-2024-21538
+  - vulnerability: GHSA-3xgq-45jj-v275
+    package:
+      name: "cross-spawn"

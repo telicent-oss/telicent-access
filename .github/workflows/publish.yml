@@ -91,6 +91,7 @@ jobs:
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
       TRIVY_IGNORES_ONLY_FOR_BUILD_IMAGE: .trivyignore-build
+      GRYPE_CONFIG_ONLY_FOR_BUILD_IMAGE: .grype-for-build-image-only.yaml
     secrets: inherit
   publish_api:
     needs:
