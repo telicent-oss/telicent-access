@@ -1,4 +1,5 @@
-name: Build and push telicent-access
+# Build and push telicent-access
+name: publish.yml
 
 on:
   # Manually execute
