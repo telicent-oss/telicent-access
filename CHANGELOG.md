@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.21](https://github.com/telicent-oss/telicent-access/compare/v1.1.20...v1.1.21) (2024-11-20)
+
+
+### Bug Fixes
+
+* add trivy ignore file for build image ([27fcbac](https://github.com/telicent-oss/telicent-access/commit/27fcbacc4e20b879eda4dbfac39ac5e25745492d))
+* finished the switch to teliselect ([c870d63](https://github.com/telicent-oss/telicent-access/commit/c870d63f5887c78f843fd8a74263ffa75b4d766b))
+* **git workflow:** name mimic filename ([322a628](https://github.com/telicent-oss/telicent-access/commit/322a628d236e9ad7254988d44264a61455127a2a))
+* ignore certain build sec issues ([816bd25](https://github.com/telicent-oss/telicent-access/commit/816bd2516b5b026af2d2919cec38a31286aa6567))
+* security fixes ([b0f20ea](https://github.com/telicent-oss/telicent-access/commit/b0f20ea74b8d8d65e5da90f234b002d0c1ef6f42))
+* security fixes severity high ([a9924a3](https://github.com/telicent-oss/telicent-access/commit/a9924a311a23e406ae34b94726ecd03403d31ec4))
+
 ## [1.1.20](https://github.com/telicent-oss/telicent-access/compare/v1.1.19...v1.1.20) (2024-11-15)
 
 
