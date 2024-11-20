@@ -1,4 +1,5 @@
-name: Build and push telicent-access
+# Build and push telicent-access
+name: publish.yml
 
 on:
   # Manually execute
@@ -90,6 +91,8 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
+      TRIVY_IGNORES_ONLY_FOR_BUILD_IMAGE: .trivyignore-build
+      GRYPE_CONFIG_ONLY_FOR_BUILD_IMAGE: .grype-for-build-image-only.yaml
     secrets: inherit
   publish_api:
     needs:
