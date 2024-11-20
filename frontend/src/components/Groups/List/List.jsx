@@ -1,28 +1,19 @@
 import React, { useCallback, useState } from "react";
 
 import Item from "./Item";
-import Select from "../../Select/Select";
-import config from "../../../config/app-config";
 import { sortPartial } from "../../../utils/utils";
+import useSortBy from "../../Select/useSortBy";
+import SortBy from "../../Select/SortBy";
+import config from "../../../config/app-config";
 
 const List = ({ groups }) => {
-  const [filters, setFilters] = useState({
-    searchTerm: "",
-    sortBy: "label",
-    isSortDescend: false,
-  });
-  const { searchTerm, sortBy, isSortDescend } = filters;
+  const [searchTerm, setSearchTerm] = useState("");
+  const { sortBy, ascend, handleSortByChange, handleSortDirection } = useSortBy(
+    { defaultValue: "label" }
+  );
 
   const onSearchChange = ({ target: { value } }) => {
-    setFilters((prev) => ({ ...prev, searchTerm: value }));
-  };
-
-  const onSortChange = ({ target: { value } }) => {
-    setFilters((prev) => ({ ...prev, sortBy: value }));
-  };
-
-  const handleSortDirection = () => {
-    setFilters((prev) => ({ ...prev, isSortDescend: !prev.isSortDescend }));
+    setSearchTerm(value);
   };
 
   const bySearchTerm = useCallback(
@@ -35,10 +26,10 @@ const List = ({ groups }) => {
 
   const sortGroups = useCallback(
     (a, b) => {
-      const sortByName = sortPartial(sortBy, isSortDescend);
+      const sortByName = sortPartial(sortBy, ascend);
       return sortByName(a, b);
     },
-    [isSortDescend, sortBy]
+    [ascend, sortBy]
   );
 
   const filteredGroups = groups.filter(bySearchTerm).sort(sortGroups);
@@ -66,29 +57,14 @@ const List = ({ groups }) => {
               onChange={onSearchChange}
             />
           </span>
-          <span className="flex flex-col items-start">
-            <label htmlFor="sort" className="mr-2 text-xs font-thin uppercase">
-              Sort by
-            </label>
-            <div>
-              <Select
-                id="sort"
-                options={config.groupProperties}
-                isSort
-                onChange={onSortChange}
-              />
-              <button
-                type="button"
-                aria-label="Reverse sort order"
-                title="Reverse sort order"
-                className="ml-1 px-2 pt-0.5 hover:bg-whiteSmoke
-                hover:text-black-100 border rounded border-gray-400"
-                onClick={() => handleSortDirection()}
-              >
-                <i className={`ri-sort-${isSortDescend ? "desc" : "asc"}`} />
-              </button>
-            </div>
-          </span>
+          <SortBy
+            selectId="sort-groups"
+            value={sortBy}
+            isAscending={ascend}
+            options={config.groupProperties}
+            onSortChange={handleSortByChange}
+            onSortDirectionChange={handleSortDirection}
+          />
         </div>
       </div>
       {filteredGroups.length === 0 && (

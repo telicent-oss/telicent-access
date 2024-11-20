@@ -268,11 +268,8 @@ const Form = forwardRef(({ basis, children }, ref) => {
               <FormSelect
                 id="groups"
                 label="user groups"
-                placeholder={
-                  possGroups.length ? "Select..." : "No more groups available"
-                }
                 options={possGroups}
-                value={null}
+                value=""
                 onChange={onUserGroupChange}
                 isValidationActive={isValidationActive}
                 error={error}
@@ -390,7 +387,7 @@ const FormSelect = ({
   isRequired,
 }) => {
   const isMissing = isRequired && isValidationActive && value === "";
-
+  
   return (
     <div className="flex flex-col mb-4">
       <label htmlFor={id} className="pb-2 text-xs font-thin uppercase">

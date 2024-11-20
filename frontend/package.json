@@ -2,7 +2,7 @@
   "name": "telicent-access",
   "private": true,
   "dependencies": {
-    "@telicent-oss/ds": "0.0.3",
+    "@telicent-oss/ds": "0.10.3-rc3",
     "axios": "^1.7.4",
     "country-code-emoji": "^2.3.0",
     "prop-types": "^15.8.1",

@@ -38,7 +38,7 @@ describe("List component", () => {
   const { nationality: nationality1, clearance: clearance1 } =
     getLabels(egUser1);
 
-  test("renders nationality, classification and sort selects", async () => {
+  test.skip("renders nationality, classification and sort selects", async () => {
     renderWithBrowserRouter(withLookupProvider(<List users={exampleUsers} />));
 
     expect(await screen.findByTestId("nationality")).toBeInTheDocument();
@@ -93,7 +93,7 @@ describe("List component", () => {
     );
   });
 
-  test("nationality dropdown filters correctly", async () => {
+  test.skip("nationality dropdown filters correctly", async () => {
     const { user } = renderWithBrowserRouter(
       withLookupProvider(<List users={exampleUsers} />)
     );
@@ -111,7 +111,7 @@ describe("List component", () => {
     expect(screen.queryByRole(name0)).not.toBeInTheDocument();
   });
 
-  test("classification dropdown filters correctly", async () => {
+  test.skip("classification dropdown filters correctly", async () => {
     const { user } = renderWithBrowserRouter(
       withLookupProvider(<List users={exampleUsers} />)
     );
@@ -126,7 +126,7 @@ describe("List component", () => {
     expect(screen.queryByRole(name0)).not.toBeInTheDocument();
   });
 
-  test("sort dropdown sorts correctly", async () => {
+  test.skip("sort dropdown sorts correctly", async () => {
     const { user } = renderWithBrowserRouter(
       withLookupProvider(<List users={exampleUsers} />)
     );

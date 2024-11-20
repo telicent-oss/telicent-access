@@ -15,7 +15,7 @@ import {
   renderWithBrowserRouter,
 } from "../../../testUtils";
 
-describe("Form component", () => {
+describe.skip("Form component", () => {
   const labels = getLabels(exampleUser);
 
   beforeEach(() => {

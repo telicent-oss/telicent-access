@@ -13,12 +13,19 @@ import {
   sortPartial,
 } from "../../../utils/utils";
 import RenderError from "../../../utils/RenderError";
+import SortBy from "../../Select/SortBy";
+import useSortBy from "../../Select/useSortBy";
 
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "./List.css";
 
 const List = ({ users = [], isGroupView, refetch }) => {
   const { countries } = useContext(LookupContext);
+
+  const { sortBy, ascend, handleSortByChange, handleSortDirection } = useSortBy(
+    { defaultValue: "name" }
+  );
+
   const [err, setErr] = useState();
   const [nationalities, setNationalities] = useState([]);
   const [clearances, setClearances] = useState([]);
@@ -26,10 +33,8 @@ const List = ({ users = [], isGroupView, refetch }) => {
     nationality: "all",
     clearance: "all",
     searchTerm: "",
-    sortBy: "name",
-    isSortDescend: false,
   });
-  const { nationality, clearance, searchTerm, sortBy, isSortDescend } = filters;
+  const { nationality, clearance, searchTerm } = filters;
 
   const onSearchChange = ({ target: { value } }) => {
     setFilters((prev) => ({ ...prev, searchTerm: value }));
@@ -68,9 +73,9 @@ const List = ({ users = [], isGroupView, refetch }) => {
   const sortUsers = useCallback(
     (a, b) =>
       sortBy === "name" || sortBy === "email" || sortBy === "active"
-        ? sortPartial(sortBy, isSortDescend)(a, b)
-        : sortPartialLabels(sortBy, isSortDescend)(a, b),
-    [isSortDescend, sortBy]
+        ? sortPartial(sortBy, ascend)(a, b)
+        : sortPartialLabels(sortBy, ascend)(a, b),
+    [ascend, sortBy]
   );
 
   const filteredUsers = users
@@ -131,22 +136,17 @@ const List = ({ users = [], isGroupView, refetch }) => {
     refetch();
   };
 
-  const onFilterChange = ({ currentTarget: { id }, target: { value } }) => {
-    if (id === "nationality") {
+  const onFilterChange = (filter) => (event) => {
+    const { value } = event.target;
+
+    if (filter === "nationality") {
       setFilters((prev) => ({ ...prev, nationality: value }));
     }
-    if (id === "clearance") {
+    if (filter === "clearance") {
       setFilters((prev) => ({ ...prev, clearance: value }));
     }
   };
-
-  const onSortChange = ({ target: { value } }) => {
-    setFilters((prev) => ({ ...prev, sortBy: value }));
-  };
-
-  const handleSortDirection = () => {
-    setFilters((prev) => ({ ...prev, isSortDescend: !prev.isSortDescend }));
-  };
+  
 
   if (!users.length) {
     return <p className="mt-4 ml-6">No users found.</p>;
@@ -180,7 +180,8 @@ const List = ({ users = [], isGroupView, refetch }) => {
             <Select
               id="nationality"
               options={nationalities}
-              onChange={onFilterChange}
+              selectedValue={filters.nationality}
+              onChange={onFilterChange("nationality")}
               includeAll
               isNationality
             />
@@ -191,34 +192,20 @@ const List = ({ users = [], isGroupView, refetch }) => {
             </label>
             <Select
               id="clearance"
+              selectedValue={filters.clearance}
               options={clearances}
-              onChange={onFilterChange}
+              onChange={onFilterChange("clearance")}
               includeAll
             />
           </span>
-          <span className="flex flex-col">
-            <label htmlFor="sort" className="mr-2 text-xs font-thin uppercase">
-              Sort by
-            </label>
-            <div>
-              <Select
-                id="sort"
-                options={config.userProperties}
-                onChange={onSortChange}
-                isSort
-              />
-              <button
-                type="button"
-                aria-label="Reverse sort order"
-                title="Reverse sort order"
-                className="ml-1 px-2 pt-0.5 hover:bg-whiteSmoke
-                hover:text-black-100 border rounded border-gray-400"
-                onClick={handleSortDirection}
-              >
-                <i className={`ri-sort-${isSortDescend ? "desc" : "asc"}`} />
-              </button>
-            </div>
-          </span>
+          <SortBy
+            selectId="sort-users"
+            value={sortBy}
+            isAscending={ascend}
+            options={config.userProperties}
+            onSortChange={handleSortByChange}
+            onSortDirectionChange={handleSortDirection}
+          />
         </div>
       </div>
       {!filteredUsers.length && (
