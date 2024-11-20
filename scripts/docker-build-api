@@ -21,6 +21,8 @@ docker build \
     -t telicent-access-api-local \
     --load .
 
+# syft "telicent-access-api-local" -vv -o json > syft_output_api.json # Debuggin image
+
 syft telicent-access-api-local -o json | grype --config ./.grype-api.yaml --only-fixed --quiet --fail-on high;
 
 trivy image  \

@@ -1,4 +1,4 @@
-FROM node:20-alpine as installation
+FROM acoolman/patch-241120-node:20-alpine3.20 as installation
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
@@ -11,7 +11,7 @@ COPY .babelrc .babelrc
 
 RUN LOCAL_MACHINE=false yarn build 
 
-FROM node:20-alpine
+FROM acoolman/patch-241120-node:20-alpine3.20
 # Install curl
 RUN apk --no-cache add curl
 WORKDIR /app
