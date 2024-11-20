@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.22](https://github.com/telicent-oss/telicent-access/compare/v1.1.21...v1.1.22) (2024-11-20)
+
+
+### Bug Fixes
+
+* **Dockerfile:** use patched image ([#75](https://github.com/telicent-oss/telicent-access/issues/75)) ([7054d42](https://github.com/telicent-oss/telicent-access/commit/7054d42146c01195706c2093d1d0bf273adbf84f))
+* frontend build error ([#77](https://github.com/telicent-oss/telicent-access/issues/77)) ([285db0d](https://github.com/telicent-oss/telicent-access/commit/285db0d9f5001f0bb01c4a725423602951feff78))
+
 ## [1.1.21](https://github.com/telicent-oss/telicent-access/compare/v1.1.20...v1.1.21) (2024-11-20)
 
 
