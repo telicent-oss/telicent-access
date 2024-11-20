@@ -12,7 +12,6 @@ FROM installation as build
 COPY src src
 COPY public public
 COPY tailwind.config.js tailwind.config.js 
-RUN yarn build:tailwind
 RUN LOCAL_MACHINE=false yarn build 
 WORKDIR /app/build
 

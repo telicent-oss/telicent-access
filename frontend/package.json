@@ -20,7 +20,7 @@
     "prestart": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "build:tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css",
     "build": "react-scripts build",
-    "prebuild": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
+    "prebuild": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh && yarn build:tailwind",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "test:ci": "yarn test --ci --json --watchAll=false",
     "test:run": "yarn test --coverage=false --watchAll=false",
