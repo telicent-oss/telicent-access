@@ -35,4 +35,4 @@ fi
 docker compose build
 
 # Run the Docker Compose services
-docker compose -p telicent_access up -d
+docker compose -p telicent-access up -d

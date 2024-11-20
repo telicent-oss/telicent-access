@@ -24,3 +24,4 @@ yarn-error.log*
 .env
 accessfrontend.sbom.json
 
+env-config.js
