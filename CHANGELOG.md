@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.23](https://github.com/telicent-oss/telicent-access/compare/v1.1.22...v1.1.23) (2024-11-20)
+
+
+### Bug Fixes
+
+* trigger build with fresh docker image ([#78](https://github.com/telicent-oss/telicent-access/issues/78)) ([0100bb0](https://github.com/telicent-oss/telicent-access/commit/0100bb01ce422f079ae482cf5e9a524525943ebe))
+
 ## [1.1.22](https://github.com/telicent-oss/telicent-access/compare/v1.1.21...v1.1.22) (2024-11-20)
 
 
