@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.24](https://github.com/telicent-oss/telicent-access/compare/v1.1.23...v1.1.24) (2024-12-12)
+
+
+### Bug Fixes
+
+* **mongoose & cross-spawn:** update TELFE-862 ([#84](https://github.com/telicent-oss/telicent-access/issues/84)) ([c19000f](https://github.com/telicent-oss/telicent-access/commit/c19000fdf513304cbd246e59b573a267f5a2ddb7))
+
 ## [1.1.23](https://github.com/telicent-oss/telicent-access/compare/v1.1.22...v1.1.23) (2024-11-20)
 
 
