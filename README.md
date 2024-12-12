@@ -83,13 +83,13 @@ the following way:
 
 To get started run the script to setup all the services, in your terminal run
 
-```
+```sh
 scripts/dev-docker-setup.sh
 ```
 
 Once all the Docker services are running, run to gain open the Telicent Access application
 
-```
+```sh
 python3 scripts/open-ui.py
 ```
 
