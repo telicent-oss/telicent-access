@@ -24,7 +24,7 @@ jobs:
     outputs:
       version: ${{ steps.semver.outputs.current-version }}
 
-  integrated_tests:
+  integrated_api_tests:
     permissions:
       id-token: write
       contents: read
@@ -61,6 +61,43 @@ jobs:
       - name: Run frontend tests
         run: yarn test:ci
         working-directory: frontend
+      - name: Install API dependencies
+        run: LOCAL_MACHINE=false yarn install
+      - name: Run API tests
+        run: yarn global add jest && yarn test:ci
+
+  integrated_ui_tests:
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
+    needs: get_version
+    env:
+      APP_NAME: access
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: configure-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Get node version
+        id: node
+        run: |
+          echo "version=$(node -v)" >> $GITHUB_OUTPUT
+
+      - name: Get node_modules cache
+        uses: actions/cache@v3.0.2
+        id: node_modules
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+      - name: Install API dependencies
+        run: LOCAL_MACHINE=false yarn install
       - name: Run API tests
         run: yarn global add jest && yarn test:ci
 
@@ -70,7 +107,7 @@ jobs:
       contents: read
       packages: write
     needs:
-      - integrated_tests
+      - integrated_ui_tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -109,7 +146,7 @@ jobs:
       contents: read
       packages: write
     needs:
-      - integrated_tests
+      - integrated_api_tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -143,7 +180,7 @@ jobs:
   vuln_scan_api:
     needs:
       - get_version
-      - integrated_tests
+      - integrated_api_tests
     uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
     with:
       APP_NAME: access
@@ -152,7 +189,7 @@ jobs:
   vuln_scan_frontend:
     needs:
       - get_version
-      - integrated_tests
+      - integrated_ui_tests
     uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
     with:
       APP_NAME: access
@@ -161,7 +198,7 @@ jobs:
 
   publish_frontend:
     needs:
-      - integrated_tests
+      - integrated_ui_tests
       - get_version
       - vuln_scan_frontend
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update-workflow-for-docker-with-build-artifact
@@ -176,7 +213,7 @@ jobs:
     secrets: inherit
   publish_api:
     needs:
-      - integrated_tests
+      - integrated_api_tests
       - get_version
       - vuln_scan_api
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update-workflow-for-docker-with-build-artifact
