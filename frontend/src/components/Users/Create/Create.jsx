@@ -1,3 +1,4 @@
+/* eslint-disabled import/prefer-default-export */
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TeliButton } from "@telicent-oss/ds";
@@ -9,7 +10,7 @@ import LoadingButton from "../../../utils/LoadingButton";
 import RenderError from "../../../utils/RenderError";
 
 const { authType } = config;
-/* eslint-disabled import/prefer-default-export */
+
 export const FormState = ({ update, user, onSubmit, loading, error }) => {
   const formRef = useRef();
   const navigate = useNavigate();
