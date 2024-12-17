@@ -56,11 +56,13 @@ jobs:
             ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
 
       - name: Install dependencies
-        run: cd frontend && mkdir reports && LOCAL_MACHINE=false yarn install
+        run: mkdir reports && LOCAL_MACHINE=false yarn install
+        working-directory: frontend
       - name: Run frontend tests
-        run: cd frontend && yarn test:ci
-      - name: Run API tests
         run: yarn test:ci
+        working-directory: frontend
+      - name: Run API tests
+        run: npm install jest -g && yarn test:ci
 
   build_ui_artefact:
     permissions:
