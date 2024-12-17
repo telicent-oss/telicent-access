@@ -62,7 +62,7 @@ jobs:
         run: yarn test:ci
         working-directory: frontend
       - name: Run API tests
-        run: npm install jest -g && yarn test:ci
+        run: yarn global add jest && yarn test:ci
 
   build_ui_artefact:
     permissions:
