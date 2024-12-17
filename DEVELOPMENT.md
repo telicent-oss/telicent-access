@@ -79,7 +79,7 @@ ACCESS can be configured using the below environment variables
 | MONGO_COLLECTION                  | string  | Mongo collection where ACCESS data will be stored                                                           | access                |
 | MONGO_USER                        | string  | Mongo user for connecting to MongoDB                                                                        | telicent-access       |
 | MONGO_PWD                         | string  | Mongo user password for connecting to MongoDB                                                               | password              |
-| MONGO_CONNECTION_STRING_OPTIONS   | string  | Connection string options e.g. authMechanism <sup>1</sup>                                                   |                       |
+| MONGO_CONNECTION_STRING_OPTIONS   | string  | Connection string options e.g. `authMechanism=SCRAM-SHA-1&tls=true` <sup>1</sup>                            |                       |
 
 <sup>1</sup> — For more on authMechanism (and other connection string options), see [docs](https://www.mongodb.com/docs/drivers/node/v6.10/fundamentals/authentication/mechanisms/)
 
