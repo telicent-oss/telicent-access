@@ -65,20 +65,23 @@ Instructions for starting cognito-local can be found in the readme within the di
 
 ACCESS can be configured using the below environment variables
 
-| Env var             | type    | description                                                                                                 | default               |
-| ------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | --------------------- |
-| SCIM_ENABLED        | boolean | Enable the SCIM management pattern                                                                          | false                 |
-| DEBUG               | boolean | Enable debug logging                                                                                        | false                 |
-| PORT                | int     | Which port should the ACCESS API be served on                                                               | 8091                  |
-| OPENID_PROVIDER_URL | url     | URL of OpenID Provider, for development, this can be set to development, see the development sections below | undefined             |
-| JWT_HEADER          | string  | Header name which the token will be passed in                                                               | authorization         |
-| GROUPS_KEY          | string  | Property in the token which contains the user role groups                                                   | groups                |
-| DEPLOYED_DOMAIN     | url     | Domain ACCESS being served within - required if SCIM enabled                                                | http://localhost:8091 |
-| MONGO_PROTOCOL      | protocol| The protocol ('mongodb' | 'mongodb+srv')                                                                    | 'mongodb'             |
-| MONGO_URL           | url     | Mongo database URL                                                                                          | 127.0.0.1:27017       |
-| MONGO_COLLECTION    | string  | Mongo collection where ACCESS data will be stored                                                           | access                |
-| MONGO_USER          | string  | Mongo user for connecting to MongoDB                                                                        | telicent-access       |
-| MONGO_PWD           | string  | Mongo user password for connecting to MongoDB                                                               | password              |
+| Env var                           | type    | description                                                                                                 | default               |
+| --------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | --------------------- |
+| SCIM_ENABLED                      | boolean | Enable the SCIM management pattern                                                                          | false                 |
+| DEBUG                             | boolean | Enable debug logging                                                                                        | false                 |
+| PORT                              | int     | Which port should the ACCESS API be served on                                                               | 8091                  |
+| OPENID_PROVIDER_URL               | url     | URL of OpenID Provider, for development, this can be set to development, see the development sections below | undefined             |
+| JWT_HEADER                        | string  | Header name which the token will be passed in                                                               | authorization         |
+| GROUPS_KEY                        | string  | Property in the token which contains the user role groups                                                   | groups                |
+| DEPLOYED_DOMAIN                   | url     | Domain ACCESS being served within - required if SCIM enabled                                                | http://localhost:8091 |
+| MONGO_PROTOCOL                    | protocol| The protocol ('mongodb' | 'mongodb+srv')                                                                    | 'mongodb'             |
+| MONGO_URL                         | url     | Mongo database URL                                                                                          | 127.0.0.1:27017       |
+| MONGO_COLLECTION                  | string  | Mongo collection where ACCESS data will be stored                                                           | access                |
+| MONGO_USER                        | string  | Mongo user for connecting to MongoDB                                                                        | telicent-access       |
+| MONGO_PWD                         | string  | Mongo user password for connecting to MongoDB                                                               | password              |
+| MONGO_CONNECTION_STRING_OPTIONS   | string  | Connection string options e.g. authMechanism <sup>1</sup>                                                   |                       |
+
+<sup>1</sup> — For more on authMechanism (and other connection string options), see [docs](https://www.mongodb.com/docs/drivers/node/v6.10/fundamentals/authentication/mechanisms/)
 
 ## Developer Notes
 
