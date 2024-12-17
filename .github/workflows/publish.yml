@@ -53,11 +53,92 @@ jobs:
             **/node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
           restore-keys: |
-            ${{ runner.os }}-node_modules-
+            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
 
       - name: Install dependencies
         run: cd frontend && mkdir reports && LOCAL_MACHINE=false yarn install
-      - run: cd frontend && yarn test:ci
+      - name: Run frontend tests
+        run: cd frontend && yarn test:ci
+      - name: Run API tests
+        run: yarn test:ci
+
+  build_ui_artefact:
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
+    needs:
+      - prepare
+      - integrated_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: configure-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Get node version
+        id: node
+        run: echo "version=$(node -v)" >> $GITHUB_OUTPUT
+      - name: Get node_modules cache
+        uses: actions/cache@v3.0.2
+        id: node_modules
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+      - name: Install dependencies
+        run: LOCAL_MACHINE=false yarn install --network-concurrency 1 # Network concurrency to avoid rate-limiting
+      - name: Build UI application
+        run: yarn build:tailwind && LOCAL_MACHINE=false yarn build
+        working-directory: frontend
+
+      - name: Upload build to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: frontend/build/
+
+  build_api_artefact:
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
+    needs:
+      - prepare
+      - integrated_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: configure-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Get node version
+        id: node
+        run: echo "version=$(node -v)" >> $GITHUB_OUTPUT
+      - name: Get node_modules cache
+        uses: actions/cache@v3.0.2
+        id: node_modules
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+      - name: Install dependencies
+        run: LOCAL_MACHINE=false yarn install --network-concurrency 1 # Network concurrency to avoid rate-limiting
+      - name: Build UI application
+        run: yarn build:tailwind && LOCAL_MACHINE=false yarn build
+      - name: Upload build to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
   vuln_scan_api:
     needs:
@@ -83,26 +164,26 @@ jobs:
       - integrated_tests
       - get_version
       - vuln_scan_frontend
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update-workflow-for-docker-with-build-artifact
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
       PATH: ./frontend
+      BUILD_ARTIFACT: build
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
-      TRIVY_IGNORES_ONLY_FOR_BUILD_IMAGE: .trivyignore-build
-      GRYPE_CONFIG_ONLY_FOR_BUILD_IMAGE: .grype-for-build-image-only.yaml
     secrets: inherit
   publish_api:
     needs:
       - integrated_tests
       - get_version
       - vuln_scan_api
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@update-workflow-for-docker-with-build-artifact
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
+      BUILD_ARTIFACT: dist
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
     secrets: inherit
