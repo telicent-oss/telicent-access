@@ -27,6 +27,7 @@ export const init = async () => {
       logger.info("Connecting to database...");
       logger.info(`Protocol: ${MONGO_PROTOCOL}`);
       logger.info(`Mongo: ${mongoUrl}`);
+      logger.info(`Mongo connection string options: ${MONGO_CONNECTION_STRING_OPTIONS}`);
       logger.info(`Database: ${mongoCollection}`);
       logger.info(`User: ${mongoUser}`);
 
