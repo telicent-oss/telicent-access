@@ -170,7 +170,7 @@ jobs:
       - name: Install dependencies
         run: LOCAL_MACHINE=false yarn install --network-concurrency 1 # Network concurrency to avoid rate-limiting
       - name: Build UI application
-        run: yarn build:tailwind && LOCAL_MACHINE=false yarn build
+        run: LOCAL_MACHINE=false yarn build
       - name: Upload build to artifact
         uses: actions/upload-artifact@v4
         with:

@@ -20,7 +20,7 @@
     "ecmaVersion": 2021,
     "sourceType": "module"
   },
-  "plugins": [ "react", "testing-library", "jest-dom"],
+  "plugins": ["react", "testing-library", "jest-dom"],
   "overrides": [
     {
       "files": [
@@ -73,7 +73,7 @@
       "warn",
       { "allowContainerFirstChild": true }
     ],
-    "camelcase": "warn"
+    "camelcase": "off"
   },
   "settings": {
     "propWrapperFunctions": [{ "property": "exact", "exact": false }],

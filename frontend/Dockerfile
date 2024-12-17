@@ -18,6 +18,7 @@
 # WORKDIR /app/build
 
 FROM nginxinc/nginx-unprivileged:stable-alpine-slim
+USER 101
 WORKDIR /usr/share/nginx/html/access
 COPY ./accessfrontend.sbom.json /opt/telicent/sbom/sbom.json
 COPY ./build .

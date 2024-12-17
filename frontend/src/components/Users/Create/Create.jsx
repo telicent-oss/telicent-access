@@ -4,14 +4,12 @@ import { TeliButton } from "@telicent-oss/ds";
 
 import Form from "../Form/Form";
 import config from "../../../config/app-config";
-import {
-  validateEmail,
-} from "../../../utils/utils";
+import { validateEmail } from "../../../utils/utils";
 import LoadingButton from "../../../utils/LoadingButton";
 import RenderError from "../../../utils/RenderError";
 
 const { authType } = config;
-
+/* eslint-disabled import/prefer-default-export */
 export const FormState = ({ update, user, onSubmit, loading, error }) => {
   const formRef = useRef();
   const navigate = useNavigate();
