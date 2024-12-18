@@ -1,4 +1,4 @@
-/* eslint-disabled import/prefer-default-export */
+/* eslint import/prefer-default-export:0 */
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TeliButton } from "@telicent-oss/ds";
