@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/telicent-oss/telicent-access/compare/v1.1.24...v1.2.0) (2024-12-18)
+
+
+### Features
+
+* method to add authMechanism and related options ([#86](https://github.com/telicent-oss/telicent-access/issues/86)) ([32d359b](https://github.com/telicent-oss/telicent-access/commit/32d359b28227449eae463dd1685dedb0e283182d))
+
 ## [1.1.24](https://github.com/telicent-oss/telicent-access/compare/v1.1.23...v1.1.24) (2024-12-12)
 
 
