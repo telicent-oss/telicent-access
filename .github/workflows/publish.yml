@@ -211,6 +211,7 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
     secrets: inherit
 
   publish_api:
@@ -226,4 +227,5 @@ jobs:
       BUILD_ARTIFACT: dist
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
     secrets: inherit
