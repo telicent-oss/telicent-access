@@ -9,6 +9,7 @@ const {
     MONGO_PWD,
     MONGO_RETRY_REWRITES,
     MONGO_URL,
+    MONGO_CONNECTION_STRING_OPTIONS,
     MONGO_USER,
     MONGO_PROTOCOL,
     PORT,
@@ -23,6 +24,7 @@ export default {
   mongoUser: MONGO_USER || "telicent-access",
   mongoPwd: MONGO_PWD || "password",
   MONGO_PROTOCOL: MONGO_PROTOCOL || "mongodb",
+  MONGO_CONNECTION_STRING_OPTIONS: MONGO_CONNECTION_STRING_OPTIONS || "",
   /************************ END OF DATABASE ***********************************/
   port: PORT || 8091,
   accessUrl: DEPLOYED_DOMAIN || "http://localhost:8091",

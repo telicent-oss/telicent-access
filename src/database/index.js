@@ -18,6 +18,7 @@ export const init = async () => {
         mongoUrl,
         mongoUser,
         MONGO_PROTOCOL,
+        MONGO_CONNECTION_STRING_OPTIONS
       } = config;
 
       if (health.message !== "connection") {
@@ -26,12 +27,14 @@ export const init = async () => {
       logger.info("Connecting to database...");
       logger.info(`Protocol: ${MONGO_PROTOCOL}`);
       logger.info(`Mongo: ${mongoUrl}`);
+      logger.info(`Mongo connection string options: ${MONGO_CONNECTION_STRING_OPTIONS}`);
       logger.info(`Database: ${mongoCollection}`);
       logger.info(`User: ${mongoUser}`);
 
       const encodedPwd = encodeURIComponent(mongoPwd);
+      const maybeConnectionStringOptions = MONGO_CONNECTION_STRING_OPTIONS ? `?${MONGO_CONNECTION_STRING_OPTIONS}` : '';
       await connect(
-        `${MONGO_PROTOCOL}://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}`,
+        `${MONGO_PROTOCOL}://${mongoUser}:${encodedPwd}@${mongoUrl}/${mongoCollection}${maybeConnectionStringOptions}`,
         {
           retryWrites: mongoRetryRewrites,
         }
