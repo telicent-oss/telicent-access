@@ -1,12 +1,11 @@
+/* eslint import/prefer-default-export:0 */
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TeliButton } from "@telicent-oss/ds";
 
 import Form from "../Form/Form";
 import config from "../../../config/app-config";
-import {
-  validateEmail,
-} from "../../../utils/utils";
+import { validateEmail } from "../../../utils/utils";
 import LoadingButton from "../../../utils/LoadingButton";
 import RenderError from "../../../utils/RenderError";
 
