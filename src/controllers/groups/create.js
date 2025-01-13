@@ -48,7 +48,7 @@ export const createGroup = async (req, res) => {
     if (groups) {
       return res.status(409).send({
         code: 409,
-        message: "Group already exists",
+        message: "A group with this name already exists",
       });
     }
 

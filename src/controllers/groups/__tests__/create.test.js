@@ -58,7 +58,7 @@ describe("Groups - CREATE", () => {
     expect(statusCode).toBe(409);
     expect(data).toStrictEqual({
       code: 409,
-      message: "Group already exists",
+      message: "A group with this name already exists",
     });
   });
 

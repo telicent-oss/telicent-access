@@ -113,7 +113,7 @@ router.get("/:group", getGroup);
  *             schema:
  *               $ref: '#/components/schemas/GroupBadRequest'
  *       409:
- *         description: Group already exists
+ *         description: A group with this name already exists
  *         content:
  *           application/json:
  *             schema:
