@@ -5,7 +5,7 @@ import config from "../config/app-config";
 const RenderError = ({ code, message }, fallback) => {
   const { url } = config;
   const configErr = !url || url === "undefined";
-  const errCode = configErr ? "" : `Request fail with status code ${code}`;
+  const errCode = configErr ? "" : `Request failed with status code ${code}`;
   const msg = configErr
     ? "URL missing from config. Check .env file exists."
     : message;

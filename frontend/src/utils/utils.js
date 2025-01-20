@@ -57,7 +57,7 @@ export const sortPartialLabels = (type, isDescend) => (a, b) => {
 };
 
 export const buildError = (error) => {
-  if (error?.response) {
+  if (error?.response?.data?.code && error?.response?.data?.message) {
     return {
       code: error.response.data.code,
       message: error.response.data.message,
