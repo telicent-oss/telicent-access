@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/telicent-oss/telicent-access/compare/v1.2.0...v1.2.1) (2025-01-20)
+
+
+### Bug Fixes
+
+* **CVE-2025-23061:** update mongoose ([#93](https://github.com/telicent-oss/telicent-access/issues/93)) ([938df24](https://github.com/telicent-oss/telicent-access/commit/938df240aca7e38be38d17ac1c4a2bd733797a57))
+
 ## [1.2.0](https://github.com/telicent-oss/telicent-access/compare/v1.1.24...v1.2.0) (2024-12-18)
 
 
