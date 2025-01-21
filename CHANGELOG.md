@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/telicent-oss/telicent-access/compare/v1.2.1...v1.2.2) (2025-01-21)
+
+
+### Bug Fixes
+
+* **api:** [TELFE-905] include ./node_modules ([#90](https://github.com/telicent-oss/telicent-access/issues/90)) ([11044e2](https://github.com/telicent-oss/telicent-access/commit/11044e2e08307df85ff174cbc33eaa3302ee8372))
+
 ## [1.2.1](https://github.com/telicent-oss/telicent-access/compare/v1.2.0...v1.2.1) (2025-01-20)
 
 
