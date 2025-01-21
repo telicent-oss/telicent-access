@@ -30,6 +30,10 @@ else
 	echo "echo '{}' > $FRONTEND_SBOM_FILE"
 	echo "File $FRONTEND_SBOM_FILE created."
 fi
+yarn build
+cd frontend
+yarn build
+cd -
 
 yarn build
 cd frontend
