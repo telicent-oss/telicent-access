@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { TeliButton } from "@telicent-oss/ds";
+import {
+  TeliButton,
+  Card,
+  CardContent,
+  Text,
+  H1,
+  CardActions,
+  Button,
+} from "@telicent-oss/ds";
 
 import FormInput from "../../Users/Form/FormInput";
 import config from "../../../config/app-config";
@@ -46,6 +54,7 @@ const CreateGroup = () => {
       navigate("/groups");
     }
   };
+
   return (
     <>
       <Topbar header="Create Group" />
@@ -98,7 +107,7 @@ const CreateGroupForm = ({ onSubmit, error, loading }) => {
         required
         onChange={onDescriptionChange}
       />
-      <div className="flex self-end space-x-4 mt-5">
+      <div className="flex self-end mt-5 space-x-4">
         <TeliButton onClick={onCancel}>Cancel</TeliButton>
         <LoadingButton
           label="Create"
@@ -107,6 +116,7 @@ const CreateGroupForm = ({ onSubmit, error, loading }) => {
           onClick={onSubmitForm}
         />
       </div>
+
       {error && RenderError(error)}
     </form>
   );

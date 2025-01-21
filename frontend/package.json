@@ -2,6 +2,7 @@
   "name": "telicent-access",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@telicent-oss/ds": "0.10.4-rc3",
     "axios": "^1.7.4",
     "country-code-emoji": "^2.3.0",
@@ -17,16 +18,17 @@
   "license": "Apache-2.0",
   "homepage": "/access",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start",
+    "start-proxy": "echo \"Error: ./scripts/start-proxy.sh won't work until we sort out auth\"; echo \"Instead, use 'yarn start-proxy-with-docker'\"",
+    "start-proxy-with-docker": "./scripts/start-proxy-with-docker.sh",
     "prestart": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "build:tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css",
-    "build": "react-scripts build",
+    "build": "craco build",
     "prebuild": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh && yarn build:tailwind",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+    "test": "craco test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "test:ci": "yarn test --ci --json --watchAll=false",
     "test:run": "yarn test --coverage=false --watchAll=false",
-    "test:run:diffMain": "yarn test:run --changedSince=main --bail",
-    "eject": "react-scripts eject"
+    "test:run:diffMain": "yarn test:run --changedSince=main --bail"
   },
   "eslintConfig": {
     "extends": [

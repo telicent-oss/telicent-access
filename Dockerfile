@@ -23,6 +23,8 @@ COPY ./access.sbom.json /opt/telicent/sbom/sbom.json
 COPY wait-for.sh ./
 # RUN LOCAL_MACHINE=false yarn install --frozen-lockfile && yarn cache clean
 COPY ./dist ./dist
+COPY ./package.json ./package.json
+RUN LOCAL_MACHINE=false yarn install --frozen-lockfile --production && yarn cache clean
 RUN chown -R 1000:1000 /app
 USER 1000
 ENV PORT ${PORT}

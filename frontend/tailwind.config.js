@@ -42,6 +42,7 @@ module.exports = {
           900: "#A3A3A3",
         },
         ravenBlack: "#3D3D3D",
+        errorMain: "#F44336",
         whiteSmoke: {
           DEFAULT: "#F5F5F5",
           50: "#E9E9E9",
