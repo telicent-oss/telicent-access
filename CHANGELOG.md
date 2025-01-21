@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/telicent-oss/telicent-access/compare/v1.2.2...v1.2.3) (2025-01-21)
+
+
+### Bug Fixes
+
+* frontend install in frontend ([#96](https://github.com/telicent-oss/telicent-access/issues/96)) ([fe9a96a](https://github.com/telicent-oss/telicent-access/commit/fe9a96a1496058b69b72588502928fda766b584d))
+
 ## [1.2.2](https://github.com/telicent-oss/telicent-access/compare/v1.2.1...v1.2.2) (2025-01-21)
 
 
