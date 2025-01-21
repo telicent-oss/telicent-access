@@ -130,6 +130,7 @@ jobs:
             ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
       - name: Install dependencies
         run: LOCAL_MACHINE=false yarn install --network-concurrency 1 # Network concurrency to avoid rate-limiting
+        working-directory: frontend
       - name: Build UI application
         run: yarn build:tailwind && LOCAL_MACHINE=false yarn build
         working-directory: frontend
