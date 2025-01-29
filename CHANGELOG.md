@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/telicent-oss/telicent-access/compare/v1.2.5...v1.2.6) (2025-01-29)
+
+
+### Bug Fixes
+
+* **CVE-2025-23083:** use normal alpine node image ([#102](https://github.com/telicent-oss/telicent-access/issues/102)) ([9e92f40](https://github.com/telicent-oss/telicent-access/commit/9e92f40387035e2b3f65ab081a0680cc3b2c4134))
+
 ## [1.2.5](https://github.com/telicent-oss/telicent-access/compare/v1.2.4...v1.2.5) (2025-01-29)
 
 
