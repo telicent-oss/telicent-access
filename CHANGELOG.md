@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/telicent-oss/telicent-access/compare/v1.2.4...v1.2.5) (2025-01-29)
+
+
+### Bug Fixes
+
+* **CVE-2024-52798:** upg path-to-regexp in api ([#100](https://github.com/telicent-oss/telicent-access/issues/100)) ([16a3559](https://github.com/telicent-oss/telicent-access/commit/16a355908debd3935cd4e9af4d71985068374f6e))
+
 ## [1.2.4](https://github.com/telicent-oss/telicent-access/compare/v1.2.3...v1.2.4) (2025-01-21)
 
 
