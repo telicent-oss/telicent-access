@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/telicent-oss/telicent-access/compare/v1.2.6...v1.2.7) (2025-01-29)
+
+
+### Bug Fixes
+
+* docker ([#104](https://github.com/telicent-oss/telicent-access/issues/104)) ([ec5cba0](https://github.com/telicent-oss/telicent-access/commit/ec5cba09f0822832eed1a2e27e08a54cad744a98))
+
 ## [1.2.6](https://github.com/telicent-oss/telicent-access/compare/v1.2.5...v1.2.6) (2025-01-29)
 
 
