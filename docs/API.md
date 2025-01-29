@@ -1,7 +1,7 @@
 # telicent-access API
 
 The ACCESS API is formally defined using the OpenAPI Specification in
-[`swagger.json`](./src/router/swagger.json) locally or
+[`swagger.json`](/src/router/swagger.json) locally or
 [`swagger.json`](http://localhost:8091/api-docs/swagger.json) on the server. It
 primarily allows the ACCESS front end or other applications to send queries
 relating to user and group information and their relevant permissions. API calls
@@ -11,7 +11,7 @@ where more detail of the data structures can also be found.
 ## Running the API Server
 
 For instructions on running the ACCESS API server, please see
-[_Build / Install_ in README.MD](./README.md#build--install) in the
+[_Build / Install_ in README.MD](/README.md#build--install) in the
 telicent-access root directory.
 
 ## Error Reporting
