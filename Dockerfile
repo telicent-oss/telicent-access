@@ -14,7 +14,7 @@
 
 # RUN LOCAL_MACHINE=false yarn build 
 
-FROM acoolman/patch-241120-node:20-alpine3.20
+FROM node:20-alpine
 # Install curl
 RUN apk --no-cache add curl
 WORKDIR /app
