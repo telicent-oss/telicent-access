@@ -14,7 +14,7 @@
 
 # RUN LOCAL_MACHINE=false yarn build 
 
-FROM acoolman/patch-250129-node:20-alpine3.20
+FROM telicent/telicent-nodejs20:latest  
 # Install curl
 RUN apk --no-cache add curl
 WORKDIR /app

@@ -17,7 +17,7 @@
 # RUN LOCAL_MACHINE=false yarn build 
 # WORKDIR /app/build
 
-FROM nginxinc/nginx-unprivileged:stable-alpine-slim
+FROM telicent/telicent-nginx1.27:latest
 USER 101
 WORKDIR /usr/share/nginx/html/access
 COPY ./accessfrontend.sbom.json /opt/telicent/sbom/sbom.json
