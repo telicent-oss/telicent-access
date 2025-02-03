@@ -16,7 +16,7 @@
 
 FROM telicent/telicent-nodejs20:latest  
 # Install curl
-RUN apk --no-cache add curl
+RUN microdnf install -y curl && microdnf clean all
 WORKDIR /app
 # RUN mkdir dist node_modules
 COPY ./access.sbom.json /opt/telicent/sbom/sbom.json
