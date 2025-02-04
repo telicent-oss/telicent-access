@@ -35,11 +35,6 @@ cd frontend
 yarn build
 cd -
 
-yarn build
-cd frontend
-yarn build
-cd -
-
 # Build the Docker image using Docker Compose
 docker compose build
 
