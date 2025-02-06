@@ -2,8 +2,7 @@ FROM telicent/telicent-nodejs20:latest
 WORKDIR /app
 
 USER root
-RUN microdnf --setopt=tsflags=nodocs --setopt=install_weak_deps=0 --enablerepo=ubi-9-appstream-rpms install nmap-ncat -y
-RUN microdnf clean all
+RUN microdnf --setopt=tsflags=nodocs --setopt=install_weak_deps=0 --enablerepo=ubi-9-appstream-rpms install nmap-ncat -y && microdnf clean all
 
 USER 185
 COPY ./access.sbom.json /opt/telicent/sbom/sbom.json
