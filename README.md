@@ -84,9 +84,9 @@ the following way:
 To get started run this in your terminal:
 
 ```sh
-scripts/dev-docker-teardown.sh # clear
-scripts/dev-docker-setup.sh # build
-python3 ./scripts/open-ui.py # open
+scripts/dev-docker-teardown.sh \
+  && scripts/dev-docker-setup.sh \
+  && python3 ./scripts/open-ui.py
 ```
 
 ## Usage
