@@ -193,7 +193,6 @@ jobs:
     with:
       APP_NAME: access
       PACKAGE_DIRECTORY: frontend
-      ONLY_FIXED: true
     secrets: inherit
 
   publish_frontend:
