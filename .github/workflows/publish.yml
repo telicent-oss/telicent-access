@@ -193,6 +193,7 @@ jobs:
     with:
       APP_NAME: access
       PACKAGE_DIRECTORY: frontend
+      ONLY_FIXED: true
     secrets: inherit
 
   publish_frontend:
@@ -201,7 +202,7 @@ jobs:
       - get_version
       - vuln_scan_frontend
       - build_ui_artefact
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-528/grype-only-fixed
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
@@ -211,6 +212,7 @@ jobs:
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
       DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
+      GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: true
     secrets: inherit
 
   publish_api:
@@ -219,7 +221,7 @@ jobs:
       - get_version
       - vuln_scan_api
       - build_api_artefact
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-528/grype-only-fixed
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
@@ -227,4 +229,5 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
+      GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: true
     secrets: inherit
