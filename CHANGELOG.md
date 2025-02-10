@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.8](https://github.com/telicent-oss/telicent-access/compare/v1.2.7...v1.2.8) (2025-02-10)
+
+
+### Bug Fixes
+
+* **docker:** use telicent images ([#106](https://github.com/telicent-oss/telicent-access/issues/106)) ([b99d733](https://github.com/telicent-oss/telicent-access/commit/b99d7336692c0f66e3f9123f5392e838074a531a))
+
 ## [1.2.7](https://github.com/telicent-oss/telicent-access/compare/v1.2.6...v1.2.7) (2025-01-29)
 
 
