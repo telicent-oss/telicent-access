@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.9](https://github.com/telicent-oss/telicent-access/compare/v1.2.8...v1.2.9) (2025-02-10)
+
+
+### Bug Fixes
+
+* **ngnix:** [TELFE-917] use log files symlinked to std output streams ([#108](https://github.com/telicent-oss/telicent-access/issues/108)) ([2bf922f](https://github.com/telicent-oss/telicent-access/commit/2bf922f503cd94651d7dee20e4d5be01987330e4))
+
 ## [1.2.8](https://github.com/telicent-oss/telicent-access/compare/v1.2.7...v1.2.8) (2025-02-10)
 
 
