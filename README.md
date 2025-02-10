@@ -81,17 +81,12 @@ the following way:
 
 ## Getting started
 
-To get started run the script to setup all the services, in your terminal run
+To get started run this in your terminal:
 
 ```sh
-scripts/dev-docker-setup.sh
-```
-
-
-Once all the Docker services are running, run to gain open the Telicent Access application
-
-```sh
-python3 scripts/open-ui.py
+scripts/dev-docker-teardown.sh \
+  && scripts/dev-docker-setup.sh \
+  && python3 ./scripts/open-ui.py
 ```
 
 ## Usage
