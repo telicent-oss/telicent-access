@@ -201,7 +201,7 @@ jobs:
       - get_version
       - vuln_scan_frontend
       - build_ui_artefact
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-528/grype-only-fixed
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
       APP_NAME: access
       DOCKERFILE: Dockerfile
@@ -220,7 +220,7 @@ jobs:
       - get_version
       - vuln_scan_api
       - build_api_artefact
-    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-528/grype-only-fixed
+    uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
       APP_NAME: access-api
       DOCKERFILE: Dockerfile
