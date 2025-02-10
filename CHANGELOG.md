@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.10](https://github.com/telicent-oss/telicent-access/compare/v1.2.9...v1.2.10) (2025-02-10)
+
+
+### Bug Fixes
+
+* **docker-push-to-registries.yml:** fix branch ([#110](https://github.com/telicent-oss/telicent-access/issues/110)) ([a6cc0e1](https://github.com/telicent-oss/telicent-access/commit/a6cc0e1fe9330753de2aef232babebaa770c0baa))
+
 ## [1.2.9](https://github.com/telicent-oss/telicent-access/compare/v1.2.8...v1.2.9) (2025-02-10)
 
 
