@@ -36,6 +36,6 @@ We are committed to improving these areas to meet **WCAG 2.1 AA** standards and 
 
 
 ## Feedback & Support  
-If you experience difficulties accessing our content or have suggestions for improvement, please contact us through our [Support Portal](https://telicent.atlassian.net/servicedesk/customer/portal/1)
+If you experience difficulties accessing our content or have suggestions for improvement, please [contact us](mailto:opensource@telicent.io)
 
 _Last updated: 13-02-2025_  
