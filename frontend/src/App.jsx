@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { TeliStandardLayout } from "@telicent-oss/ds";
+import { TeliBasicLayout, TeliBrand, TeliHeader } from "@telicent-oss/ds";
 
 import Users from "./pages/Users";
 import Groups from "./pages/Groups";
@@ -8,9 +8,14 @@ import Update from "./components/Users/Update/Update";
 import CreateGroup from "./components/Groups/Create/Create";
 import Group from "./components/Groups/Group/Group";
 import Sidebar from "./components/Layout/Sidebar";
+import packageJson from "../package.json";
 
 const App = () => (
-  <TeliStandardLayout appName="access" className="overflow-y-auto">
+  <TeliBasicLayout>
+    <TeliHeader className="flex items-center justify-center p-4 mb-3 shadow-3xl bg-black-100">
+      <TeliBrand appName="access" className="p-1" />
+      {packageJson.version}
+    </TeliHeader>
     <div className="flex w-full">
       <div className="w-20">
         <Sidebar />
@@ -28,7 +33,7 @@ const App = () => (
         </Routes>
       </div>
     </div>
-  </TeliStandardLayout>
+  </TeliBasicLayout>
 );
 
 export default App;
