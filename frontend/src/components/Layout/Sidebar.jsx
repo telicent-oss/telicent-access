@@ -6,7 +6,7 @@ const Sidebar = () => {
 
   return (
     <nav
-      className="fixed h-full left-0 top-[50px] p-2 bg-black-100
+      className="fixed h-full left-0 top-[60px] p-2 bg-black-100
       text-whiteSmoke shadow-3xl"
     >
       <ul>
