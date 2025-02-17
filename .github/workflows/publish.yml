@@ -131,6 +131,12 @@ jobs:
       - name: Install dependencies
         run: LOCAL_MACHINE=false yarn install --network-concurrency 1 # Network concurrency to avoid rate-limiting
         working-directory: frontend
+
+      - name: Update frontend/package.json with new version from root/package.json
+        run: |
+          VERSION="$(jq -r .version package.json)" &&
+          jq ".version = \"$VERSION\"" frontend/package.json > frontend/package.tmp &&
+          mv frontend/package.tmp frontend/package.json
       - name: Build UI application
         run: cd frontend && yarn build:tailwind && LOCAL_MACHINE=false yarn build && cd -
       - name: Upload build to artifact
