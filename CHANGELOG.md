@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/telicent-oss/telicent-access/compare/v1.3.0...v1.3.1) (2025-02-18)
+
+
+### Bug Fixes
+
+* update publish.yml ([#116](https://github.com/telicent-oss/telicent-access/issues/116)) ([be28ec5](https://github.com/telicent-oss/telicent-access/commit/be28ec5bf3a9e74cf8bfc52b494b0f17516533b2))
+* update publish.yml ([#116](https://github.com/telicent-oss/telicent-access/issues/116)) ([be28ec5](https://github.com/telicent-oss/telicent-access/commit/be28ec5bf3a9e74cf8bfc52b494b0f17516533b2))
+
 ## [1.3.0](https://github.com/telicent-oss/telicent-access/compare/v1.2.10...v1.3.0) (2025-02-18)
 
 
