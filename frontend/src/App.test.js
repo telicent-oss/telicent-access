@@ -17,6 +17,7 @@ import {
   exampleAttrs,
   exampleUsers,
 } from "./testUtils";
+// <rootDir>/package.json version written into frontend/package.json in C.I.
 import packageJson from "../package.json";
 
 const withLookupProvider = (children) => (
