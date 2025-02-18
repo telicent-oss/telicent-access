@@ -17,6 +17,8 @@ import {
   exampleAttrs,
   exampleUsers,
 } from "./testUtils";
+// <rootDir>/package.json version written into frontend/package.json in C.I.
+import packageJson from "../package.json";
 
 const withLookupProvider = (children) => (
   <LookupContext.Provider
@@ -55,6 +57,12 @@ describe("App component", () => {
     await waitFor(() => {
       expect(location.pathname).toBe("/users");
     });
+  });
+
+  test("display version number", async () => {
+    renderWithBrowserRouter(withLookupProvider(<App />));
+
+    expect(screen.getByText(packageJson.version)).toBeInTheDocument();
   });
 
   
