@@ -12,7 +12,7 @@ import packageJson from "../package.json";
 
 const App = () => (
   <TeliBasicLayout>
-    <TeliHeader className="flex items-center justify-center p-4 mb-3 shadow-3xl bg-black-100">
+    <TeliHeader className="flex items-center justify-center mb-2 shadow-3xl bg-black-100 h-[64px]">
       <TeliBrand appName="access" className="p-1" />
       {packageJson.version}
     </TeliHeader>

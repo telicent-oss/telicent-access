@@ -310,6 +310,10 @@
   margin-top: 1.5rem;
 }
 
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -349,6 +353,10 @@
 
 .h-full {
   height: 100%;
+}
+
+.h-\[64px\] {
+  height: 64px;
 }
 
 .w-10 {
