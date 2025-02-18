@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/telicent-oss/telicent-access/compare/v1.2.10...v1.3.0) (2025-02-18)
+
+
+### Features
+
+* bump version ([#114](https://github.com/telicent-oss/telicent-access/issues/114)) ([e25535d](https://github.com/telicent-oss/telicent-access/commit/e25535d85836e26131bd714653b8da8c997a3e87))
+
 ## [1.2.10](https://github.com/telicent-oss/telicent-access/compare/v1.2.9...v1.2.10) (2025-02-10)
 
 
