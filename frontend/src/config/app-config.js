@@ -1,8 +1,9 @@
-const { ACCESS_API_URL,  BETA } = window;
+const { ACCESS_API_URL, SIGN_OUT_URL, BETA } = window;
 
 const config = {
   beta: BETA || false,
   url: ACCESS_API_URL || "http://localhost:8091",
+  SIGN_OUT_URL,
   classifications: [
     { value: "O", label: "Official" },
     { value: "OS", label: "Official Sensitive" },

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { TeliBasicLayout, TeliBrand, TeliHeader } from "@telicent-oss/ds";
+import { TeliBasicLayout } from "@telicent-oss/ds";
 
 import Users from "./pages/Users";
 import Groups from "./pages/Groups";
@@ -8,15 +8,13 @@ import Update from "./components/Users/Update/Update";
 import CreateGroup from "./components/Groups/Create/Create";
 import Group from "./components/Groups/Group/Group";
 import Sidebar from "./components/Layout/Sidebar";
-import packageJson from "../package.json";
+
+import Header from "./components/Layout/Header";
 
 const App = () => (
   <TeliBasicLayout>
-    <TeliHeader className="flex items-center justify-center mb-2 shadow-3xl bg-black-100 h-[64px]">
-      <TeliBrand appName="access" className="p-1" />
-      {packageJson.version}
-    </TeliHeader>
-    <div className="flex w-full">
+    <Header />
+    <div className="flex w-full mt-2">
       <div className="w-20">
         <Sidebar />
       </div>
