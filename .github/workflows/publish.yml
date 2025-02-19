@@ -134,9 +134,10 @@ jobs:
 
       - name: Update frontend/package.json with new version from root/package.json
         run: |
-          VERSION="$(jq -r .version package.json)" &&
-          jq ".version = \"$VERSION\"" frontend/package.json > frontend/package.tmp &&
+          VERSION=$(jq -r .version package.json) &&
+          jq --arg version "$VERSION" '.version = $version' frontend/package.json > frontend/package.tmp &&
           mv frontend/package.tmp frontend/package.json
+          cat frontend/package.json | jq .verison
       - name: Build UI application
         run: cd frontend && yarn build:tailwind && LOCAL_MACHINE=false yarn build && cd -
       - name: Upload build to artifact
