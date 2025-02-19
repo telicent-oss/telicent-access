@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/telicent-oss/telicent-access/compare/v1.4.0...v1.4.1) (2025-02-19)
+
+
+### Bug Fixes
+
+* added version to packagejson in frontend ([#124](https://github.com/telicent-oss/telicent-access/issues/124)) ([59cb772](https://github.com/telicent-oss/telicent-access/commit/59cb7722f4029f0ef0956a135809b38dbfeb099d))
+
 ## [1.4.0](https://github.com/telicent-oss/telicent-access/compare/v1.3.2...v1.4.0) (2025-02-19)
 
 
