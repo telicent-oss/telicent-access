@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/telicent-oss/telicent-access/compare/v1.3.2...v1.4.0) (2025-02-19)
+
+
+### Features
+
+* add sign out button and tests ([#121](https://github.com/telicent-oss/telicent-access/issues/121)) ([17e5b03](https://github.com/telicent-oss/telicent-access/commit/17e5b038b33bb5fd98f0d6255096a809552bb80e))
+
+
+### Bug Fixes
+
+* **publish.yaml:** version re-writing ([#120](https://github.com/telicent-oss/telicent-access/issues/120)) ([bf7d4c0](https://github.com/telicent-oss/telicent-access/commit/bf7d4c03e341ebe3997476709621c9ef83aba9be))
+
 ## [1.3.2](https://github.com/telicent-oss/telicent-access/compare/v1.3.1...v1.3.2) (2025-02-19)
 
 
