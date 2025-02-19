@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/telicent-oss/telicent-access/compare/v1.3.1...v1.3.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* update yarn.lock ([#118](https://github.com/telicent-oss/telicent-access/issues/118)) ([9e04f45](https://github.com/telicent-oss/telicent-access/commit/9e04f457f655ebd8466d389ad2e5265f9c6cd1bb))
+
 ## [1.3.1](https://github.com/telicent-oss/telicent-access/compare/v1.3.0...v1.3.1) (2025-02-18)
 
 
