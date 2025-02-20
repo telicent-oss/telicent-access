@@ -12,7 +12,9 @@ global.URL.createObjectURL = jest.fn();
 
 export const access = "http://localhost:8091";
 
-
+jest.mock('../package.json', () => ({
+  version: 'x.y.z'
+}))
 
 export const server = setupServer(...handlers(access));
 
