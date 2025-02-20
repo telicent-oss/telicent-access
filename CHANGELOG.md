@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/telicent-oss/telicent-access/compare/v1.4.1...v1.4.2) (2025-02-20)
+
+
+### Bug Fixes
+
+* **mime.types:** [TELDEVOPS-528] add svg ([#126](https://github.com/telicent-oss/telicent-access/issues/126)) ([3a67d19](https://github.com/telicent-oss/telicent-access/commit/3a67d19b98f5c90e70ac1dacb56e9cd98f1dc553))
+* missing mock ([#123](https://github.com/telicent-oss/telicent-access/issues/123)) ([6a03348](https://github.com/telicent-oss/telicent-access/commit/6a033487bcc55c70622b3938c903bdb4439b21c2))
+
 ## [1.4.1](https://github.com/telicent-oss/telicent-access/compare/v1.4.0...v1.4.1) (2025-02-19)
 
 
