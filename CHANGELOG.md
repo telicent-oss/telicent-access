@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/telicent-oss/telicent-access/compare/v1.4.2...v1.5.0) (2025-02-27)
+
+
+### Features
+
+* update header to use AppBar from the DS ([#128](https://github.com/telicent-oss/telicent-access/issues/128)) ([c963962](https://github.com/telicent-oss/telicent-access/commit/c9639627cef53d4321ac1fd96aa55323962a8dde))
+
 ## [1.4.2](https://github.com/telicent-oss/telicent-access/compare/v1.4.1...v1.4.2) (2025-02-20)
 
 
