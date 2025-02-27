@@ -7,7 +7,7 @@ const Header = () => (
   <UIThemeProvider dark theme="AdminBlue">
     <div className="shadow-3xl">
       <AppBar
-        appName="access"
+        appName="ACCESS"
         endChild={<SignOutButton />}
         version={packageJson.version}
       />
