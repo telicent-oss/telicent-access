@@ -12,26 +12,30 @@ import Sidebar from "./components/Layout/Sidebar";
 import Header from "./components/Layout/Header";
 
 const App = () => (
-  <TeliBasicLayout>
+  <>
     <Header />
     <div className="flex w-full mt-2">
       <div className="w-20">
         <Sidebar />
       </div>
-
-      <div className="w-full">
-        <Routes>
-          <Route path="/users" exact element={<Users />} />
-          <Route path="/groups" exact element={<Groups />} />
-          <Route path="/groups/create" element={<CreateGroup />} />
-          <Route path="/groups/:id" element={<Group />} />
-          <Route path="/users/:id/update" element={<Update />} />
-          <Route path="/health" element={<h3>Hello from Telicent ACCESS</h3>} />
-          <Route path="*" element={<Navigate to="/users" />} />
-        </Routes>
-      </div>
+      <TeliBasicLayout>
+        <div className="w-full">
+          <Routes>
+            <Route path="/users" exact element={<Users />} />
+            <Route path="/groups" exact element={<Groups />} />
+            <Route path="/groups/create" element={<CreateGroup />} />
+            <Route path="/groups/:id" element={<Group />} />
+            <Route path="/users/:id/update" element={<Update />} />
+            <Route
+              path="/health"
+              element={<h3>Hello from Telicent ACCESS</h3>}
+            />
+            <Route path="*" element={<Navigate to="/users" />} />
+          </Routes>
+        </div>
+      </TeliBasicLayout>
     </div>
-  </TeliBasicLayout>
+  </>
 );
 
 export default App;
