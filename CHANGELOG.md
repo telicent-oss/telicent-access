@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/telicent-oss/telicent-access/compare/v1.5.1...v1.5.2) (2025-03-11)
+
+
+### Bug Fixes
+
+* **axios:** [TELFE-1040] CVE-2025-27152 ([ab097a3](https://github.com/telicent-oss/telicent-access/commit/ab097a3c6f8bdba0bd8573d63f3929d925c230b7))
+
 ## [1.5.1](https://github.com/telicent-oss/telicent-access/compare/v1.5.0...v1.5.1) (2025-03-11)
 
 
