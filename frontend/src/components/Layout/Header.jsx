@@ -5,13 +5,12 @@ import config from "../../config/app-config";
 
 const Header = () => (
   <UIThemeProvider dark theme="AdminBlue">
-    <div className="shadow-3xl">
-      <AppBar
-        appName="ACCESS"
-        endChild={<SignOutButton />}
-        version={packageJson.version}
-      />
-    </div>
+    <AppBar
+      appName="ACCESS"
+      endChild={<SignOutButton />}
+      version={packageJson.version}
+      isElevated
+    />
   </UIThemeProvider>
 );
 

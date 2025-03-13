@@ -21,6 +21,11 @@ describe("Header Component", () => {
         expect(screen.getByText(packageJson.version)).toBeInTheDocument();
       });
 
+      test("access brand has theme colour", async () => {
+        renderWithBrowserRouter(<Header />);
+        expect(screen.getByText("ACCESS")).toHaveStyle("color: #20BCFA");
+      });
+
       test("displays sign out button if url is configured", async () => {
         config.SIGN_OUT_URL = "https://signout.test";
     
