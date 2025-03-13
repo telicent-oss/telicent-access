@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/telicent-oss/telicent-access/compare/v1.5.2...v1.5.3) (2025-03-13)
+
+
+### Bug Fixes
+
+* update ds version to use new version of appbar ([#136](https://github.com/telicent-oss/telicent-access/issues/136)) ([0f4a9ec](https://github.com/telicent-oss/telicent-access/commit/0f4a9ec3d58b9bee86327a0f362ba6005c937651))
+
 ## [1.5.2](https://github.com/telicent-oss/telicent-access/compare/v1.5.1...v1.5.2) (2025-03-11)
 
 
