@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/telicent-oss/telicent-access/compare/v1.5.3...v1.5.4) (2025-03-13)
+
+
+### Bug Fixes
+
+* **mongoose:** update to latest ([82373e7](https://github.com/telicent-oss/telicent-access/commit/82373e7039c01dcd787423b0c21105e2b19c9f39))
+
 ## [1.5.3](https://github.com/telicent-oss/telicent-access/compare/v1.5.2...v1.5.3) (2025-03-13)
 
 
