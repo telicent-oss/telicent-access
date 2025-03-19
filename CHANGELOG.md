@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.5](https://github.com/telicent-oss/telicent-access/compare/v1.5.4...v1.5.5) (2025-03-19)
+
+
+### Bug Fixes
+
+* **test-feature-branch.yml:** name ([#143](https://github.com/telicent-oss/telicent-access/issues/143)) ([8113295](https://github.com/telicent-oss/telicent-access/commit/8113295fef0d38b1b6ab5fb42f07666d21bdfcc1))
+
 ## [1.5.4](https://github.com/telicent-oss/telicent-access/compare/v1.5.3...v1.5.4) (2025-03-13)
 
 
