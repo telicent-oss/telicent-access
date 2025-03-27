@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.6](https://github.com/telicent-oss/telicent-access/compare/v1.5.5...v1.5.6) (2025-03-27)
+
+
+### Bug Fixes
+
+* **ngnix:** [TELFE-1108] access.log comment ([#145](https://github.com/telicent-oss/telicent-access/issues/145)) ([267159c](https://github.com/telicent-oss/telicent-access/commit/267159cadc97156b595088dd5e6e50837604c9e4))
+
 ## [1.5.5](https://github.com/telicent-oss/telicent-access/compare/v1.5.4...v1.5.5) (2025-03-19)
 
 
