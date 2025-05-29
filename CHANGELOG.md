@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.7](https://github.com/telicent-oss/telicent-access/compare/v1.5.6...v1.5.7) (2025-05-29)
+
+
+### Bug Fixes
+
+* **yarn.lock:** refresh ([#148](https://github.com/telicent-oss/telicent-access/issues/148)) ([7dc260f](https://github.com/telicent-oss/telicent-access/commit/7dc260f66b7e0571a669e45b46416f2673ed4ed3))
+
 ## [1.5.6](https://github.com/telicent-oss/telicent-access/compare/v1.5.5...v1.5.6) (2025-03-27)
 
 
