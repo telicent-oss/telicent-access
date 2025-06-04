@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.8](https://github.com/telicent-oss/telicent-access/compare/v1.5.7...v1.5.8) (2025-06-04)
+
+
+### Bug Fixes
+
+* **CVE-2025-23166:** See https://github.com/telicent-oss/telicent-base-images/pull/185 ([#150](https://github.com/telicent-oss/telicent-access/issues/150)) ([69d5152](https://github.com/telicent-oss/telicent-access/commit/69d5152f7c34d6a488c9ef9e8f415bcc09a07dc1))
+
 ## [1.5.7](https://github.com/telicent-oss/telicent-access/compare/v1.5.6...v1.5.7) (2025-05-29)
 
 
