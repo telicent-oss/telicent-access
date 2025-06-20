@@ -47,12 +47,12 @@ services:
       SCIM_ENABLED: false
     command: ["/app/wait-for.sh", "mongo:27017", "--", "node", "dist/index.js"]
 
-  ui:
-    build:
-      context: ./frontend
-      dockerfile: ./Dockerfile
-    ports:
-      - "8080:8080"
+  # ui:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - "8080:8080"
 
 volumes:
   db_data:

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../../../utils/api";
 
 import { FormState } from "../Create/Create";
 import config from "../../../config/app-config";
@@ -29,7 +29,7 @@ const Update = () => {
           "Cache-Control": "no-cache",
         },
       };
-      const { data } = await axios.get(`${url}/users/${id}`, options);
+      const { data } = await api.get(`${url}/users/${id}`, options);
       setUserData(data);
     } catch (err) {
       setError(buildError(err));
@@ -57,7 +57,7 @@ const Update = () => {
         },
       };
 
-      await axios.patch(`${url}/users/${id}`, body, options);
+      await api.patch(`${url}/users/${id}`, body, options);
       return { ok: true };
     } catch (err) {
       setUpdateError(buildError(err));

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore ./cognito-local --exec babel-node src/index.js",
+    "dev:all": "scripts/dev-docker-teardown.sh && scripts/dev-docker-setup.sh && python3 ./scripts/open-ui.py",
     "build": "babel src --out-dir dist --copy-files",
     "bump:prerelease": "yarn version --prerelease && git push && git push --tags",
     "bump:pre": "yarn bump:prerelease",
