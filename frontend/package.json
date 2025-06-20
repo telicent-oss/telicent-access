@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
-    "@telicent-oss/ds": "0.19.0",
+    "@telicent-oss/ds": "0.26.0-TELFE-1096.22",
     "axios": "^1.7.4",
     "country-code-emoji": "^2.3.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "18.2.0",
     "react-confirm-alert": "^2.8.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "react-world-flags": "^1.6.0",
@@ -29,7 +29,8 @@
     "test": "craco test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "test:ci": "yarn test --ci --json --watchAll=false",
     "test:run": "yarn test --coverage=false --watchAll=false",
-    "test:run:diffMain": "yarn test:run --changedSince=main --bail"
+    "test:run:diffMain": "yarn test:run --changedSince=main --bail",
+    "local-install": "yarn install --registry http://localhost:4873"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "moduleNameMapper": {
+    "^utils/(.*)$": "<rootDir>/src/utils/$1"
   },
   "resolutions": {
     "json5": "^2.2.3",

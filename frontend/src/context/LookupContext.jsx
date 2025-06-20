@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import axios from "axios";
+import api from "../utils/api";
 
 import config from "../config/app-config";
 import { buildError } from "../utils/utils";
@@ -20,7 +20,7 @@ export const LookupProvider = ({ children }) => {
 
   const fetchClearances = useCallback(async () => {
     try {
-      const { data } = await axios.get(
+      const { data } = await api.get(
         `${url}/hierarchies/lookup/clearance?isUserAttribute=true`
       );
       setClearances({ data });
@@ -34,7 +34,7 @@ export const LookupProvider = ({ children }) => {
 
   const fetchCountries = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${url}/countries`);
+      const { data } = await api.get(`${url}/countries`);
       setCountries({ data });
     } catch (err) {
       setCountries({
@@ -48,7 +48,7 @@ export const LookupProvider = ({ children }) => {
     try {
       const {
         data: { isEnabled },
-      } = await axios.get(`${url}/scim/v2/IsEnabled`);
+      } = await api.get(`${url}/scim/v2/IsEnabled`);
       setIsScimEnabled({ data: isEnabled === "true" });
     } catch (err) {
       setIsScimEnabled({

@@ -1,9 +1,9 @@
 /* eslint-disable arrow-body-style */
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { TeliButton } from "@telicent-oss/ds";
 import { confirmAlert } from "react-confirm-alert";
+import api from "../../../utils/api";
 
 import List from "../../Users/List/List";
 import config from "../../../config/app-config";
@@ -30,7 +30,7 @@ const Group = () => {
           "Cache-Control": "no-cache",
         },
       };
-      const { data } = await axios.get(`${config.url}/groups/${id}`, options);
+      const { data } = await api.get(`${config.url}/groups/${id}`, options);
       setGroup(data);
       setActive(data.active);
     } catch (err) {
@@ -54,7 +54,7 @@ const Group = () => {
         cachePolicy: "no-cache",
       };
 
-      const { data } = await axios.patch(
+      const { data } = await api.patch(
         `${config.url}/groups/${id}/toggle-active`,
         options
       );
@@ -93,7 +93,7 @@ const Group = () => {
         cachePolicy: "no-cache",
       };
 
-      await axios.delete(`${config.url}/groups/${id}`, options);
+      await api.delete(`${config.url}/groups/${id}`, options);
       navigate("/groups");
     } catch (err) {
       setError(buildError(err));

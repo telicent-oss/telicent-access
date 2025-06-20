@@ -6,8 +6,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import axios from "axios";
 import { TeliChip, TeliSpinner, TeliSwitch } from "@telicent-oss/ds";
+import api from "../../../utils/api";
 
 import FormInput from "./FormInput";
 import Select from "../../Select/Select";
@@ -55,7 +55,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     (async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`${url}/attributes`);
+        const { data } = await api.get(`${url}/attributes`);
         setLabels(data);
       } catch (err) {
         setError(buildError(err));
@@ -66,7 +66,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
 
     (async () => {
       try {
-        const { data } = await axios.get(`${url}/groups`);
+        const { data } = await api.get(`${url}/groups`);
         setGroups(
           sort(
             data
