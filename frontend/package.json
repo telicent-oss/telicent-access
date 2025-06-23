@@ -20,7 +20,7 @@
   "homepage": "/access",
   "scripts": {
     "start": "craco start",
-    "start-proxy": "echo \"Error: ./scripts/start-proxy.sh won't work until we sort out auth\"; echo \"Instead, use 'yarn start-proxy-with-docker'\"",
+    "start-proxy": "echo \"Error: ./scripts/start-proxy.sh temporarily disabled until auth integration improved\"; echo \"Instead, use 'yarn start-proxy-with-docker'\"",
     "start-proxy-with-docker": "./scripts/start-proxy-with-docker.sh",
     "prestart": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "build:tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css",
