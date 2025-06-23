@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.9](https://github.com/telicent-oss/telicent-access/compare/v1.5.8...v1.5.9) (2025-06-23)
+
+
+### Bug Fixes
+
+* [TELFE-1198] refresh deps ([#152](https://github.com/telicent-oss/telicent-access/issues/152)) ([c299e25](https://github.com/telicent-oss/telicent-access/commit/c299e25d840920a14313970c09b3dfeba696e9e0))
+
 ## [1.5.8](https://github.com/telicent-oss/telicent-access/compare/v1.5.7...v1.5.8) (2025-06-04)
 
 
