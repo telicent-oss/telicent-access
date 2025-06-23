@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.10](https://github.com/telicent-oss/telicent-access/compare/v1.5.9...v1.5.10) (2025-06-23)
+
+
+### Bug Fixes
+
+* **build:** tigger ([#155](https://github.com/telicent-oss/telicent-access/issues/155)) ([50552ce](https://github.com/telicent-oss/telicent-access/commit/50552ce599431d20b95081612996203927706cd3))
+
 ## [1.5.9](https://github.com/telicent-oss/telicent-access/compare/v1.5.8...v1.5.9) (2025-06-23)
 
 
