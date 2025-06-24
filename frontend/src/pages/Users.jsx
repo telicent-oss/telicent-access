@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
-import axios from "axios";
+import api from "../utils/api";
 import List from "../components/Users/List/List";
 import config from "../config/app-config";
 import { buildError } from "../utils/utils";
@@ -21,7 +21,7 @@ const Users = () => {
           "Cache-Control": "no-cache",
         },
       };
-      const { data } = await axios.get(`${config.url}/users`, options);
+      const { data } = await api.get(`${config.url}/users`, options);
       setUserData(data);
     } catch (err) {
       setError(buildError(err));

@@ -1,4 +1,5 @@
 import React from "react";
+import api from "../../../utils/api";
 import axios from "axios";
 import { screen } from "@testing-library/react";
 
@@ -19,7 +20,7 @@ describe.skip("Form component", () => {
   const labels = getLabels(exampleUser);
 
   beforeEach(() => {
-    axios.get = jest.fn((url) => {
+    api.get = jest.fn((url) => {
       if (url === `${access}/groups`) {
         return { data: exampleGroups };
       }

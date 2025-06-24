@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import Flag from "react-world-flags";
-import axios from "axios";
 import { TeliButton, TeliChip } from "@telicent-oss/ds";
+import api from "../../../utils/api";
 
 import config from "../../../config/app-config";
 import { LookupContext } from "../../../context/LookupContext";
@@ -58,7 +58,7 @@ const Item = ({
         cachePolicy: "no-cache",
       };
 
-      await axios.delete(`${config.url}/users/${id}`, options);
+      await api.delete(`${config.url}/users/${id}`, options);
       deletedUser();
     } catch (err) {
       setError(buildError(err));
@@ -70,7 +70,7 @@ const Item = ({
   const onDelete = () => {
     confirmAlert({
       title: "Delete User?",
-      message:"This removes the user from ACCESS only; to remove the user completely, remove from the IdP group first.",
+      message: "This removes the user from ACCESS only; to remove the user completely, remove from the IdP group first.",
       buttons: [
         {
           label: "Delete",

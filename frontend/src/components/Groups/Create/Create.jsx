@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import {
   TeliButton,
 } from "@telicent-oss/ds";
+import api from "../../../utils/api";
 
 import FormInput from "../../Users/Form/FormInput";
 import config from "../../../config/app-config";
@@ -32,7 +32,7 @@ const CreateGroup = () => {
         cachePolicy: "no-cache",
       };
 
-      await axios.post(`${config.url}/groups/`, group, options);
+      await api.post(`${config.url}/groups/`, group, options);
       ok = true;
     } catch (err) {
       setError(buildError(err));

@@ -12,9 +12,9 @@ global.URL.createObjectURL = jest.fn();
 
 export const access = "http://localhost:8091";
 
-jest.mock('../package.json', () => ({
-  version: 'x.y.z'
-}))
+jest.mock("../package.json", () => ({
+  version: "x.y.z",
+}));
 
 export const server = setupServer(...handlers(access));
 
@@ -29,3 +29,27 @@ afterAll(() => {
 });
 
 configure({ testIdAttribute: "id" });
+globalThis.BroadcastChannel = class {
+  constructor(channelName) {
+    this.name = channelName;
+  }
+
+  name;
+  onmessage;
+
+  postMessage = (_) => {
+    // no-op or you can log for debug
+  };
+
+  close = () => {
+    // no-op
+  };
+
+  addEventListener = (type, listener) => {
+    if (type === "message") this.onmessage = listener;
+  };
+
+  removeEventListener = (type, _) => {
+    if (type === "message") this.onmessage = null;
+  };
+};

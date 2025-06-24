@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { TeliBasicLayout } from "@telicent-oss/ds";
+import { AuthModal, TeliBasicLayout, UIThemeProvider } from "@telicent-oss/ds";
 
 import Users from "./pages/Users";
 import Groups from "./pages/Groups";
@@ -12,8 +12,9 @@ import Sidebar from "./components/Layout/Sidebar";
 import Header from "./components/Layout/Header";
 
 const App = () => (
-  <>
+  <UIThemeProvider dark theme="AdminBlue">
     <Header />
+    <AuthModal />
     <div className="flex w-full mt-2">
       <div className="w-20">
         <Sidebar />
@@ -35,7 +36,7 @@ const App = () => (
         </div>
       </TeliBasicLayout>
     </div>
-  </>
+  </UIThemeProvider>
 );
 
 export default App;

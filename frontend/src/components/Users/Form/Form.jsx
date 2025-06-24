@@ -6,8 +6,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import axios from "axios";
 import { TeliChip, TeliSpinner, TeliSwitch } from "@telicent-oss/ds";
+import api from "../../../utils/api";
 
 import FormInput from "./FormInput";
 import Select from "../../Select/Select";
@@ -55,7 +55,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
     (async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`${url}/attributes`);
+        const { data } = await api.get(`${url}/attributes`);
         setLabels(data);
       } catch (err) {
         setError(buildError(err));
@@ -66,7 +66,7 @@ const Form = forwardRef(({ basis, children }, ref) => {
 
     (async () => {
       try {
-        const { data } = await axios.get(`${url}/groups`);
+        const { data } = await api.get(`${url}/groups`);
         setGroups(
           sort(
             data
@@ -95,15 +95,15 @@ const Form = forwardRef(({ basis, children }, ref) => {
 
   const onValueChange =
     (name) =>
-    ({ target: { value } }) => {
-      setValues({ ...values, [name]: value });
-    };
+      ({ target: { value } }) => {
+        setValues({ ...values, [name]: value });
+      };
 
   const onCheckedChange =
     (name) =>
-    ({ target: { checked } }) => {
-      setValues({ ...values, [name]: checked });
-    };
+      ({ target: { checked } }) => {
+        setValues({ ...values, [name]: checked });
+      };
 
   const mapLabelToInput = ({
     id,
@@ -387,7 +387,7 @@ const FormSelect = ({
   isRequired,
 }) => {
   const isMissing = isRequired && isValidationActive && value === "";
-  
+
   return (
     <div className="flex flex-col mb-4">
       <label htmlFor={id} className="pb-2 text-xs font-thin uppercase">
