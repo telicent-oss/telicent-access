@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.11](https://github.com/telicent-oss/telicent-access/compare/v1.5.10...v1.5.11) (2025-06-24)
+
+
+### Bug Fixes
+
+* **pre-commit:** check for npm.fontawesome ([#157](https://github.com/telicent-oss/telicent-access/issues/157)) ([be326cd](https://github.com/telicent-oss/telicent-access/commit/be326cdb8e99fae128223b7661915d73fb5f9163))
+
 ## [1.5.10](https://github.com/telicent-oss/telicent-access/compare/v1.5.9...v1.5.10) (2025-06-23)
 
 
