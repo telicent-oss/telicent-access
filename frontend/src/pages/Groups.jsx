@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { TeliButton } from "@telicent-oss/ds";
+import api from "../utils/api";
 
 import Topbar from "../lib/Topbar";
 import List from "../components/Groups/List/List";
@@ -25,7 +25,7 @@ const Groups = () => {
           "Cache-Control": "no-cache",
         },
       };
-      const { data } = await axios.get(`${config.url}/groups`, options);
+      const { data } = await api.get(`${config.url}/groups`, options);
       setGroupData(data);
     } catch (err) {
       setError(buildError(err));
