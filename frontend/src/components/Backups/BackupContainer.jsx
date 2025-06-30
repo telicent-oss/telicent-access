@@ -6,6 +6,7 @@ import useBackupAPI from './hooks/useBackupAPI';
 
 const BackupContainer = ({ url, identifier, children }) => {
     const { loading, listBackups, deleteSingleBackup, restoreSingleBackup, createBackup } = useBackupAPI(url, identifier);
+
     const [backups, setBackups] = useState([]);
     const [errors, setError] = useState([]);
     const addError = (error) => {
@@ -24,7 +25,6 @@ const BackupContainer = ({ url, identifier, children }) => {
             addError(err)
             return
         }
-        console.log(data, err)
         setBackups(data)
     }, [])
     useEffect(() => {
@@ -36,7 +36,7 @@ const BackupContainer = ({ url, identifier, children }) => {
 
 
                 {children}
-                <div className="flex mr-4"> <CreateBackup onCreate={createBackup} getBackups={getBackups} setError={addError} /></div>
+                <div className="flex mr-4"> <CreateBackup onCreate={createBackup} getBackups={getBackups} setError={addError} loading={loading} /></div>
             </div>
             <BackupError errors={errors} dismissError={dismissError} />
             <BackupList loading={loading} setError={addError} backups={backups} getBackups={getBackups} deleteSingleBackup={deleteSingleBackup} restoreSingleBackup={restoreSingleBackup} />

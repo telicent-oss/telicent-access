@@ -4,66 +4,73 @@ import { confirmAlert } from 'react-confirm-alert';
 import Panel from '../../lib/Panel';
 
 const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup, restoreSingleBackup }) => {
-    console.log(backups.length)
-    const [mostRecentID, setMostRecentID] = useState(undefined)
 
-    useEffect(() => {
-        const recent = backups.reduce((acc, curr) => {
-            if (!acc.date || curr.date > acc.date) {
-                return curr
-            }
-            return acc
-        }, {})
-        setMostRecentID(recent.id)
-    }, [backups])
-
-    const onDeleteBackup = async (id) => {
-        console.log("here")
-        const [_, err] = await deleteSingleBackup(id)
-        if (err) {
-            setError(err)
-            return
+    const mostRecentID = backups.reduce((acc, curr) => {
+        if (!acc.date || curr.date > acc.date) {
+            return curr
         }
-        await getBackups();
-    }
+        return acc
+    }, {})?.id
 
-    const onDeleteHandler = (id) => () => {
+
+
+    const onDeleteHandler = (id) => async () => {
         confirmAlert({
             title: "Delete Backup?",
             message: "This permanently removes the backup.",
             buttons: [
                 {
                     label: "Delete",
-                    onClick: () => onDeleteBackup(id),
+                    onClick: async () => {
+
+                        const [_, err] = await deleteSingleBackup(id)
+                        if (err) {
+                            setError(err)
+                            return
+                        }
+                        await getBackups();
+
+
+
+
+                    },
                 },
                 {
-                    label: "Don't delete",
+                    label: "Don't Delete",
                 },
             ],
         });
     }
 
-    const onRestoreBackup = async (id) => {
-        const [_, err] = await restoreSingleBackup(id)
-        if (err) {
-            setError(err)
-        }
-    }
 
-    const onRestoreHandler = (id) => () => {
+
+    const onRestoreHandler = (id) => async () => {
         confirmAlert({
             title: `Restore Backup ${id}?`,
             message: "This will cause a temporary outage as we restore to this artefact.",
             buttons: [
                 {
                     label: "Restore",
-                    onClick: () => onRestoreBackup(id),
+                    onClick: async () => {
+
+                        const [_, err] = await restoreSingleBackup(id)
+                        if (err) {
+                            setError(err)
+                        }
+
+                    },
                 },
                 {
-                    label: "Don't restore",
+                    label: "Don't Restore",
                 },
             ],
         });
+    }
+    if (loading) {
+        return (
+            <div className="mx-12 flex items-center">
+                <TeliSpinner size={64} className="flex" /><p className='ml-4'>{loading.message}</p>
+            </div>)
     }
     if (backups.length === 0) {
         return (
@@ -76,7 +83,7 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
 
             {backups.map(backup => (
 
-                <Panel ariaLabel="tile-group" key={backup.id} loading={loading} additionalClassName="!bg-black-100">
+                <Panel ariaLabel="tile-group" key={backup.id} additionalClassName="!bg-black-100">
 
                     <div className="flex w-full">
                         <div className="flex flex-none items-center w-10">
@@ -127,6 +134,7 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
                                 label="Restore "
                                 icon="fa-arrow-up-from-bracket"
                                 additionalClassName="hover:bg-green-500 pl-1 mr-4"
+
                             />
 
                             <BackupActionButton
@@ -134,6 +142,7 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
                                 title="Delete backup"
                                 icon="fa-trash"
                                 additionalClassName="hover:bg-red-500  mr-4"
+
                             />
 
                         </div>
@@ -147,13 +156,13 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
 }
 
 const BackupActionButton = ({ onHandler, title, label, icon, additionalClassName }) => {
-    const [loading, setLoading] = useState(false);
+
     const onActionHandler = async () => {
 
-        setLoading(true);
+
         await onHandler()
 
-        setLoading(false)
+
     }
 
     return (
@@ -161,12 +170,11 @@ const BackupActionButton = ({ onHandler, title, label, icon, additionalClassName
             type="button"
             aria-label={title}
             title={title}
-            disabled={loading}
             className={`flex h-6 rounded ${additionalClassName}
         hover:text-black-100`}
             onClick={onActionHandler}
         >
-            {loading ? <TeliSpinner size="" /> : <>{label} <i className={` self-center w-6 fa-solid ${icon}`} /></>}
+            {label} <i className={` self-center w-6 fa-solid ${icon}`} />
         </button>
     )
 }
