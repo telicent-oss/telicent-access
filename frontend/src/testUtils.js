@@ -7,6 +7,11 @@ export const renderWithBrowserRouter = (component) => ({
   ...render(component, { wrapper: BrowserRouter }),
 });
 
+export const renderWithUser = (component) => ({
+  user: userEvent.setup(),
+  ...render(component, { wrapper: BrowserRouter }),
+});
+
 export const getLabels = (user) => {
   const labels = {};
   user.labels.forEach(({ name, value }) => {

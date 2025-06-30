@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import { act } from "react";
 import BackupList from "../BackupList"
-import { renderWithBrowserRouter } from "../../../testUtils";
+import { renderWithUser } from "../../../testUtils";
 
 describe("BackupList", () => {
 
@@ -25,6 +25,7 @@ describe("BackupList", () => {
     expect(container).toMatchSnapshot()
   });
 
+  // TODO: Find a way to click the confirmation button from the react-confirm-alert library
   it.skip("should pass backup id to restore fn", async () => {
     const sampleBackups = [
       {
@@ -35,12 +36,12 @@ describe("BackupList", () => {
     ]
 
     const restoreFnMock = jest.fn();
-    const { user, container } = renderWithBrowserRouter(<BackupList backups={sampleBackups} loading={false} setError={jest.fn()} deleteSingleBackup={jest.fn()} restoreSingleBackup={restoreFnMock} getBackups={jest.fn()} />);
+    const { user, container } = renderWithUser(<BackupList backups={sampleBackups} loading={false} setError={jest.fn()} deleteSingleBackup={jest.fn()} restoreSingleBackup={restoreFnMock} getBackups={jest.fn()} />);
 
     const restoreButton = container.querySelector("button[title=\"Restore Backup\"]")
     await user.click(restoreButton);
 
-    const confirmRestoreButton = await screen.findByText("Restore");
+    const confirmRestoreButton = await screen.findByText("This will cause a");
 
     await act(async () => {
       await user.click(confirmRestoreButton);
