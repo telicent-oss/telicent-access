@@ -1,12 +1,11 @@
 import { TeliButton, TeliSpinner } from '@telicent-oss/ds';
-import React, { useState } from 'react'
+import React from 'react'
 
-const CreateBackup = ({ onCreate, getBackups, setError }) => {
-    const [loading, setLoading] = useState(false);
+const CreateBackup = ({ onCreate, loading, getBackups, setError }) => {
+
 
     const onCreateHandler = async () => {
-        setError("Failed to handle create")
-        setLoading(true)
+
         const [_, err] = await onCreate();
         if (err) {
             setError(err)
@@ -14,13 +13,13 @@ const CreateBackup = ({ onCreate, getBackups, setError }) => {
         }
         await getBackups();
 
-        setLoading(false)
+
 
 
     }
     return (
-        <TeliButton id="create-backup" disabled={loading} variant="secondary" onClick={onCreateHandler} size="small" className=' h-[34.5px]'>
-            {loading ? <TeliSpinner size="12px" /> : "Create"}
+        <TeliButton id="create-backup" variant="secondary" onClick={onCreateHandler} size="small" className={`${!loading ?? "invisible"} h-[34.5px]`}>
+            Create
         </TeliButton>
     )
 }

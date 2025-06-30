@@ -8,43 +8,52 @@ const useBackupAPI = (url, identifier) => {
 
     const listBackups = async () => {
         try {
-            setLoading(true)
+            setLoading({ message: "Fetching a list of backups" })
             const data = await api.getList(url)
             return [data, null]
         } catch (e) {
             console.log(e.message)
             return [[], "Failed to retrieve backups"]
         } finally {
-            setLoading(false)
+            setLoading(null)
         }
     }
 
     const deleteSingleBackup = async (id) => {
         try {
+            setLoading({ message: `Deleting backup: ${id}` })
             const data = await api.delete(url, id)
             return [data, null]
         } catch (e) {
             console.log(e.message)
             return [null, `Failed to delete backup: ${id}`]
+        } finally {
+            setLoading(null)
         }
     }
 
     const createBackup = async () => {
         try {
+            setLoading({ message: `Creating new backup` })
             const data = await api.create(url)
             return [data, null]
         } catch (e) {
             console.log(e.message);
             return [null, "Failed to create backup"]
+        } finally {
+            setLoading(null)
         }
     }
     const restoreSingleBackup = async (id) => {
         try {
+            setLoading({ message: `Restoring backup: ${id}` })
             const data = await api.restore(url, id)
             return [data, null]
         } catch (e) {
             console.log(e.message)
             return [null, `Failed to restore backup: ${id}`]
+        } finally {
+            setLoading(null)
         }
     }
 
