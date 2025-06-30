@@ -1,0 +1,70 @@
+#
+# Copyright (C) 2022 Telicent Limited
+#
+
+# Minimalistic docker compose setup with ES + Kibana + Search API
+# Requires the docker-build.sh script to have been called. The upload-sample-data.sh can then be used to populate the index
+
+version: '3.1'
+
+services:
+
+ elastic:
+   image: elasticsearch:7.17.9
+   container_name: elastic
+   environment:
+     - node.name=elastic
+     - discovery.type=single-node
+     - bootstrap.memory_lock=true
+     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+     - TAKE_FILE_OWNERSHIP=true
+     - path.repo=/home/elasticsearch-backups
+   ulimits:
+     memlock:
+       soft: -1
+       hard: -1
+   ports:
+     - "127.0.0.1:19200:9200"
+   volumes:
+     - es-data:/usr/share/elasticsearch/data
+     - es-backup:/home/elasticsearch-backups
+   entrypoint: [ "/bin/sh", "-c" ]
+   command:
+     - |
+       mkdir -p /home/elasticsearch-backups &&
+       chown -R elasticsearch:elasticsearch /home/elasticsearch-backups &&
+       chmod -R 0777 /home/elasticsearch-backups &&
+       exec /usr/local/bin/docker-entrypoint.sh
+
+ kibana:
+   image: kibana:7.17.9
+   container_name: kibana
+   environment:
+     ELASTICSEARCH_URL: http://elastic:9200
+     ELASTICSEARCH_HOSTS: http://elastic:9200
+   depends_on:
+     - elastic
+   ports:
+     - "127.0.0.1:5601:5601"
+
+ search:
+   image: 098669589541.dkr.ecr.eu-west-2.amazonaws.com/search-api-server:0.17.2-SNAPSHOT
+   container_name: search
+   environment:
+     ELASTIC_HOST: elastic
+     ELASTIC_PORT: 9200
+     ELASTIC_INDEX: example
+     JWKS_URL: disabled
+     USER_ATTRIBUTES_URL: disabled
+     OTEL_METRICS_EXPORTER: none
+     OTEL_TRACES_EXPORTER: none
+   depends_on:
+     - elastic
+   ports:
+     - "127.0.0.1:8181:8181"
+
+volumes:
+  es-data:
+    driver: local
+  es-backup:
+    driver: local

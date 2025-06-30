@@ -1,0 +1,460 @@
+{
+    "backups": {
+        "1": {
+            "backup-id": 1,
+            "date": "2025-06-24_13-49-52",
+            "datasets": [
+                {
+                    "dataset-id": "knowledge",
+                    "tdb": {
+                        "folder": "/fuseki/backups/1/knowledge/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "knowledge_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/1/knowledge/kafka/",
+                        "/knowledge": [
+                            {
+                                "name": "knowledge",
+                                "source": "/fuseki/databases/Replay-RDF.state",
+                                "destination": "/fuseki/backups/1/knowledge/kafka//knowledge.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "knowledge.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/1/knowledge/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "MANIFEST-000073",
+                                        "CURRENT",
+                                        "OPTIONS-000075",
+                                        "000072.log"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000077_sE2GWJWZWS8JYXZHENHN7_68785994.sst",
+                                    "000076_sE2GWJWZWS8JYXZHENHN7_68808191.sst",
+                                    "000080_sE2GWJWZWS8JYXZHENHN7_11082531.sst",
+                                    "000078_sE2GWJWZWS8JYXZHENHN7_68473975.sst",
+                                    "000079_sE2GWJWZWS8JYXZHENHN7_69444784.sst"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "dataset-id": "catalog",
+                    "tdb": {
+                        "folder": "/fuseki/backups/1/catalog/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "catalog_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/1/catalog/kafka/",
+                        "/catalog": [
+                            {
+                                "name": "catalog",
+                                "source": "/fuseki/databases/Replay-Catalog-RDF.state",
+                                "destination": "/fuseki/backups/1/catalog/kafka//catalog.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "catalog.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/1/catalog/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "CURRENT",
+                                        "MANIFEST-000009",
+                                        "OPTIONS-000011",
+                                        "000008.log"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {}
+                        }
+                    }
+                },
+                {
+                    "dataset-id": "ontology",
+                    "tdb": {
+                        "folder": "/fuseki/backups/1/ontology/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "ontology_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/1/ontology/kafka/",
+                        "/ontology": [
+                            {
+                                "name": "ontology",
+                                "source": "/fuseki/databases/Replay-Ontology-RDF.state",
+                                "destination": "/fuseki/backups/1/ontology/kafka//ontology.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "ontology.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/1/ontology/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "OPTIONS-000012",
+                                        "MANIFEST-000010",
+                                        "000009.log",
+                                        "CURRENT"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000008_sE2GWJWZWS8JYXZHENHN6_2992049.sst"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "2": {
+            "backup-id": 2,
+            "date": "2025-06-24_13-57-46",
+            "datasets": [
+                {
+                    "dataset-id": "knowledge",
+                    "tdb": {
+                        "folder": "/fuseki/backups/2/knowledge/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "knowledge_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/2/knowledge/kafka/",
+                        "/knowledge": [
+                            {
+                                "name": "knowledge",
+                                "source": "/fuseki/databases/Replay-RDF.state",
+                                "destination": "/fuseki/backups/2/knowledge/kafka//knowledge.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "knowledge.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/2/knowledge/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "MANIFEST-000073",
+                                        "CURRENT",
+                                        "OPTIONS-000075",
+                                        "000072.log"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000077_sE2GWJWZWS8JYXZHENHN7_68785994.sst",
+                                    "000076_sE2GWJWZWS8JYXZHENHN7_68808191.sst",
+                                    "000080_sE2GWJWZWS8JYXZHENHN7_11082531.sst",
+                                    "000078_sE2GWJWZWS8JYXZHENHN7_68473975.sst",
+                                    "000079_sE2GWJWZWS8JYXZHENHN7_69444784.sst"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "dataset-id": "catalog",
+                    "tdb": {
+                        "folder": "/fuseki/backups/2/catalog/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "catalog_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/2/catalog/kafka/",
+                        "/catalog": [
+                            {
+                                "name": "catalog",
+                                "source": "/fuseki/databases/Replay-Catalog-RDF.state",
+                                "destination": "/fuseki/backups/2/catalog/kafka//catalog.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "catalog.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/2/catalog/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "CURRENT",
+                                        "MANIFEST-000009",
+                                        "OPTIONS-000011",
+                                        "000008.log"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {}
+                        }
+                    }
+                },
+                {
+                    "dataset-id": "ontology",
+                    "tdb": {
+                        "folder": "/fuseki/backups/2/ontology/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "ontology_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/2/ontology/kafka/",
+                        "/ontology": [
+                            {
+                                "name": "ontology",
+                                "source": "/fuseki/databases/Replay-Ontology-RDF.state",
+                                "destination": "/fuseki/backups/2/ontology/kafka//ontology.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "ontology.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/2/ontology/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "OPTIONS-000012",
+                                        "MANIFEST-000010",
+                                        "000009.log",
+                                        "CURRENT"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000008_sE2GWJWZWS8JYXZHENHN6_2992049.sst"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "3": {
+            "backup-id": 3,
+            "date": "2025-06-27_15-52-44",
+            "datasets": [
+                {
+                    "dataset-id": "catalog",
+                    "tdb": {
+                        "folder": "/fuseki/backups/3/catalog/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "catalog_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/3/catalog/kafka/",
+                        "/catalog": [
+                            {
+                                "name": "catalog",
+                                "source": "/fuseki/databases/Replay-Catalog-RDF.state",
+                                "destination": "/fuseki/backups/3/catalog/kafka//catalog.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "catalog.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/3/catalog/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "OPTIONS-000015",
+                                        "000016.log",
+                                        "CURRENT",
+                                        "MANIFEST-000013"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000017_sR9LXL0T1AV66WXR6ID58_1582.sst"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "4": {
+            "backup-id": 4,
+            "date": "2025-06-27_15-54-49",
+            "datasets": [
+                {
+                    "dataset-id": "catalog",
+                    "tdb": {
+                        "folder": "/fuseki/backups/4/catalog/tdb/",
+                        "success": true,
+                        "files": {
+                            "files": [
+                                "catalog_backup.nq.gz"
+                            ]
+                        }
+                    },
+                    "kafka": {
+                        "folder": "/fuseki/backups/4/catalog/kafka/",
+                        "/catalog": [
+                            {
+                                "name": "catalog",
+                                "source": "/fuseki/databases/Replay-Catalog-RDF.state",
+                                "destination": "/fuseki/backups/4/catalog/kafka//catalog.json",
+                                "success": true
+                            }
+                        ],
+                        "files": {
+                            "files": [
+                                "catalog.json"
+                            ]
+                        }
+                    },
+                    "labels": {
+                        "folder": "/fuseki/backups/4/catalog/labels/",
+                        "success": true,
+                        "files": {
+                            "meta": {
+                                "files": [
+                                    "1"
+                                ]
+                            },
+                            "private": {
+                                "1": {
+                                    "files": [
+                                        "OPTIONS-000015",
+                                        "000016.log",
+                                        "CURRENT",
+                                        "MANIFEST-000013"
+                                    ]
+                                }
+                            },
+                            "shared_checksum": {
+                                "files": [
+                                    "000017_sR9LXL0T1AV66WXR6ID58_1582.sst"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

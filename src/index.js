@@ -18,7 +18,7 @@ const createServer = async () => {
 
   const corsOptions = {
     origin: function (origin, callback) {
-      const allowedDomains = [process.env.DEPLOYED_DOMAIN]; // e.g. For local ["http://localhost:8091", "http://localhost:8091"];
+      const allowedDomains = ["http://localhost:8091", "http://localhost:3001"]; // e.g. For local ["http://localhost:8091", "http://localhost:8091"];
       if (!origin || allowedDomains.indexOf(origin) !== -1) {
         callback(null, true);
       } else {

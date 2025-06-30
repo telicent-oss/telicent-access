@@ -19,6 +19,12 @@ const Sidebar = () => {
           label="Groups"
           icon="fa-layer-group"
         />
+        <SidebarItem
+          pathname={pathname}
+          link="/backups"
+          label="Backups"
+          icon="fa-database"
+        />
       </ul>
     </nav>
   );

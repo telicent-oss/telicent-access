@@ -7,6 +7,7 @@
     "@telicent-oss/ds": "0.19.0",
     "axios": "^1.7.4",
     "country-code-emoji": "^2.3.0",
+    "luxon": "^3.6.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-confirm-alert": "^2.8.0",
@@ -14,13 +15,15 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "react-world-flags": "^1.6.0",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "uuid": "^11.1.0"
   },
   "license": "Apache-2.0",
   "homepage": "/access",
   "scripts": {
     "start": "craco start",
-    "start-proxy": "echo \"Error: ./scripts/start-proxy.sh temporarily disabled until auth integration improved\"; echo \"Instead, use 'yarn start-proxy-with-docker'\"",
+    "start-proxy": "./scripts/start-proxy.sh",
+    "old-start-proxy": "echo \"Error: ./scripts/start-proxy.sh temporarily disabled until auth integration improved\"; echo \"Instead, use 'yarn start-proxy-with-docker'\"",
     "start-proxy-with-docker": "./scripts/start-proxy-with-docker.sh",
     "prestart": "[ \"$LOCAL_MACHINE\" = \"false\" ] && echo 'skip cp-env-config' || ./scripts/cp-env-config.js.sh",
     "build:tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css",
