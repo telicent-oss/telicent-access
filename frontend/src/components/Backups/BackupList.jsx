@@ -1,173 +1,174 @@
-import { TeliChip, TeliSpinner } from '@telicent-oss/ds';
-import React, { useEffect, useState } from 'react'
-import { confirmAlert } from 'react-confirm-alert';
-import Panel from '../../lib/Panel';
+import { TeliChip, TeliSpinner } from "@telicent-oss/ds";
+import React, { useEffect, useState } from "react"
+import { confirmAlert } from "react-confirm-alert";
+import Panel from "../../lib/Panel";
 
 const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup, restoreSingleBackup }) => {
-    console.log(backups.length)
-    const [mostRecentID, setMostRecentID] = useState(undefined)
+  // console.log(backups.length)
+  const [mostRecentID, setMostRecentID] = useState(undefined)
 
-    useEffect(() => {
-        const recent = backups.reduce((acc, curr) => {
-            if (!acc.date || curr.date > acc.date) {
-                return curr
-            }
-            return acc
-        }, {})
-        setMostRecentID(recent.id)
-    }, [backups])
+  useEffect(() => {
+    const recent = backups.reduce((acc, curr) => {
+      if (!acc.date || curr.date > acc.date) {
+        return curr
+      }
+      return acc
+    }, {})
+    setMostRecentID(recent.id)
+  }, [backups])
 
-    const onDeleteBackup = async (id) => {
-        console.log("here")
-        const [_, err] = await deleteSingleBackup(id)
-        if (err) {
-            setError(err)
-            return
-        }
-        await getBackups();
+  const onDeleteBackup = async (id) => {
+    console.log("here")
+    const [_, err] = await deleteSingleBackup(id)
+    if (err) {
+      setError(err)
+      return
     }
+    await getBackups();
+  }
 
-    const onDeleteHandler = (id) => () => {
-        confirmAlert({
-            title: "Delete Backup?",
-            message: "This permanently removes the backup.",
-            buttons: [
-                {
-                    label: "Delete",
-                    onClick: () => onDeleteBackup(id),
-                },
-                {
-                    label: "Don't delete",
-                },
-            ],
-        });
-    }
+  const onDeleteHandler = (id) => () => {
+    confirmAlert({
+      title: "Delete Backup?",
+      message: "This permanently removes the backup.",
+      buttons: [
+        {
+          label: "Delete",
+          onClick: () => onDeleteBackup(id),
+        },
+        {
+          label: "Don't delete",
+        },
+      ],
+    });
+  }
 
-    const onRestoreBackup = async (id) => {
-        const [_, err] = await restoreSingleBackup(id)
-        if (err) {
-            setError(err)
-        }
+  const onRestoreBackup = async (id) => {
+    const [_, err] = await restoreSingleBackup(id)
+    if (err) {
+      setError(err)
     }
+  }
 
-    const onRestoreHandler = (id) => () => {
-        confirmAlert({
-            title: `Restore Backup ${id}?`,
-            message: "This will cause a temporary outage as we restore to this artefact.",
-            buttons: [
-                {
-                    label: "Restore",
-                    onClick: () => onRestoreBackup(id),
-                },
-                {
-                    label: "Don't restore",
-                },
-            ],
-        });
-    }
-    if (backups.length === 0) {
-        return (
-            <div className="mx-12 flex items-center">
-                <p>No backups available</p>
-            </div>)
-    }
+  const onRestoreHandler = (id) => () => {
+    console.log({ id })
+    confirmAlert({
+      title: `Restore Backup ${id}?`,
+      message: "This will cause a temporary outage as we restore to this artefact.",
+      buttons: [
+        {
+          label: "Restore",
+          onClick: () => onRestoreBackup(id),
+        },
+        {
+          label: "Don't restore",
+        },
+      ],
+    });
+  }
+  if (backups.length === 0) {
     return (
-        <ul className="mx-12">
+      <div className="mx-12 flex items-center">
+        <p>No backups available</p>
+      </div>)
+  }
+  return (
+    <ul className="mx-12">
 
-            {backups.map(backup => (
+      {backups.map(backup => (
 
-                <Panel ariaLabel="tile-group" key={backup.id} loading={loading} additionalClassName="!bg-black-100">
+        <Panel ariaLabel="tile-group" key={backup.id} loading={loading} additionalClassName="!bg-black-100">
 
-                    <div className="flex w-full">
-                        <div className="flex flex-none items-center w-10">
-                            <div
-                                className="flex w-10 h-10"
+          <div className="flex w-full">
+            <div className="flex flex-none items-center w-10">
+              <div
+                className="flex w-10 h-10"
 
-                            >
-                                <i className="self-center w-4 fa-solid fa-folder" />
-                            </div>
-                        </div>
-                        <div className="flex flex-[35%] items-center min-w-0">
-                            <div className="">
-                                <div
-                                    aria-label="text-name"
-                                    className="truncate font-bold"
-                                    title={`Backup: ${backup.id}`}
-                                >
-                                    Backup: {backup.id}
-                                </div>
-                                <div
-                                    aria-label="text-id"
-                                    className="truncate text-sm"
-                                    title={`Date Taken: ${backup.dateTaken}`}
-                                >
-                                    {backup.dateTaken}
-                                </div>
-                            </div>
+              >
+                <i className="self-center w-4 fa-solid fa-folder" />
+              </div>
+            </div>
+            <div className="flex flex-[35%] items-center min-w-0">
+              <div className="">
+                <div
+                  aria-label="text-name"
+                  className="truncate font-bold"
+                  title={`Backup: ${backup.id}`}
+                >
+                  Backup: {backup.id}
+                </div>
+                <div
+                  aria-label="text-id"
+                  className="truncate text-sm"
+                  title={`Date Taken: ${backup.dateTaken}`}
+                >
+                  {backup.dateTaken}
+                </div>
+              </div>
 
-                            {backup.datasets.map(dataset => <TeliChip
-                                size="small"
-                                className="max-w-[150px] ml-6 "
-                                title={dataset}
-                                label={dataset}
-                            />)}
-                            {mostRecentID === backup.id ?
-                                <TeliChip
-                                    size="small"
-                                    className="max-w-[150px] ml-6 !bg-appColor-hex"
-                                    title="Most recent backup"
-                                    label="most recent"
-                                /> : null}
-                        </div>
+              {backup.datasets.map(dataset => <TeliChip
+                size="small"
+                className="max-w-[150px] ml-6 "
+                title={dataset}
+                label={dataset}
+              />)}
+              {mostRecentID === backup.id ?
+                <TeliChip
+                  size="small"
+                  className="max-w-[150px] ml-6 !bg-appColor-hex"
+                  title="Most recent backup"
+                  label="most recent"
+                /> : null}
+            </div>
 
-                        <div className="flex flex-end items-center">
-                            <BackupActionButton
-                                onHandler={onRestoreHandler(backup.id)}
-                                title="Restore backup"
-                                label="Restore "
-                                icon="fa-arrow-up-from-bracket"
-                                additionalClassName="hover:bg-green-500 pl-1 mr-4"
-                            />
+            <div className="flex flex-end items-center">
+              <BackupActionButton
+                onHandler={onRestoreHandler(backup.id)}
+                title="Restore backup"
+                label="Restore "
+                icon="fa-arrow-up-from-bracket"
+                additionalClassName="hover:bg-green-500 pl-1 mr-4"
+              />
 
-                            <BackupActionButton
-                                onHandler={onDeleteHandler(backup.id)}
-                                title="Delete backup"
-                                icon="fa-trash"
-                                additionalClassName="hover:bg-red-500  mr-4"
-                            />
+              <BackupActionButton
+                onHandler={onDeleteHandler(backup.id)}
+                title="Delete backup"
+                icon="fa-trash"
+                additionalClassName="hover:bg-red-500  mr-4"
+              />
 
-                        </div>
-                    </div>
-                </Panel>
+            </div>
+          </div>
+        </Panel>
 
-            ))
-            }
-        </ul >
-    )
+      ))
+      }
+    </ul >
+  )
 }
 
 const BackupActionButton = ({ onHandler, title, label, icon, additionalClassName }) => {
-    const [loading, setLoading] = useState(false);
-    const onActionHandler = async () => {
+  const [loading, setLoading] = useState(false);
+  const onActionHandler = async () => {
 
-        setLoading(true);
-        await onHandler()
+    setLoading(true);
+    await onHandler()
 
-        setLoading(false)
-    }
+    setLoading(false)
+  }
 
-    return (
-        <button
-            type="button"
-            aria-label={title}
-            title={title}
-            disabled={loading}
-            className={`flex h-6 rounded ${additionalClassName}
+  return (
+    <button
+      type="button"
+      aria-label={title}
+      title={title}
+      disabled={loading}
+      className={`flex h-6 rounded ${additionalClassName}
         hover:text-black-100`}
-            onClick={onActionHandler}
-        >
-            {loading ? <TeliSpinner size="" /> : <>{label} <i className={` self-center w-6 fa-solid ${icon}`} /></>}
-        </button>
-    )
+      onClick={onActionHandler}
+    >
+      {loading ? <TeliSpinner size="" /> : <>{label} <i className={` self-center w-6 fa-solid ${icon}`} /></>}
+    </button>
+  )
 }
 export default BackupList;
