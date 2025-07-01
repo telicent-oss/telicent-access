@@ -1,6 +1,6 @@
 {
   "name": "@telicent-oss/telicent-access-api",
-  "version": "1.5.12",
+  "version": "1.5.12-TELFE-1222.0",
   "description": "Project to provide user attribute lookups",
   "main": "index.js",
   "scripts": {
