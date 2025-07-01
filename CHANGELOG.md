@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.12](https://github.com/telicent-oss/telicent-access/compare/v1.5.11...v1.5.12) (2025-07-01)
+
+
+### Bug Fixes
+
+* **publish.yml:** accept prerelease branches ([#161](https://github.com/telicent-oss/telicent-access/issues/161)) ([f9cb708](https://github.com/telicent-oss/telicent-access/commit/f9cb7087fb97643a24f66c6356b86c3e54eb0385))
+
 ## [1.5.11](https://github.com/telicent-oss/telicent-access/compare/v1.5.10...v1.5.11) (2025-06-24)
 
 
