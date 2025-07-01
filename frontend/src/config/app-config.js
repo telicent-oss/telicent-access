@@ -1,11 +1,10 @@
-const { ACCESS_API_URL, SIGN_OUT_URL, BETA, SPARQL_URL, FF_BACKUPS_DEMO } =
-  window;
+const { ACCESS_API_URL, SIGN_OUT_URL, BETA, SCG_URL, FF_BACKUPS_DEMO } = window;
 
 const config = {
   beta: BETA || false,
   url: ACCESS_API_URL || "http://localhost:8091",
   sparql: {
-    url: SPARQL_URL || "http://localhost:3002/api/sparql",
+    url: SCG_URL || "http://localhost:3002/api/sparql",
   },
   featureFlags: {
     FF_BACKUPS_DEMO,
