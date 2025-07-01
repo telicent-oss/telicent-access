@@ -1,6 +1,6 @@
 {
   "name": "telicent-access",
-  "version": "1.4.0",
+  "version": "1.4.1-TELFE.1222",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
