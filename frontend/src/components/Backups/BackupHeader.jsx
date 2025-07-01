@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
 const BackupHeader = ({ name, type }) => (
-    <div className=' flex '>
+    <div className=" flex ">
         <i className="fa-solid fa-database m-4 text-xl" />
         <div>
             <h1 className="text-2xl">{name}</h1>

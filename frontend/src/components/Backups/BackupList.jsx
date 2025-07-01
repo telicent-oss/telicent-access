@@ -1,5 +1,5 @@
 import { TeliChip, TeliSpinner } from "@telicent-oss/ds";
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { confirmAlert } from "react-confirm-alert";
 import Panel from "../../lib/Panel";
 
@@ -23,6 +23,7 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
           label: "Delete",
           onClick: async () => {
 
+            // eslint-disable-next-line no-unused-vars
             const [_, err] = await deleteSingleBackup(id)
             if (err) {
               setError(err)
@@ -53,6 +54,7 @@ const BackupList = ({ loading, setError, backups, getBackups, deleteSingleBackup
           label: "Restore",
           onClick: async () => {
 
+            // eslint-disable-next-line no-unused-vars
             const [_, err] = await restoreSingleBackup(id)
             if (err) {
               setError(err)

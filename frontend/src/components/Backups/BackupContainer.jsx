@@ -29,7 +29,7 @@ const BackupContainer = ({ url, identifier, children }) => {
       return
     }
     setBackups(data)
-  }, [url])
+  }, [listBackups, url])
 
   useEffect(() => {
     getBackups();
