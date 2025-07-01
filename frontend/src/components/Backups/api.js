@@ -7,7 +7,7 @@ import config from "../../config/app-config";
 // Date example: 2025-06-24_13-57-46
 const DATE_FORMAT = "yyyy-LL-dd_HH-mm-ss"
 const PRESENTATION_FORMAT = "dd LLLL yyyy - HH:mm:ss"
-const compare = (a,b) => {
+export const compare = (a,b) => {
     if(a.date < b.date){
         return 1;
     } 
