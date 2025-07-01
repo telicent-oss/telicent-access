@@ -216,7 +216,7 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
-      DRY_RUN: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/prerelease/') }}
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
       GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: false
     secrets: inherit
 
@@ -232,6 +232,6 @@ jobs:
       BUILD_ARTIFACT: dist
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
-      DRY_RUN: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/prerelease/') }}
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
       GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: false
     secrets: inherit
