@@ -27,11 +27,11 @@ export default {
   MONGO_CONNECTION_STRING_OPTIONS: MONGO_CONNECTION_STRING_OPTIONS || "",
   /************************ END OF DATABASE ***********************************/
   port: PORT || 8091,
-  accessUrl: DEPLOYED_DOMAIN || "*",
+  accessUrl: DEPLOYED_DOMAIN || "http://localhost:8091",
   debug: DEBUG === "true",
   isScimEnabled: SCIM_ENABLED === "true",
   mongoRetryRewrites: MONGO_RETRY_REWRITES || true,
-  openidProviderUrl: OPENID_PROVIDER_URL || "development",
+  openidProviderUrl: OPENID_PROVIDER_URL || "undefined",
   jwtHeader: JWT_HEADER || "authorization",
-  groupKey: GROUPS_KEY || "groups"
+  groupKey: GROUPS_KEY || "groups",
 };

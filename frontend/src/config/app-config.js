@@ -1,24 +1,11 @@
-const {
-  ACCESS_API_URL,
-  SIGN_OUT_URL,
-  BETA,
-  SPARQL_URL,
-  SEARCH_API_URL,
-  SEARCH_BACKUP_REPO,
-  SEARCH_BACKUP_INDICES,
-  FF_BACKUPS_DEMO,
-} = window;
+const { ACCESS_API_URL, SIGN_OUT_URL, BETA, SPARQL_URL, FF_BACKUPS_DEMO } =
+  window;
 
 const config = {
   beta: BETA || false,
   url: ACCESS_API_URL || "http://localhost:8091",
   sparql: {
     url: SPARQL_URL || "http://localhost:3002/api/sparql",
-  },
-  search: {
-    url: SEARCH_API_URL,
-    backupRepo: SEARCH_BACKUP_REPO || "backup_repository",
-    indices: SEARCH_BACKUP_INDICES || "search,doc-content",
   },
   featureFlags: {
     FF_BACKUPS_DEMO,
