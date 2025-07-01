@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.14](https://github.com/telicent-oss/telicent-access/compare/v1.5.13...v1.5.14) (2025-07-01)
+
+
+### Bug Fixes
+
+* eslint ([#166](https://github.com/telicent-oss/telicent-access/issues/166)) ([e10b5fb](https://github.com/telicent-oss/telicent-access/commit/e10b5fb5cc4262149142980cfbedf2f75fc3a98d))
+
 ## [1.5.13](https://github.com/telicent-oss/telicent-access/compare/v1.5.12...v1.5.13) (2025-07-01)
 
 
