@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.17](https://github.com/telicent-oss/telicent-access/compare/v1.5.16...v1.5.17) (2025-07-01)
+
+
+### Bug Fixes
+
+* infinite re-render bug ([#174](https://github.com/telicent-oss/telicent-access/issues/174)) ([fdc594a](https://github.com/telicent-oss/telicent-access/commit/fdc594a52aac95ad5d5900c726475f17a42ccfc3))
+* **publish.yml:** publish depends on vuln_scan_* ([#172](https://github.com/telicent-oss/telicent-access/issues/172)) ([61b68af](https://github.com/telicent-oss/telicent-access/commit/61b68af58375b74b758c0f8995ec068a4e0e0d19))
+
 ## [1.5.16](https://github.com/telicent-oss/telicent-access/compare/v1.5.15...v1.5.16) (2025-07-01)
 
 
