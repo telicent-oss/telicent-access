@@ -1,6 +1,6 @@
-import React from 'react'
-import BackupContainer from './BackupContainer';
-import BackupHeader from './BackupHeader';
+import React from "react"
+import BackupContainer from "./BackupContainer";
+import BackupHeader from "./BackupHeader";
 
 
 const SCBackup = ({ name, identifier, type, url }) => {

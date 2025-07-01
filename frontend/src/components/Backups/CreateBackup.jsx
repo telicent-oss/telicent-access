@@ -1,9 +1,10 @@
-import { TeliButton, TeliSpinner } from "@telicent-oss/ds";
+import { TeliButton } from "@telicent-oss/ds";
 import React from "react"
 
 const CreateBackup = ({ onCreate, loading, getBackups, setError }) => {
   const onCreateHandler = async () => {
 
+    // eslint-disable-next-line no-unused-vars
     const [_, err] = await onCreate();
     if (err) {
       setError(err)
