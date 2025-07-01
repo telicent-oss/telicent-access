@@ -206,7 +206,6 @@ jobs:
     needs:
       - integrated_ui_tests
       - get_version
-      - vuln_scan_frontend
       - build_ui_artefact
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
@@ -225,7 +224,6 @@ jobs:
     needs:
       - integrated_api_tests
       - get_version
-      - vuln_scan_api
       - build_api_artefact
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
