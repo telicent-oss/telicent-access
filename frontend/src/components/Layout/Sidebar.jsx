@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import config from "../../config/app-config";
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -19,6 +20,13 @@ const Sidebar = () => {
           label="Groups"
           icon="fa-layer-group"
         />
+        {config.featureFlags.FF_BACKUPS_DEMO &&
+          <SidebarItem
+            pathname={pathname}
+            link="/backups"
+            label="Backups"
+            icon="fa-database"
+          />}
       </ul>
     </nav>
   );

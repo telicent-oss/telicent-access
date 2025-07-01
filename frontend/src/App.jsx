@@ -10,6 +10,8 @@ import Group from "./components/Groups/Group/Group";
 import Sidebar from "./components/Layout/Sidebar";
 
 import Header from "./components/Layout/Header";
+import Backups from "./pages/Backups";
+import config from "./config/app-config";
 
 const App = () => (
   <>
@@ -23,6 +25,9 @@ const App = () => (
           <Routes>
             <Route path="/users" exact element={<Users />} />
             <Route path="/groups" exact element={<Groups />} />
+            {config.featureFlags.FF_BACKUPS_DEMO &&
+              <Route path="/backups" exact element={<Backups />} />
+            }
             <Route path="/groups/create" element={<CreateGroup />} />
             <Route path="/groups/:id" element={<Group />} />
             <Route path="/users/:id/update" element={<Update />} />

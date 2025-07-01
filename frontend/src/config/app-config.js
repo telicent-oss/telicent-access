@@ -1,8 +1,14 @@
-const { ACCESS_API_URL, SIGN_OUT_URL, BETA } = window;
+const { ACCESS_API_URL, SIGN_OUT_URL, BETA, SCG_URL, FF_BACKUPS_DEMO } = window;
 
 const config = {
   beta: BETA || false,
   url: ACCESS_API_URL || "http://localhost:8091",
+  sparql: {
+    url: SCG_URL || "http://localhost:3002/api/sparql",
+  },
+  featureFlags: {
+    FF_BACKUPS_DEMO,
+  },
   SIGN_OUT_URL,
   classifications: [
     { value: "O", label: "Official" },

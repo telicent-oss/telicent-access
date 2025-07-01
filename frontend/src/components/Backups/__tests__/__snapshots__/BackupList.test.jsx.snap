@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackupList should show list available backups 1`] = `
+<div>
+  <ul
+    class="mx-12"
+  >
+    <li
+      aria-label="tile-group"
+      class="flex h-fit w-full mb-3 py-4 px-6 bg-black-200 rounded-lg !bg-black-100"
+    >
+      <div
+        class="flex w-full"
+      >
+        <div
+          class="flex flex-none items-center w-10"
+        >
+          <div
+            class="flex w-10 h-10"
+          >
+            <i
+              class="self-center w-4 fa-solid fa-folder"
+            />
+          </div>
+        </div>
+        <div
+          class="flex flex-[35%] items-center min-w-0"
+        >
+          <div
+            class=""
+          >
+            <div
+              aria-label="text-name"
+              class="truncate font-bold"
+              title="Backup: 1"
+            >
+              Backup: 
+              1
+            </div>
+            <div
+              aria-label="text-id"
+              class="truncate text-sm"
+              title="Date Taken: 2025-06-24_13-57-46"
+            >
+              2025-06-24_13-57-46
+            </div>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault MuiChip-filledDefault teli-chip--primary max-w-[150px] ml-6 css-13htn8f-MuiChip-root"
+            title="catalog"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+            >
+              catalog
+            </span>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault MuiChip-filledDefault teli-chip--primary max-w-[150px] ml-6 !bg-appColor-hex css-13htn8f-MuiChip-root"
+            title="Most recent backup"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+            >
+              most recent
+            </span>
+          </div>
+        </div>
+        <div
+          class="flex flex-end items-center"
+        >
+          <button
+            aria-label="Restore backup"
+            class="flex h-6 rounded hover:bg-green-500 pl-1 mr-4
+        hover:text-black-100"
+            title="Restore backup"
+            type="button"
+          >
+            Restore 
+             
+            <i
+              class=" self-center w-6 fa-solid fa-arrow-up-from-bracket"
+            />
+          </button>
+          <button
+            aria-label="Delete backup"
+            class="flex h-6 rounded hover:bg-red-500  mr-4
+        hover:text-black-100"
+            title="Delete backup"
+            type="button"
+          >
+             
+            <i
+              class=" self-center w-6 fa-solid fa-trash"
+            />
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
