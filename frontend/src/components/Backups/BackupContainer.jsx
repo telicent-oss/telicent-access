@@ -77,7 +77,7 @@ const CountdownBackupError = ({ error }) => {
       setTimeRemaining((prev) => {
 
         const remainingTime = prev - INTERVAL;
-        if (remainingTime === 0) {
+        if (remainingTime <= 0) {
           clearInterval(countdownInterval);
         }
         return remainingTime
