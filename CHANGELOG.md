@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.16](https://github.com/telicent-oss/telicent-access/compare/v1.5.15...v1.5.16) (2025-07-01)
+
+
+### Bug Fixes
+
+* DRY_RUN condition ([#170](https://github.com/telicent-oss/telicent-access/issues/170)) ([6f5aacc](https://github.com/telicent-oss/telicent-access/commit/6f5aaccfbd016f66a4bb4c13e79f03d083645691))
+
 ## [1.5.15](https://github.com/telicent-oss/telicent-access/compare/v1.5.14...v1.5.15) (2025-07-01)
 
 
