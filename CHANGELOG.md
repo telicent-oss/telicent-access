@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.13](https://github.com/telicent-oss/telicent-access/compare/v1.5.12...v1.5.13) (2025-07-01)
+
+
+### Bug Fixes
+
+* better cond ([#163](https://github.com/telicent-oss/telicent-access/issues/163)) ([3d2dd0b](https://github.com/telicent-oss/telicent-access/commit/3d2dd0b0a08cfd858ab63f2f7f53f6f0b072c89d))
+* trigger build ([#165](https://github.com/telicent-oss/telicent-access/issues/165)) ([6b6d6b4](https://github.com/telicent-oss/telicent-access/commit/6b6d6b4103d9101409f2753d812d7a55d80073df))
+
 ## [1.5.12](https://github.com/telicent-oss/telicent-access/compare/v1.5.11...v1.5.12) (2025-07-01)
 
 
