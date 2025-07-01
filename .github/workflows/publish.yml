@@ -187,7 +187,7 @@ jobs:
     needs:
       - get_version
       - integrated_api_tests
-    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@fix/vulnerability-scanning-on-repo--unique--between--steps
     with:
       APP_NAME: access
     secrets: inherit
@@ -196,7 +196,7 @@ jobs:
     needs:
       - get_version
       - integrated_ui_tests
-    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@main
+    uses: telicent-oss/shared-workflows/.github/workflows/vulnerability-scanning-on-repo.yml@fix/vulnerability-scanning-on-repo--unique--between--steps
     with:
       APP_NAME: access
       PACKAGE_DIRECTORY: frontend
@@ -206,6 +206,7 @@ jobs:
     needs:
       - integrated_ui_tests
       - get_version
+      - vuln_scan_frontend
       - build_ui_artefact
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
@@ -216,7 +217,7 @@ jobs:
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
       PACKAGE_DIRECTORY: frontend
-      DRY_RUN: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/prerelease/') }}
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
       GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: false
     secrets: inherit
 
@@ -224,6 +225,7 @@ jobs:
     needs:
       - integrated_api_tests
       - get_version
+      - vuln_scan_api
       - build_api_artefact
     uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
     with:
@@ -232,6 +234,6 @@ jobs:
       BUILD_ARTIFACT: dist
       VERSION: ${{ needs.get_version.outputs.version }}
       ALLOW_MUTABLE_TAGS: false
-      DRY_RUN: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/prerelease/') }}
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' }}
       GRYPE_SECURITY_ISSUES_BLOCK_ONLY_IF_FIX_AVAILABLE: false
     secrets: inherit
