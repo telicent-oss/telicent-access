@@ -29,7 +29,8 @@ const BackupContainer = ({ url, identifier, children }) => {
       return
     }
     setBackups(data)
-  }, [listBackups, url])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url])
 
   useEffect(() => {
     getBackups();
