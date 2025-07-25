@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.18](https://github.com/telicent-oss/telicent-access/compare/v1.5.17...v1.5.18) (2025-07-25)
+
+
+### Bug Fixes
+
+* **deps:** fix CVE-2025-7783 ([#175](https://github.com/telicent-oss/telicent-access/issues/175)) ([cfecbde](https://github.com/telicent-oss/telicent-access/commit/cfecbde2dfe42558a4800621cd36613e96a1f57f))
+
 ## [1.5.17](https://github.com/telicent-oss/telicent-access/compare/v1.5.16...v1.5.17) (2025-07-01)
 
 
