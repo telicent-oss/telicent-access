@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
-    "@telicent-oss/ds": "0.19.0",
-    "axios": "^1.7.4",
+    "@telicent-oss/ds": "0.30.1",
+    "axios": "^1.11.0",
     "country-code-emoji": "^2.3.0",
     "luxon": "^3.6.1",
     "prop-types": "^15.8.1",
@@ -62,7 +62,9 @@
     "msw/path-to-regexp": "^6.3.0",
     "react-scripts/path-to-regexp": "0.1.10",
     "rollup": "3.29.5",
-    "cross-spawn": "7.0.6"
+    "cross-spawn": "7.0.6",
+    "jsdom/**/form-data": "^3.0.4",
+    "axios/**/form-data": "^4.0.4"
   },
   "resolutionsReasons": {
     "json5": "eslint-plugin-import#tsconfig-paths#json5 - vulnerability",
