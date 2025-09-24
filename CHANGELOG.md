@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.19](https://github.com/telicent-oss/telicent-access/compare/v1.5.18...v1.5.19) (2025-09-24)
+
+
+### Bug Fixes
+
+* **GHSA-4hjh-wcwx-xvwj:** bump axios ([#177](https://github.com/telicent-oss/telicent-access/issues/177)) ([800d8f9](https://github.com/telicent-oss/telicent-access/commit/800d8f9fa4d77abf5907fec92c7ee1e1b305da7d))
+
 ## [1.5.18](https://github.com/telicent-oss/telicent-access/compare/v1.5.17...v1.5.18) (2025-07-25)
 
 
