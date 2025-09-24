@@ -29,7 +29,7 @@
   "homepage": "https://github.com/telicent-oss/telicent-access#readme",
   "dependencies": {
     "@babel/runtime": "^7.24.1",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
