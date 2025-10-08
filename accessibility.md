@@ -39,4 +39,4 @@ We are committed to improving these areas to meet **WCAG 2.2 AA** standards and 
 ## Feedback & Support  
 If you experience difficulties accessing our content or have suggestions for improvement, please [contact us](mailto:opensource@telicent.io)
 
-_Last updated: 08-10-25_  
+_Last updated: 08-10-2025_
