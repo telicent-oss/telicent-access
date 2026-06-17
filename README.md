@@ -1,3 +1,10 @@
+> [!WARNING]
+> **Deprecated Project**
+>
+> This project has reached end-of-life (EOL) and is no longer maintained by the contributors. Issues and pull requests will not be reviewed.
+
+
+
 # Telicent Access
 
 ❗️ **The purpose of the ACCESS application is to allow testing and demonstration of
